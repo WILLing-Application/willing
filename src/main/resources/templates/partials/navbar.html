@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--ANIMATE.CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <!--CUSTOM.CSS-->
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<!--NAVBAR-->
+<div th:fragment="navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar">
+        <a class="navbar-brand nav-link" th:href="@{home}"><em>WILLing</em></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--NAVBAR ITEMS-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">
+                <th:block sec:authorize="isAuthenticated()">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{devProfile}">Browse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{devProfile}">Interest</a>
+                </li>
+                </th:block>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{profile}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{devProfile}">Developers</a>
+                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/sign-up}">Sign-Up</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/login}">Login</a>-->
+<!--                </li>-->
+                <!--IF NOT AUTHENTICATED HIDE SHOW THESE-->
+                <th:block sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/loggin}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
+                    </li>
+                </th:block>
+                <!--IF AUTHENTICATED HIDE SHOW THESE-->
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form  th:action="@{/logout}" th:method="post">
+                            <button class="nav-link">Logout</button>
+                        </form>
+                    </li>
+                </th:block>
+                <!--                    <li class="nav-item dropdown">-->
+                <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                <!--                            Developers-->
+                <!--                        </a>-->
+                <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                <!--                            <a class="dropdown-item" href="#">Aaron Singleterry</a>-->
+                <!--                            <a class="dropdown-item" href="#">George Williams </a>-->
+                <!--                            <a class="dropdown-item" href="#">Greg Jett </a>-->
+                <!--                            <a class="dropdown-item" href="#">Laura Davis </a>-->
+                <!--        &lt;!&ndash;                    <div class="dropdown-divider"></div>&ndash;&gt;-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+
+            </ul>
+            <th:block sec:authorize="isAuthenticated()">
+                <form action="" method="get" id="search-bar" class="ml-auto">
+                    <input type="search" placeholder="Search">
+                </form>
+            </th:block>
+        </div>
+    </nav>
+</div>
+
+<!-- OPTIONAL JAVASCRIPT -->
+<!-- jQUERY FIRST, THEN POPPER.JS, THEN BOOTSTRAP JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
