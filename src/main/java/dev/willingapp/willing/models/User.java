@@ -52,7 +52,17 @@ public class User {
     @Column(columnDefinition = "TINYINT(1) UNSIGNED DEFAULT '0'")
     private int isActive;
 
+// === Albums that the owner has created ===
     @OneToMany(mappedBy = "owner")
+    private List<Album> ownerAlbums;
+
+// === Albums that the guests are invited to ===
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "album_user",
+            joinColumns = {@JoinColumn(name = "album_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
     private List<Album> albums;
 
     public User() {
@@ -169,4 +179,21 @@ public class User {
     public void setIsActive(int isActive) {
         this.isActive = isActive;
     }
+
+    public List<Album> getOwnerAlbums() {
+        return ownerAlbums;
+    }
+
+    public void setOwnerAlbums(List<Album> ownerAlbums) {
+        this.ownerAlbums = ownerAlbums;
+    }
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
+    }
+
 }
