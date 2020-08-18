@@ -69,6 +69,10 @@ public class User {
     @OneToMany(mappedBy = "interestedUser")
     private List<Interest> interests;
 
+//    Tied to comments table
+    @OneToMany(mappedBy = "userComments")
+    private List<Comment> comments;
+
     public User() {
     }
 
@@ -206,5 +210,13 @@ public class User {
 
     public void setInterests(List<Interest> interests) {
         this.interests = interests;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

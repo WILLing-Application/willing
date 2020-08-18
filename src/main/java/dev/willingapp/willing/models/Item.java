@@ -34,11 +34,15 @@ public class Item {
     @Column(columnDefinition = "DECIMAL(6,2) DEFAULT '0'")
     private double estShippingCost;
 
+//    Tied to comments table
+    @OneToMany(mappedBy = "itemToComment")
+    private List<Comment> comments;
+
 //    awarded to user
     @OneToOne
     private User user;
 
-
+//  Tied to items table
     @OneToMany(mappedBy = "item")
     private List<Interest> interests;
 
@@ -123,5 +127,13 @@ public class Item {
 
     public void setInterests(List<Interest> interests) {
         this.interests = interests;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
