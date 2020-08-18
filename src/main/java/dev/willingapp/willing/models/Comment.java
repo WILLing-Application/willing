@@ -26,7 +26,7 @@ public class Comment {
     @JoinColumn(name = "comment_id")
     private Comment parentComment;
 
-    @OneToMany(mappedBy = "parentComment")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parentComment")
     private List<Comment> comments;
 
     @Column(columnDefinition = "TEXT NOT NULL")

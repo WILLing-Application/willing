@@ -35,16 +35,19 @@ public class Item {
     private double estShippingCost;
 
 //    Tied to comments table
-    @OneToMany(mappedBy = "itemToComment")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemToComment")
     private List<Comment> comments;
 
 //    awarded to user
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
 //  Tied to items table
-    @OneToMany(mappedBy = "item")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private List<Interest> interests;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemImage")
+    private List<Image> images;
 
     public Item() {
     }
@@ -135,5 +138,13 @@ public class Item {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

@@ -53,11 +53,14 @@ public class User {
     private int isActive;
 
 // === Albums that the owner has created ===
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Album> ownerAlbums;
 
 // === Albums that the guests are invited to ===
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(
             name = "album_user",
             joinColumns = {@JoinColumn(name = "album_id")},
@@ -66,11 +69,11 @@ public class User {
     private List<Album> albums;
 
 //    Tied to interests table
-    @OneToMany(mappedBy = "interestedUser")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "interestedUser")
     private List<Interest> interests;
 
 //    Tied to comments table
-    @OneToMany(mappedBy = "userComments")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userComments")
     private List<Comment> comments;
 
     public User() {
