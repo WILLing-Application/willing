@@ -34,13 +34,20 @@ public class Item {
     @Column(columnDefinition = "DECIMAL(6,2) DEFAULT '0'")
     private double estShippingCost;
 
+//    Tied to comments table
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemToComment")
+    private List<Comment> comments;
+
 //    awarded to user
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
-
-    @OneToMany(mappedBy = "item")
+//  Tied to items table
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private List<Interest> interests;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemImage")
+    private List<Image> images;
 
     public Item() {
     }
@@ -123,5 +130,21 @@ public class Item {
 
     public void setInterests(List<Interest> interests) {
         this.interests = interests;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

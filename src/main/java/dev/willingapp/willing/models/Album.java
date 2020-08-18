@@ -36,12 +36,16 @@ public class Album {
     private int isActive;
 
 //    Invites Table
-    @OneToMany(mappedBy = "album")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "album")
     private List<Invite> invites;
 
 //    Items Table
-    @OneToMany(mappedBy = "albumForItems")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "albumForItems")
     private List<Item> items;
+
+//    Images Table
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "albumWithImages")
+    private List<Image> images;
 
     public Album() {
     }
@@ -124,5 +128,13 @@ public class Album {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }
