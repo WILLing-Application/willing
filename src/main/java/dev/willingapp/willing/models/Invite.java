@@ -14,7 +14,7 @@ public class Invite {
     private String email;
 
     @Column(columnDefinition = "DATETIME NOT NULL")
-    private String createAt;
+    private String createdAt;
 
     @Column(columnDefinition = "DATETIME NOT NULL")
     private String updatedAt;
@@ -43,12 +43,12 @@ public class Invite {
         this.email = emaail;
     }
 
-    public String getCreateAt() {
-        return createAt;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(String createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(String createAt) {
+        this.createdAt = createAt;
     }
 
     public String getUpdatedAt() {
