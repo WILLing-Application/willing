@@ -1,6 +1,9 @@
 package dev.willingapp.willing.models;
 
+import org.w3c.dom.stylesheets.LinkStyle;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -48,6 +51,9 @@ public class User {
 
     @Column(columnDefinition = "TINYINT(1) UNSIGNED DEFAULT '0'")
     private int isActive;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Album> albums;
 
     public User() {
     }
