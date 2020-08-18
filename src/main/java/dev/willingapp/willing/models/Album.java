@@ -39,6 +39,10 @@ public class Album {
     @OneToMany(mappedBy = "album")
     private List<Invite> invites;
 
+//    Items Table
+    @OneToMany(mappedBy = "albumForItems")
+    private List<Item> items;
+
     public Album() {
     }
 
@@ -112,5 +116,13 @@ public class Album {
 
     public void setInvites(List<Invite> invites) {
         this.invites = invites;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }
