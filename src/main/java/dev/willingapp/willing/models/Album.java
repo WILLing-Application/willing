@@ -1,6 +1,7 @@
 package dev.willingapp.willing.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "albums")
@@ -10,9 +11,14 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+//    Ties to the owner of this album
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User owner;
+
+//    album_user table
+    @ManyToMany(mappedBy = "albums")
+    private List<User> users;
 
     @Column(nullable = false, length = 50)
     private String title;
@@ -28,6 +34,10 @@ public class Album {
 
     @Column(columnDefinition = "TINYINT(1) UNSIGNED DEFAULT '1'")
     private int isActive;
+
+//    Invites Table
+    @OneToMany(mappedBy = "album")
+    private List<Invite> invites;
 
     public Album() {
     }
@@ -86,5 +96,21 @@ public class Album {
 
     public void setIsActive(int isActive) {
         this.isActive = isActive;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Invite> getInvites() {
+        return invites;
+    }
+
+    public void setInvites(List<Invite> invites) {
+        this.invites = invites;
     }
 }
