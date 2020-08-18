@@ -52,6 +52,9 @@ public class User {
     @Column(columnDefinition = "TINYINT(1) UNSIGNED DEFAULT '0'")
     private int isActive;
 
+    @Column(length = 150)
+    private String profilePhoto;
+
 // === Albums that the owner has created ===
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Album> ownerAlbums;
@@ -189,6 +192,14 @@ public class User {
 
     public void setIsActive(int isActive) {
         this.isActive = isActive;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 
     public List<Album> getOwnerAlbums() {
