@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <!--CUSTOM.CSS-->
     <link th:href="@{/css/main.css}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!--NAVBAR-->
 <div th:fragment="navbar">
     <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar">
-        <a class="navbar-brand nav-link" th:href="@{home}"><em>WILLing</em></a>
+        <a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-won-sign">WILLing</i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,7 +24,7 @@
             <ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">
                 <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{devProfile}">Browse</a>
+                    <a class="nav-link" th:href="@{albums}">Browse</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{devProfile}">Interest</a>
