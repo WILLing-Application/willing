@@ -65,6 +65,10 @@ public class User {
     )
     private List<Album> albums;
 
+//    Tied to interests table
+    @OneToMany(mappedBy = "interestedUser")
+    private List<Interest> interests;
+
     public User() {
     }
 
@@ -196,4 +200,11 @@ public class User {
         this.albums = albums;
     }
 
+    public List<Interest> getInterests() {
+        return interests;
+    }
+
+    public void setInterests(List<Interest> interests) {
+        this.interests = interests;
+    }
 }

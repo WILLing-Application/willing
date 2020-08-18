@@ -11,7 +11,7 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    Ties to the owner of this album
+//    Ties to the owner_id of this album
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User owner;

@@ -1,6 +1,7 @@
 package dev.willingapp.willing.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "items")
@@ -33,8 +34,13 @@ public class Item {
     @Column(columnDefinition = "DECIMAL(6,2) DEFAULT '0'")
     private double estShippingCost;
 
+//    awarded to user
     @OneToOne
     private User user;
+
+
+    @OneToMany(mappedBy = "item")
+    private List<Interest> interests;
 
     public Item() {
     }
@@ -109,5 +115,13 @@ public class Item {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Interest> getInterests() {
+        return interests;
+    }
+
+    public void setInterests(List<Interest> interests) {
+        this.interests = interests;
     }
 }
