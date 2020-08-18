@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <title>Log In</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"/>
+
+<!--is Authenticated to see-->
+<div sec:authorize="isAuthenticated()">
+    <a href="/ads/view">Go back to home page</a>
+</div>
+<h1>Log In</h1>
+<!--if there is an error-->
+<div th:if="${param.error}">
+    Invalid Username and Password.
+</div>
+<!--if logged you're logged out successfully-->
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<!--log in from-->
+<form th:action="@{/login}" method="post">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" />
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" />
+    <input type="submit" value="Log In" />
+</form>
+</body>
+</html>
