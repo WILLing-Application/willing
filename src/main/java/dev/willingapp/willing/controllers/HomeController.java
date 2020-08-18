@@ -15,10 +15,4 @@ public class HomeController {
         //return home.html
         return "home";
     }
-
-    @PostMapping("/home")
-    public String returnCohort(@RequestParam(name = "cohort") String cohort, Model model){
-        model.addAttribute("cohort", cohort);
-        return "home";
-    }
 }
