@@ -46,13 +46,13 @@ public class User {
     @Column(nullable = false, length = 20)
     private String phone;
 
-    @Column(columnDefinition = "TINYINT(1) UNSIGNED DEFAULT '1'")
+    @Column(columnDefinition = "TINYINT(1) UNSIGNED DEFAULT '0'") // default false
     private int allowSms;
 
-    @Column(columnDefinition = "TINYINT(1) UNSIGNED DEFAULT '0'")
+    @Column(columnDefinition = "TINYINT(1) UNSIGNED DEFAULT '1'") // default true
     private int isActive;
 
-    @Column(length = 150)
+    @Column(length = 150) // add default value for placeholder, columnDefinition = "DEFAULT 'path/filename.ext'"
     private String profilePhoto;
 
 // === Albums that the owner has created ===
@@ -90,8 +90,8 @@ public class User {
         password = copy.password;
     }
 
-    public User(long id, String email, String username, String password, String firstName, String lastName, String address1, String address2, String city, String state, String zip, String phone, int allowSms, int isActive, String profilePhoto, List<Album> ownerAlbums, List<Album> albums, List<Interest> interests, List<Comment> comments) {
-        this.id = id;
+    // Constructor used for sign-up registration
+    public User(String email, String username, String password, String firstName, String lastName, String address1, String address2, String city, String state, String zip, String phone) {
         this.email = email;
         this.username = username;
         this.password = password;
@@ -103,9 +103,6 @@ public class User {
         this.state = state;
         this.zip = zip;
         this.phone = phone;
-        this.allowSms = allowSms;
-        this.isActive = isActive;
-        this.profilePhoto = profilePhoto;
     }
 
     public long getId() {
