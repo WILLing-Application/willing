@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Sign up</title>
@@ -7,17 +8,44 @@
 <body class="text-center">
 <nav th:replace="partials/navbar :: navbar" />
 <h1>Create an account</h1>
-<!--<form th:action="@{/sign-up}" method="POST" th:object="${user}" class="text-center">-->
-<!--    <label for="username">Username</label>-->
-<!--    <input id="username" th:field="*{username}" />-->
+<form th:action="@{/sign-up}" method="POST" th:object="${user}" class="text-center">
+    <label for="username">Username</label>
+    <input id="username" th:field="*{username}" th:required th:autofocus th:maxlength="60" />
 
-<!--    <label for="email">Email</label>-->
-<!--    <input id="email" th:field="*{email}" />-->
+    <label for="email">Email</label>
+    <input id="email" th:field="*{email}" th:required th:maxlength="60" />
 
-<!--    <label for="password">Password</label>-->
-<!--    <input id="password" type="password" th:field="*{#}" />-->
+    <label for="password">Password</label>
+    <input id="password" type="password" th:field="*{password}" th:required th:maxlength="60" />
 
-<!--    <input value="Sign me up!" type="submit" />-->
-<!--</form>-->
+    <label for="firstName">First Name</label>
+    <input id="firstName" th:field="*{firstName}" th:required th:maxlength="60" />
+
+    <label for="lastName">Last Name</label>
+    <input id="lastName" th:field="*{lastName}" th:required th:maxlength="60" />
+
+    <label for="address1">Address</label>
+    <input id="address1" th:field="*{address1}" th:required th:maxlength="60" />
+
+    <label for="address2">Address</label>
+    <input id="address2" th:field="*{address2}" th:maxlength="60" />
+
+    <label for="city">City</label>
+    <input id="city" th:field="*{city}" th:required th:maxlength="60" />
+
+<!--    add a state picker widget if time allows-->
+    <label for="state">State</label>
+    <input id="state" th:field="*{state}" th:required th:maxlength="2" />
+
+<!--    add a Zip code +4 formatter if time allows-->
+    <label for="zip">Zip</label>
+    <input id="zip" th:field="*{zip}" th:required th:maxlength="10" />
+
+<!--    add a phone# formatter if time allows-->
+    <label for="phone">phone</label>
+    <input id="phone" th:field="*{phone}" th:required th:maxlength="20" />
+
+    <input value="Sign me up!" type="submit" />
+</form>
 </body>
 </html>
