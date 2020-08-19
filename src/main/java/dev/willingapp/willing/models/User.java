@@ -79,7 +79,33 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userComments")
     private List<Comment> comments;
 
-    public User() {
+    public User() {}
+
+    // Copy constructor for authentication process (login/logout)
+    // Called by UserWithRoles
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
+    public User(long id, String email, String username, String password, String firstName, String lastName, String address1, String address2, String city, String state, String zip, String phone, int allowSms, int isActive, String profilePhoto, List<Album> ownerAlbums, List<Album> albums, List<Interest> interests, List<Comment> comments) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address1 = address1;
+        this.address2 = address2;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.phone = phone;
+        this.allowSms = allowSms;
+        this.isActive = isActive;
+        this.profilePhoto = profilePhoto;
     }
 
     public long getId() {
