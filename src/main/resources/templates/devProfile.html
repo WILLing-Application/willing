@@ -4,87 +4,91 @@
     <title>Developer Profiles</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--ANIMATE.CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link th:href="@{/css/dev_profiles.css}" rel="stylesheet">
-<!--    <link th:href="@{/css/main.css}" rel="stylesheet">-->
     <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div th:replace="partials/navbar :: navbar">
+<!--<div th:replace="partials/navbar :: navbar">-->
 
-    </div>
-<!--    <video th:src="@{${'/videos/office.mp4'}}" class="vid-bg autoplay loop muted"></video>-->
-    <div class="video-container">
-        <video autoplay muted loop class="video-background" playsinline>
-            <source th:src="@{${'/videos/milkyway.mp4'}}" type="video/mp4"  alt="...">
-        </video>
-    </div>
-    <div class="container mt-40">
-    <!--<h3 class="text-center">WILLing DEVELOPERS</h3>-->
-    <div class="row mt-30">
-        <div class="col-md-4 col-sm-6">
-            <div id="george" class="box3">
-                <img src="http://bestjquery.com/tutorial/hover-effect/demo169/images/img-1.jpg">
-                <div class="box-content">
-                    <h3 class="title">George Willams</h3>
-                    <span class="post">Web Developer</span>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci pariatur qui.
-                    </p>
-                    <ul class="icon">
-                        <li><a href="#" class="fa fa-search"></a></li>
-                        <li><a href="#" class="fa fa-link"></a></li>
-                    </ul>
+</div>
+
+<section class="team">
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <h1>Developer Team</h1>
+                <p class="start">"Teamwork is the ability to work together toward a common vision. The ability to direct
+                    individual accomplishments toward organizational objectives.
+                    It is the fuel that allows common people to attain uncommon results." – <strong><em>Andrew
+                        Carnegie</em></strong></p>
+            </div>
+            <hr>
+            <!--                    <br><br>-->
+            <div class="row mgt50px">
+                <div class="column">
+                    <div class="imgBox">
+                        <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    </div>
+                    <div class="details">
+                        <h3>Aaron Singleterry<br><span>Junior Software Developer</span></h3>
+                        <ul>
+                            <li><a class="icon" href="#"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a class="icon" href="#"><i class="fab fa-github"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
+                <div class="column">
+                    <div class="imgBox">
+                        <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    </div>
+                    <div class="details">
+                        <h3>George Williams<br><span>Junior Software Developer</span></h3>
+                        <ul>
+                            <li><a class="icon" href="#"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a class="icon" href="#"><i class="fab fa-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="imgBox">
+                        <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    </div>
+                    <div class="details">
+                        <h3>Greg Jett<br><span>Junior Software Developer</span></h3>
+                        <ul>
+                            <li><a class="icon" href="#"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a class="icon" href="#"><i class="fab fa-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="imgBox">
+                        <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    </div>
+                    <div class="details">
+                        <h3>Laura Davis<br><span>Junior Software Developer</span></h3>
+                        <ul>
+                            <li><a class="icon" href="#"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a class="icon" href="#"><i class="fab fa-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
             </div>
         </div>
-        <hr>
-        <div class="col-md-4 col-sm-6">
-            <div id="laura" class="box3 float-right">
-                <img src="http://bestjquery.com/tutorial/hover-effect/demo169/images/img-2.jpg">
-                <div class="box-content">
-                    <h3 class="title">Laura Davis</h3>
-                    <span class="post">Web Designer</span>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci pariatur qui.
-                    </p>
-                    <ul class="icon">
-                        <li><a href="#" class="fa fa-search"></a></li>
-                        <li><a href="#" class="fa fa-link"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <div class="col-md-4 col-sm-6">
-            <div id="aaron" class="box3">
-                <img src="http://bestjquery.com/tutorial/hover-effect/demo169/images/img-3.jpg">
-                <div class="box-content">
-                    <h3 class="title">Aaron Singleterry</h3>
-                    <span class="post">Web Designer</span>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci pariatur qui.
-                    </p>
-                    <ul class="icon">
-                        <li><a href="#" class="fa fa-search"></a></li>
-                        <li><a href="#" class="fa fa-link"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
-    </div>
-<!--    <section class="header">-->
-<!--        <video autoplay muted loop class="video-background" playsinline>-->
-<!--            <source src="videos/tech.mp4" type="video/mp4" alt="...">-->
-<!--        </video>-->
-<!--    </section>-->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</section>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 </body>
 </html>
