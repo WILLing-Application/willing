@@ -30,6 +30,6 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         users.save(user);
-        return "redirect:/"; // temporary redirect until routes/views have controllers
+        return "redirect:/login"; // temporary redirect until routes/views have controllers
     }
 }
