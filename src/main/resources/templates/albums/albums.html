@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>User Albums</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--ANIMATE.CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
+    <link th:href="@{/css/album.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Users Name Albums </h1>
+    <p class="text-center">
+        Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly napster hipmunk prezi chartly
+        bitly spock. Loopt twones meebo hipmunk, fleck xobni.<br> Convore bebo rovio vimeo zanga handango blekko
+        koofers, loopt twitter imvu flickr kaboodle chegg. Zillow lala mzinga, sifteo. Voki heekya sococo geni oovoo
+        disqus, empressr doostang lijit.
+    </p>
+    <div class="row">
+        <!--ALBUM #1-->
+        <div class="col-md-4">
+            <div class="single-album">
+                <p class="album-meta">By User <span>August 20, 2020</span></p>
+                <!--        MAYBE MAKE USER PROFILE IMAGE-->
+                <img th:src="@{${'/photos/placeholder.jpeg'}}">
+                <h2><a href="#">1926 Antique Camera</a></h2>
+                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
+                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
+                <p><a href="#" class="read-more-btn">View Item</a>
+                    <!--         MAYBE ADD HEART FOR FAVORITE-->
+                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
+                </p>
+            </div>
+        </div>
+        <!--ALBUM #2-->
+        <div class="col-md-4">
+            <div class="single-album">
+                <p class="album-meta">By User <span>August 20, 2020</span></p>
+                <!--        MAYBE MAKE USER PROFILE IMAGE-->
+                <img th:src="@{${'/photos/placeholder.jpeg'}}">
+                <h2><a href="#">Holocaust Ring</a></h2>
+                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
+                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
+                <p><a href="#" class="read-more-btn">View Item</a>
+                    <!--         MAYBE ADD HEART FOR FAVORITE-->
+                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
+                </p>
+            </div>
+            <!--ALBUM #3-->
+        </div>
+        <div class="col-md-4">
+            <div class="single-album">
+                <p class="album-meta">By User <span>August 20, 2020</span></p>
+                <!--        MAYBE MAKE USER PROFILE IMAGE-->
+                <img th:src="@{${'/photos/placeholder.jpeg'}}">
+                <h2><a href="#">Stamp Collection</a></h2>
+                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
+                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
+                <p><a href="#" class="read-more-btn">View Item</a>
+                    <!--         MAYBE ADD HEART FOR FAVORITE-->
+                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
+                </p>
+            </div>
+        </div>
+        <br><br>
+        <!--ALBUM #4-->
+        <div class="col-md-4">
+            <div class="single-album">
+                <p class="album-meta">By User <span>August 20, 2020</span></p>
+                <!--        MAYBE MAKE USER PROFILE IMAGE-->
+                <img th:src="@{${'/photos/placeholder.jpeg'}}">
+                <h2><a href="#">Dresser</a></h2>
+                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
+                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
+                <p><a href="#" class="read-more-btn">View Item</a>
+                    <!--         MAYBE ADD HEART FOR FAVORITE-->
+                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
+                </p>
+            </div>
+        </div>
+        <!--ALBUM #5-->
+        <div class="col-md-4">
+            <div class="single-album">
+                <p class="album-meta">By User <span>August 20, 2020</span></p>
+                <!--        MAYBE MAKE USER PROFILE IMAGE-->
+                <img th:src="@{${'/photos/placeholder.jpeg'}}">
+                <h2><a href="#">Super Nintendo</a></h2>
+                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
+                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
+                <p><a href="#" class="read-more-btn">View Item</a>
+                    <!--         MAYBE ADD HEART FOR FAVORITE-->
+                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
+                </p>
+            </div>
+        </div>
+        <!--ALBUM #6-->
+        <div class="col-md-4">
+            <div class="single-album">
+                <p class="album-meta">By User <span>August 20, 2020</span></p>
+                <!--        MAYBE MAKE USER PROFILE IMAGE-->
+                <img th:src="@{${'/photos/placeholder.jpeg'}}">
+                <h2><a href="#">Family Photo Album</a></h2>
+                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
+                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
+                <p><a href="#" class="read-more-btn">View Item</a>
+                    <!--         MAYBE ADD HEART FOR FAVORITE-->
+                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+</html>
