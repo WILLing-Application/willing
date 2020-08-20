@@ -57,10 +57,10 @@ public class AlbumController {
     }
 
 //    TODO: CREATE EDIT INDEX
-    @PostMapping("albums/{id}/edit")
+    @GetMapping("albums/{id}/edit")
     public String editAlbum(@PathVariable long id, Model model){
         model.addAttribute("album", albumsDao.getOne(id));
-        return "edit";
+        return "albums/edit";
     }
 
     @PostMapping("/albums/{id}/edit")
