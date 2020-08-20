@@ -70,7 +70,6 @@ public class AlbumController {
         albumsDao.save(album);
         return "redirect:/albums";
     }
-
     @PostMapping("/albums/{id}/delete")
     public String deleteAlbum(@PathVariable long id) {
         return "redirect:/albums";
