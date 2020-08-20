@@ -1,6 +1,6 @@
 DS_store
 .idea/*
-js/keys.js
+src/main/resources/static/js/keys.js
 
 HELP.md
 target/
@@ -39,3 +39,5 @@ build/
 ### WILLing application ###
 src/main/resources/application.properties
 src/main/resources/willing_db_setup.sql
+
+
