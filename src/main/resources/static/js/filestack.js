@@ -31,8 +31,8 @@
                     }
                 }
                 let photoAndVideos = photosHtml + videosHtml;
-                // $("#images").val(urlArray);
-                // $("#file-type").val(fileTypeArray);
+                $("#images").val(urlArray);
+                $("#file-type").val(fileTypeArray);
                 $("#files").html("<h3>Your uploaded files:</h3><br>" + photoAndVideos);
             }
         };

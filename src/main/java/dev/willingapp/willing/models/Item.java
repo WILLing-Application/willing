@@ -52,6 +52,13 @@ public class Item {
     public Item() {
     }
 
+    public Item(long id, String title, String description, String lineage) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.lineage = lineage;
+    }
+
     public long getId() {
         return id;
     }
