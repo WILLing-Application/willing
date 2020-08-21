@@ -148,10 +148,8 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 | /view      | View page        | Albums/Browse              | view.html             |
 | /interests | View (filtered)  | Interests                  | view.html (filter     |
 | /create    | Create new album | Create                     | /albums/create.html   |
-| /albums *  | One album        | (a partial included in view?) | /albums/albums.html |
-| /items  *  | One item         | (a partial included in view?) | /items/items.html |
 | /devs      | same as before   | Developers                 | same as before login  |
-| /profile   | User account     | User icon/photo (optional) | profile.html  |
+| /profile   | User account     | User icon/photo (optional) | profile.html          |
 | /logout    | default          | Logout                     | part of navbar        |
 
 * NOTE - there will be individual album/create and item/create pages, but navbar Create link is for albums. There are album & item pages but View page combines them. The navbar "Browse" is currently replaced by "Albums" for developers benefit (will change it to "View" or "Browse" later).
