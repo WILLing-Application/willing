@@ -25,6 +25,9 @@ public class ItemController {
         this.imagesDao = imagesDao;
     }
 
+    @GetMapping("/items/items")
+    public String showItem(Model model) { return "/items/items";}
+
     @GetMapping("/items/create")
     public String createItems(Model model) {
         return "/items/items-create";
