@@ -174,15 +174,15 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 | POST        | /view               | Save Interests    | redirect /interests ? |               |
 | GET         | /create             | Create album form | /albums/create.html   |               |
 | POST        | /create             | Save album        | redirect:/albums{id}  |               |
-| GET         | /albums             | Albums list view  | /albums/albums.html   |               |
-| GET	      | /albums/{id}        | Single album view | /albums/album-show.html |             |
+| GET         | /albums             | Albums list view w/items (nested loop) | /albums/albums.html   |               |
+| GET	      | /albums/{id}        | Single album view | /albums/album.html |             |
 | GET         | /albums/{id}/create | Create item form  | /items/create.html    | see items for the POST method |
 | GET         | /albums/{id}/edit   | edit form         | /albums/edit.html     |               |
 | POST        | /albums/edit        | Save edit         | redirect /albums/{id} |               |
 | GET	      | /albums/{id}/delete	| delete confirmation form  | /albums/delete.html | Album (owner) |
 | POST        | /albums/delete      | process the delete | redirect /view       |               |
-| GET         | /items              | Items list view   | /items/items.html     |               |
-| GET         | /items/{id}         | Single Item view, interest icon & ranking form | /items/items-show.html & interests.html ? | WILLing Items Views.pdf |
+| Note:       | the items listing will be on the albums page | | | |
+| GET         | /items/{id}         | Single Item view, interest icon & ranking form | /items/item.html & interests.html ? | WILLing Items Views.pdf |
 | GET         | /items/{id}/interest | Interests ranking form | items/interests.html  |         |
 | POST        | /items/{id}/interest | Save Interests ranking | redirect /interests   |         |
 | POST        | /albums/{id}/create  | Save created item      | redirect /albums/{id} | see albums for the GET method |
