@@ -1,6 +1,23 @@
 # WILLing
 
-* Remember to work on branches for pull requests
+Remember to work on branches for pull requests
+1. git pull origin master
+2. git checkout -b <your-branch-name>
+3. code!
+4. Follow the git work flow below to push up your branch
+
+### OUR GIT WORK FLOW!
+
+Before you push your branch, add/commit & do this:
+1. git checkout master
+2. git pull origin master
+3. git checkout <your-branch-name>
+4. git merge master
+5. Type in your commit message, read all prompts - note any merge conflicts, save it.
+6. Resolve any merge conflicts, edit merged files
+7. Repeat the process if new pulls occurred after you merged
+8. git push origin <your-branch-name>
+9. On GitHub, do out a pull request & add reviewers 
 
 ---
 
@@ -114,50 +131,80 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 
 ---
 
-#### Views (before Login)
+#### Views (Navbar before Login)
 
-| URL       | Description   | Navbar Name      | Thymeleaf template |
-| :---      | :---          | :---             | :---               |
-| /home     | Landing page  | Home or Brand    | users/home.html    |
-| /sign-up  | default       | Sign Up          | users/sign-up.html |
-| /login    | default       | Login            | users/login.html   |
-| /devs     | Developers/About | Developers    | devProfile.html    |
+| URL       | Description      | Navbar Name      | Thymeleaf template |
+| :---      | :---             | :---             | :---               |
+| /         | Landing page     | Home or Brand    | users/home.html    |
+| /sign-up  | default          | Sign Up          | users/sign-up.html |
+| /login    | default          | Login            | users/login.html   |
+| /devs     | Developers/About | Developers       | devProfile.html, note: change to spinal-case dev-profile.html | 
 
-#### Views (after Login)
+#### Views (Navbar after Login)
 
-| URL       | Description   | Navbar Name      | Thymeleaf template |
-| :---      | :---          | :---             | :---               |
-| /home     | same as before  | Home or Brand  | same as before login |
-| /view     | View page     | Browse           | albums.html        |
-| /view/interests | View (filtered) | Interests | albums.html (?)   |
-| /create   | Create new     | Create          | ?
-| /devs     | same as before | Developers      | same as before login |
-| /profile  | User profile  | Account/icon/photo (optional) | profile.html |
-| /logout   | default       | Logout           | part of navbar     |
+| URL        | Description      | Navbar Name                | Thymeleaf template    |
+| :---       | :---             | :---                       | :---                  |
+| /          | same as before   | Home or Brand              | same as before login  |
+| /view      | View page        | Albums/Browse              | view.html             |
+| /interests | View (filtered)  | Interests                  | view.html (filter     |
+| /create    | Create new album | Create                     | /albums/create.html   |
+| /devs      | same as before   | Developers                 | same as before login  |
+| /profile   | User account     | User icon/photo (optional) | profile.html          |
+| /logout    | default          | Logout                     | part of navbar        |
 
-* NOTE - there will be more individual show/edit/delete pages. May need to be individual album/create and item/create pages, but would like to combine onto one page.
+* NOTE - there will be individual album/create and item/create pages, but navbar Create link is for albums. There are album & item pages but View page combines them. The navbar "Browse" is currently replaced by "Albums" for developers benefit (will change it to "View" or "Browse" later).
 
 ---
 
 ## METHODS
 
 (Under constructions... work in progress)
-
-Methods	 Urls	 Actions	 Filename - wireframes (rough)
-GET	 /index	 Landing page	Landing Page.jpg
-GET/POST	 /sign-up	 register for new account	Default page
-GET/POST	 /login	 login to user account	Default page
-GET	/view	 Browse nav - view list (owner, albums, items), Filtered Interests view	WILLing Album View.pdf, WILLing Items Views.pdf, Pending new
-GET	/albums/{id}	Album detail	
-GET/POST	/albums/{id}/edit	edit & delete Album (owner)	
-GET/POST	/albums/{id}/delete	delete Album (owner)	
-GET	/items/{id}	Item detail	WILLing Items Views.pdf
-GET/POST	/items/{id}/edit	edit Item (owner)	WILLing Items Views.pdf
-GET/POST	/items/{id}/delete	delete Item (owner)	WILLing Items Views.pdf
-GET	/profile	view user info (User), view dashboard (Admin)	WILLing Dashboard Album View.pdf, AdminMatrix and UserCrudPage.pdf
-GET/POST	/profile/edit	User edit & delete (self)	AdminMatrix and UserCrudPage.pdf
-GET/POST	/profile/delete	User delete account (self)	AdminMatrix and UserCrudPage.pdf
-
+ 
+| Methods     | URL                 | Actions           | GET - template, POST - send/redirect Url | Wireframe filename |
+| :---        | :---                | :---              | :---               | :---                |
+| GET	      | /	                | Landing page      | home.html          |                    |
+| GET    	  | /sign-up            | register form     | sign-up.html       |                    |
+| POST	      | /sign-up            | save account      | redirect ?         |                    |
+| GET	      | /login	            | login             | login.html         |                    |
+| POST	      | /login	            | logged in         | redirect ?         |                    |
+| GET         | /devs               | view devs         | devProfile.html, note: change to spinal-case dev-profile.html | |
+| GET	      | /view	            | view listings     | view.html   | WILLing Album View.pdf, WILLing Items Views.pdf, Pending new |
+| continued   | continued           | interest icon     | see GET method /items/interest |    |
+| continued   | continued           | in album, create item icon | see GET method /albums/{id}/create |   |
+| POST        | /view               | Save Interests    | redirect /interests ? |               |
+| GET         | /create             | Create album form | /albums/create.html   |               |
+| POST        | /create             | Save album        | redirect:/albums{id}  |               |
+| GET         | /albums             | Albums list view  | /albums/albums.html   |               |
+| GET	      | /albums/{id}        | Single album view | /albums/album-show.html |             |
+| GET         | /albums/{id}/create | Create item form  | /items/create.html    | see items for the POST method |
+| GET         | /albums/{id}/edit   | edit form         | /albums/edit.html     |               |
+| POST        | /albums/edit        | Save edit         | redirect /albums/{id} |               |
+| GET	      | /albums/{id}/delete	| delete confirmation form  | /albums/delete.html | Album (owner) |
+| POST        | /albums/delete      | process the delete | redirect /view       |               |
+| GET         | /items              | Items list view   | /items/items.html     |               |
+| GET         | /items/{id}         | Single Item view, interest icon & ranking form | /items/items-show.html & interests.html ? | WILLing Items Views.pdf |
+| GET         | /items/{id}/interest | Interests ranking form | items/interests.html  |         |
+| POST        | /items/{id}/interest | Save Interests ranking | redirect /interests   |         |
+| POST        | /albums/{id}/create  | Save created item      | redirect /albums/{id} | see albums for the GET method |
+| GET         | /items/{id}/edit    | edit form               | /items/edit.html      |         |
+| POST        | /items/edit         | Save edit               | redirect /items/{id}  |         |
+| GET	      | /items/{id}/delete	| delete confirmation form | /items/delete.html   | WILLing Items Views.pdf |
+| POST        | /items/delete       | Process delete item            | redirect /albums/{id}
+| GET         | /profile            | view (User), dashboard (Owner) | profile.html    | WILLing Dashboard Album View.pdf, AdminMatrix and UserCrudPage.pdf |
+| GET         | /profile/edit       | edit form user (self) details  | profile-edit.html  | same as above |
+| POST        | /profile/edit       | validate, save user details    | redirect /profile  | same as above |
+| GET         | /profile/delete     | delete user account, etc       | profile-delete.html | same as above |
+| POST        | /profile/delete     | confirm & process delete       | display message and redirect / | |
+| GET/POST    | /profile/dashboard  | owner can award items to users | TBD  | |
+| GET         | /interests          | interests - filter on view page | redirect /views | |
+| GET         | /albums{id}/users ?  | a form/widget on album page to add/remove users (access) | TBD | |
+| POST        | /albums/{id}/users ? | a process to add/update/delete the selected users | redirect /albums/{id} |
+| GET         | /profile/invites     | a form to enter email addresses | profile-invites.html | |
+| POST        | /profile/invites     | verify & process the list of emails | redirect to /profile | |
+| Optional features | | | | | |
+| GET         | /items/{id}/comment  | a form to comment/reply on item | /items/comment.html | |
+| POST        | /items/{id}/comment  | save the comment                | redirect to /items/{id} | |
+| more TBD    | | | | | |
 
 ---
 
