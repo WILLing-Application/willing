@@ -4,29 +4,35 @@
       lang="en">
 <head th:replace="partials/head :: header-links (pageTitle = 'Login')">
 </head>
-<body>
+<body class="text-center">
 <nav th:replace="partials/navbar :: navbar"/>
 
 <!--is Authenticated to see-->
-<div sec:authorize="isAuthenticated()">
-    <a href="/login">Go back to login page</a>
+<!--<div sec:authorize="isAuthenticated()">-->
+<!--    <a href="/login">Go back to login page</a>-->
+<!--</div>-->
+
+<div class="container">
+    <h1>Log In</h1>
+    <!--if there is an error-->
+    <div th:if="${param.error}">
+        Invalid Username and Password.
+    </div>
+    <!--if you're logged out successfully-->
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <!--log in form-->
+    <form th:action="@{/login}" method="post">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" th:required th:autofocus th:maxlength="60"/>
+        <br>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" th:required th:maxlength="60"/>
+        <br>
+        <input type="submit" value="Log In"/>
+    </form>
 </div>
-<h1>Log In</h1>
-<!--if there is an error-->
-<div th:if="${param.error}">
-    Invalid Username and Password.
-</div>
-<!--if you're logged out successfully-->
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-<!--log in form-->
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-</form>
 </body>
+<footer th:replace="partials/footer :: footer"/>
 </html>
