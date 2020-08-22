@@ -22,27 +22,23 @@
         <!--NAVBAR ITEMS-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">
+<!--                Show these items only if authenticated (logged in)-->
                 <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{albums}">Albums</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{view}">Interest</a>
+                    <a class="nav-link" th:href="@{view}">Interests</a>
                 </li>
-                </th:block>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{profile}">Profile</a>
                 </li>
+                </th:block>
+<!--                Show these items always-->
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{devProfile}">Developers</a>
+                    <a class="nav-link" th:href="@{devs}">Developers</a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" th:href="@{/sign-up}">Sign-Up</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" th:href="@{/login}">Login</a>-->
-<!--                </li>-->
-                <!--IF NOT AUTHENTICATED HIDE SHOW THESE-->
+<!--                Show these items when logged out -->
                 <th:block sec:authorize="!isAuthenticated()">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/login}">Login</a>
@@ -51,7 +47,7 @@
                         <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
                     </li>
                 </th:block>
-                <!--IF AUTHENTICATED HIDE SHOW THESE-->
+                <!--IF AUTHENTICATED SHOW THESE-->
                 <th:block sec:authorize="isAuthenticated()">
                     <li class="nav-item">
                         <form  th:action="@{/logout}" th:method="post">
@@ -82,10 +78,6 @@
     </nav>
 </div>
 
-<!-- OPTIONAL JAVASCRIPT -->
-<!-- jQUERY FIRST, THEN POPPER.JS, THEN BOOTSTRAP JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<div th:replace="partials/scripts :: assets"></div>
 </body>
 </html>

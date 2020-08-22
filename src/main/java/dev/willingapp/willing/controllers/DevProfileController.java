@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class DevProfileController {
-    @GetMapping("devProfile")
+    @GetMapping("/devs")
 //    @ResponseBody
     public String returnLandingMessage() {
         //return home.html
-        return "devProfile";
+        return "dev-profile";
     }
 }
