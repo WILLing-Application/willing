@@ -52,6 +52,13 @@ public class Item {
     public Item() {
     }
 
+    public Item(Album albumForItems, String title, String description, String lineage) {
+        this.albumForItems = albumForItems;
+        this.title = title;
+        this.description = description;
+        this.lineage = lineage;
+    }
+
     public Item(long id, String title, String description, String lineage) {
         this.id = id;
         this.title = title;
