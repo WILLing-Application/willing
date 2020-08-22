@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/partials :: header (pageTitle = 'Edit Post')">
+</head>
+<nav th:replace="partials/head :: navbar"/>
+<body>
+
+<div class="container">
+    <h3>Edit and save your changes</h3>
+
+    <form th:action="@{/albums/edit}" th:method="post" th:object="${album}">
+        <div class="form-group">
+            <label for="title">Post Title</label>
+            <input type="text" id="title" name="title" class="form-control" th:field="*{title}" th:value="*{title}" maxlength="100" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="body">Post Body</label>
+            <input type="text" id="body" name="body" class="form-control" th:field="*{description}" th:value="*{description}" maxlength="255" required>
+        </div>
+        <button type="submit" id="id" name="id" th:field="*{id}" th:value="*{id}" class="btn btn-primary btn-sm btn-block">Save</button>
+    </form>
+</div>
+</body>
+<footer th:replace="partials/footer :: footer"/>
+</html>
