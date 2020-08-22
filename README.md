@@ -178,29 +178,28 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 | GET	      | /albums/{id}        | Single album view | /albums/album.html |             |
 | GET         | /albums/{id}/create | Create item form  | /items/create.html    | see items for the POST method |
 | GET         | /albums/{id}/edit   | edit form         | /albums/edit.html     |               |
-| POST        | /albums/edit        | Save edit         | redirect /albums/{id} |               |
+| POST        | /albums/{id}/edit        | Save edit         | redirect /albums/{id} |               |
 | GET	      | /albums/{id}/delete	| delete confirmation form  | /albums/delete.html | Album (owner) |
-| POST        | /albums/delete      | process the delete | redirect /view       |               |
+| POST        | /albums/{id}/delete      | process the delete | redirect /view       |               |
 | Note:       | the items listing will be on the albums page | | | |
 | GET         | /items/{id}         | Single Item view, interest icon & ranking form | /items/item.html & interests.html ? | WILLing Items Views.pdf |
-| GET         | /items/{id}/interest | Interests ranking form | items/interests.html  |         |
-| POST        | /items/{id}/interest | Save Interests ranking | redirect /interests   |         |
+| POST        | /items/{id}/users/{id} | Save Interests ranking | redirect /items/{id} |         |
 | POST        | /albums/{id}/create  | Save created item      | redirect /albums/{id} | see albums for the GET method |
 | GET         | /items/{id}/edit    | edit form               | /items/edit.html      |         |
-| POST        | /items/edit         | Save edit               | redirect /items/{id}  |         |
+| POST        | /items/{id}/edit     | Save edit               | redirect /items/{id}  |         |
 | GET	      | /items/{id}/delete	| delete confirmation form | /items/delete.html   | WILLing Items Views.pdf |
-| POST        | /items/delete       | Process delete item            | redirect /albums/{id}
-| GET         | /profile            | view (User), dashboard (Owner) | profile.html    | WILLing Dashboard Album View.pdf, AdminMatrix and UserCrudPage.pdf |
-| GET         | /profile/edit       | edit form user (self) details  | profile-edit.html  | same as above |
-| POST        | /profile/edit       | validate, save user details    | redirect /profile  | same as above |
-| GET         | /profile/delete     | delete user account, etc       | profile-delete.html | same as above |
-| POST        | /profile/delete     | confirm & process delete       | display message and redirect / | |
-| GET/POST    | /profile/dashboard  | owner can award items to users | TBD  | |
+| POST        | /items/{id}/delete       | Process delete item            | redirect /albums/{id}
+| GET         | /profile/{id}        | view (User), dashboard (Owner) | profile.html    | WILLing Dashboard Album View.pdf, AdminMatrix and UserCrudPage.pdf |
+| GET         | /profile/{id}/edit       | edit form user (self) details  | profile-edit.html  | same as above |
+| POST        | /profile/{id}/edit       | validate, save user details    | redirect /profile  | same as above |
+| GET         | /profile/{id}/delete     | delete user account, etc       | profile-delete.html | same as above |
+| POST        | /profile/{id}/delete     | confirm & process delete       | display message and redirect / | |
+| GET/POST    | /profile/{id}/dashboard  | owner can award items to users | TBD  | |
 | GET         | /interests          | interests - filter on view page | redirect /views | |
 | GET         | /albums{id}/users ?  | a form/widget on album page to add/remove users (access) | TBD | |
 | POST        | /albums/{id}/users ? | a process to add/update/delete the selected users | redirect /albums/{id} |
-| GET         | /profile/invites     | a form to enter email addresses | profile-invites.html | |
-| POST        | /profile/invites     | verify & process the list of emails | redirect to /profile | |
+| GET         | /profile/{id}/invites     | a form to enter email addresses | profile-invites.html | |
+| POST        | /profile/{id}/invites     | verify & process the list of emails | redirect to /profile | |
 | Optional features | | | | | |
 | GET         | /items/{id}/comment  | a form to comment/reply on item | /items/comment.html | |
 | POST        | /items/{id}/comment  | save the comment                | redirect to /items/{id} | |
