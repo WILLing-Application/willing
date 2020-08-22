@@ -1,32 +1,95 @@
 package dev.willingapp.willing.controllers;
 
+import dev.willingapp.willing.models.Album;
 import dev.willingapp.willing.models.Image;
 import dev.willingapp.willing.models.Item;
+import dev.willingapp.willing.repositories.AlbumRepository;
 import dev.willingapp.willing.repositories.ImageRepository;
 import dev.willingapp.willing.repositories.ItemRepository;
+import dev.willingapp.willing.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class ItemController {
 
+    private final UserRepository usersDao;
+    private final AlbumRepository albumsDao;
     private final ItemRepository itemsDao;
     private final ImageRepository imagesDao;
 
-    public ItemController(ItemRepository itemsDao, ImageRepository imagesDao) {
+    public ItemController(UserRepository usersDao, AlbumRepository albumsDao, ItemRepository itemsDao, ImageRepository imagesDao) {
+        this.usersDao = usersDao;
+        this.albumsDao = albumsDao;
         this.itemsDao = itemsDao;
         this.imagesDao = imagesDao;
     }
 
     @GetMapping("/items/items")
     public String showItem(Model model) { return "/items/items";}
+
+    @GetMapping("/items/{id}")
+    public String showSingleItem(@PathVariable long id, Model model) {
+        Item item = itemsDao.getOne(id);
+        List<Image> images = item.getImages();
+        List<Image> photos = new ArrayList<>();
+        List<Image> videos = new ArrayList<>();
+        for (Image x : images) {
+            if (x.getFileType().equalsIgnoreCase("video/mp4")) {
+                videos.add(x);
+            } else if (x.getFileType().equalsIgnoreCase("image/jpeg")) {
+                photos.add(x);
+            }
+        }
+        model.addAttribute("item", item);
+        model.addAttribute("photos", photos);
+        model.addAttribute("videos", videos);
+        return "items/item";
+    }
+
+    @GetMapping("/items/{id}/edit")
+    public String editItem(@PathVariable long id, Model model) {
+        Item item = itemsDao.getOne(id);
+        List<Image> images = item.getImages();
+        List<Image> photos = new ArrayList<>();
+        List<Image> videos = new ArrayList<>();
+        for (Image x : images) {
+            if (x.getFileType().equalsIgnoreCase("video/mp4")) {
+                videos.add(x);
+            } else if (x.getFileType().equalsIgnoreCase("image/jpeg")) {
+                photos.add(x);
+            }
+        }
+        model.addAttribute("item", item);
+        model.addAttribute("photos", photos);
+        model.addAttribute("videos", videos);
+        return "/items/edit";
+    }
+
+    @PostMapping("/items/{id}/edit")
+    public String editedItem(@PathVariable long id, @RequestParam(name = "item-name") String name, @RequestParam(name = "item-description") String description, @RequestParam(name = "item-lineage") String lineage, @RequestParam(name = "images") String[] images, @RequestParam(name = "file-type") String[] fileType) {
+        Item item = itemsDao.getOne(id);
+        item.setTitle(name);
+        item.setDescription(description);
+        item.setLineage(lineage);
+        itemsDao.save(item);
+        List<String> newImages = Arrays.asList(images);
+        List<String> fileTypes = Arrays.asList(fileType);
+        for (int i = 0; i < newImages.size(); i++) {
+            Image newImage = new Image();
+            newImage.setAlbumWithImages(item.getAlbumForItems());
+            newImage.setFilename(newImages.get(i));
+            newImage.setFileType(fileTypes.get(i));
+            newImage.setItemImage(item);
+            imagesDao.save(newImage);
+        }
+        return "redirect:/items/" + id;
+    }
 
     @GetMapping("/items/create")
     public String createItems(Model model) {
@@ -37,10 +100,12 @@ public class ItemController {
     public String newlyCreatedItems(@RequestParam(name = "item-name") String itemName, @RequestParam(name = "item-description") String itemDescription, @RequestParam(name = "item-lineage") String itemLineage, @RequestParam(name = "images") String[] images, @RequestParam(name = "file-type") String[] fileType) {
         List<String> newImages = Arrays.asList(images);
         List<String> fileTypes = Arrays.asList(fileType);
-        Item item = new Item(1L, itemName, itemDescription, itemLineage);
+        Album album = albumsDao.getOne(1L);
+        Item item = new Item(album, itemName, itemDescription, itemLineage);
         itemsDao.save(item);
         for (int i = 0; i < newImages.size(); i++) {
             Image newImage = new Image();
+            newImage.setAlbumWithImages(album);
             newImage.setFilename(newImages.get(i));
             newImage.setFileType(fileTypes.get(i));
             newImage.setItemImage(item);
@@ -48,6 +113,13 @@ public class ItemController {
         }
 
         return "albums";
+    }
+
+    @PostMapping("/items/{itemId}/image/{imageId}")
+    public String deleteImage(@PathVariable long itemId, @PathVariable long imageId) {
+        Image deleteImage = imagesDao.getOne(imageId);
+        imagesDao.delete(deleteImage);
+        return "redirect:/items/" + itemId + "/edit";
     }
 
 }

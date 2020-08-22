@@ -27,7 +27,7 @@
 <br>
 <div th:each="video : ${videos}">
     <video controls>
-        <source th:src="${video.fileType}">
+        <source th:src="${video.filename}">
     </video>
     <br>
 </div>
