@@ -2,7 +2,7 @@
 
 Remember to work on branches for pull requests
 1. git pull origin master
-2. git checkout -b <your-branch-name>
+2. git checkout -b your-branch-name
 3. code!
 4. Follow the git work flow below to push up your branch
 
@@ -11,13 +11,13 @@ Remember to work on branches for pull requests
 Before you push your branch, add/commit & do this:
 1. git checkout master
 2. git pull origin master
-3. git checkout <your-branch-name>
+3. git checkout your-branch-name
 4. git merge master
 5. Type in your commit message, read all prompts - note any merge conflicts, save it.
 6. Resolve any merge conflicts, edit merged files
 7. Repeat the process if new pulls occurred after you merged
-8. git push origin <your-branch-name>
-9. On GitHub, do out a pull request & add reviewers 
+8. git push origin your-branch-name
+9. On GitHub, do a pull request & add reviewers 
 
 ---
 
@@ -133,12 +133,12 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 
 #### Views (Navbar before Login)
 
-| URL       | Description      | Navbar Name      | Thymeleaf template |
-| :---      | :---             | :---             | :---               |
-| /         | Landing page     | Home or Brand    | users/home.html    |
-| /sign-up  | default          | Sign Up          | users/sign-up.html |
-| /login    | default          | Login            | users/login.html   |
-| /devs     | Developers/About | Developers       | devProfile.html, note: change to spinal-case dev-profile.html | 
+| URL        | Description      | Navbar Name      | Thymeleaf template |
+| :---       | :---             | :---             | :---               |
+| /          | Landing page     | Home or Brand    | users/home.html    |
+| /sign-up   | default          | Sign Up          | users/sign-up.html |
+| /login     | default          | Login            | users/login.html   |
+| /devs      | Developers       | Developers       | dev-profile.html   | 
 
 #### Views (Navbar after Login)
 
@@ -167,33 +167,33 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 | POST	      | /sign-up            | save account      | redirect ?         |                    |
 | GET	      | /login	            | login             | login.html         |                    |
 | POST	      | /login	            | logged in         | redirect ?         |                    |
-| GET         | /devs               | view devs         | devProfile.html, note: change to spinal-case dev-profile.html | |
-| GET	      | /view	            | view listings     | view.html   | WILLing Album View.pdf, WILLing Items Views.pdf, Pending new |
-| continued   | continued           | interest icon     | see GET method /items/interest |    |
-| continued   | continued           | in album, create item icon | see GET method /albums/{id}/create |   |
+| GET         | /devs               | view devs         | dev-profile.html   |                    |
+| GET	      | /view	            | view listings     | view.html          | WILLing Album View.pdf, WILLing Items Views.pdf, Pending new |
+| continued   | continued           | interest icon     | see GET method /items/interest | |
+| continued   | continued           | album, create item icon | see GET method /albums/{id}/create | |
 | POST        | /view               | Save Interests    | redirect /interests ? |               |
 | GET         | /create             | Create album form | /albums/create.html   |               |
 | POST        | /create             | Save album        | redirect:/albums{id}  |               |
-| GET         | /albums             | Albums list view w/items (nested loop) | /albums/albums.html   |               |
-| GET	      | /albums/{id}        | Single album view | /albums/album.html |             |
-| GET         | /albums/{id}/create | Create item form  | /items/create.html    | see items for the POST method |
+| GET         | /albums             | Albums list view w/items (nested loop) | /albums/albums.html | |
+| GET	      | /albums/{id}        | Single album view | /albums/album.html    |               |
+| GET         | /albums/{id}/create | Create item form  | /items/create.html    | see below (w/items) for the POST method |
 | GET         | /albums/{id}/edit   | edit form         | /albums/edit.html     |               |
-| POST        | /albums/{id}/edit        | Save edit         | redirect /albums/{id} |               |
+| POST        | /albums/{id}/edit   | Save edit         | redirect /albums/{id} |               |
 | GET	      | /albums/{id}/delete	| delete confirmation form  | /albums/delete.html | Album (owner) |
-| POST        | /albums/{id}/delete      | process the delete | redirect /view       |               |
+| POST        | /albums/{id}/delete | process the delete | redirect /view       |               |
 | Note:       | the items listing will be on the albums page | | | |
 | GET         | /items/{id}         | Single Item view, interest icon & ranking form | /items/item.html & interests.html ? | WILLing Items Views.pdf |
 | POST        | /items/{id}/users/{id} | Save Interests ranking | redirect /items/{id} |         |
-| POST        | /albums/{id}/create  | Save created item      | redirect /albums/{id} | see albums for the GET method |
-| GET         | /items/{id}/edit    | edit form               | /items/edit.html      |         |
-| POST        | /items/{id}/edit     | Save edit               | redirect /items/{id}  |         |
+| POST        | /albums/{id}/create  | Save created item | redirect /albums/{id} | see albums for the GET method |
+| GET         | /items/{id}/edit    | edit form          | /items/edit.html      |         |
+| POST        | /items/{id}/edit    | Save edit          | redirect /items/{id}  |         |
 | GET	      | /items/{id}/delete	| delete confirmation form | /items/delete.html   | WILLing Items Views.pdf |
-| POST        | /items/{id}/delete       | Process delete item            | redirect /albums/{id}
+| POST        | /items/{id}/delete   | Process delete item     | redirect /albums/{id} | |
 | GET         | /profile/{id}        | view (User), dashboard (Owner) | profile.html    | WILLing Dashboard Album View.pdf, AdminMatrix and UserCrudPage.pdf |
-| GET         | /profile/{id}/edit       | edit form user (self) details  | profile-edit.html  | same as above |
-| POST        | /profile/{id}/edit       | validate, save user details    | redirect /profile  | same as above |
-| GET         | /profile/{id}/delete     | delete user account, etc       | profile-delete.html | same as above |
-| POST        | /profile/{id}/delete     | confirm & process delete       | display message and redirect / | |
+| GET         | /profile/{id}/edit   | edit form user (self) details | profile-edit.html  | same as above |
+| POST        | /profile/{id}/edit   | validate, save user details   | redirect /profile  | same as above |
+| GET         | /profile/{id}/delete | delete user account, etc      | profile-delete.html | same as above |
+| POST        | /profile/{id}/delete | confirm & process delete      | display message and redirect / | |
 | GET/POST    | /profile/{id}/dashboard  | owner can award items to users | TBD  | |
 | GET         | /interests          | interests - filter on view page | redirect /views | |
 | GET         | /albums{id}/users ?  | a form/widget on album page to add/remove users (access) | TBD | |
