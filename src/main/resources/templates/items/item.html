@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/head :: header-links"/>
+<body>
+<div th:replace="partials/navbar :: navbar"></div>
+<h1>hello yall</h1>
+<div>
+    Album: <span th:text="${item.albumForItems.title}"></span>
+</div>
+<div>
+    Album description: <span th:text="${item.albumForItems.description}"></span>
+</div>
+<div>
+    Deadline: <span th:text="${item.albumForItems.deadline}"></span>
+</div>
+<div>
+    Item: <span th:text="${item.title}"></span>
+</div>
+<div>
+    Description: <span th:text="${item.description}"></span>
+</div>
+
+<div th:each="photo : ${photos}">
+    <img th:src="${photo.filename}" alt="" class="mb-3">
+    <br>
+</div>
+<br>
+<div th:each="video : ${videos}">
+    <video controls>
+        <source th:src="${video.fileType}">
+    </video>
+    <br>
+</div>
+<a th:href="@{/items/{id}/edit(id=${item.id})}" class="btn btn-secondary">Edit Item</a>
+<div th:replace="partials/scripts :: assets"></div>
+</body>
+</html>
