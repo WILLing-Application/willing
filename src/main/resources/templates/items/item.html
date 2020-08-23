@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/head :: header-links"/>
+<head th:replace="partials/head :: header-links (Item)"/>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <h1>hello yall</h1>
@@ -31,6 +31,19 @@
     </video>
     <br>
 </div>
+<!--   userId below is hardcoded   -->
+<div class="btn-group">
+    <form th:action="@{/items/{itemsId}/user/1/1(itemsId=${item.id})}" method="post">
+        <button class="btn btn-secondary">I kind of want it</button>
+    </form>
+    <form th:action="@{/items/{itemsId}/user/1/2(itemsId=${item.id})}" method="post">
+        <button class="btn btn-secondary">I want it</button>
+    </form>
+    <form th:action="@{/items/{itemsId}/user/1/3(itemsId=${item.id})}" method="post">
+        <button class="btn btn-secondary">I REALLY want it</button>
+    </form>
+</div>
+<br><br>
 <a th:href="@{/items/{id}/edit(id=${item.id})}" class="btn btn-secondary">Edit Item</a>
 <div th:replace="partials/scripts :: assets"></div>
 </body>

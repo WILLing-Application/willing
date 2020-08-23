@@ -1,12 +1,7 @@
 package dev.willingapp.willing.controllers;
 
-import dev.willingapp.willing.models.Album;
-import dev.willingapp.willing.models.Image;
-import dev.willingapp.willing.models.Item;
-import dev.willingapp.willing.repositories.AlbumRepository;
-import dev.willingapp.willing.repositories.ImageRepository;
-import dev.willingapp.willing.repositories.ItemRepository;
-import dev.willingapp.willing.repositories.UserRepository;
+import dev.willingapp.willing.models.*;
+import dev.willingapp.willing.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +17,14 @@ public class ItemController {
     private final AlbumRepository albumsDao;
     private final ItemRepository itemsDao;
     private final ImageRepository imagesDao;
+    private final InterestRepository interestsDao;
 
-    public ItemController(UserRepository usersDao, AlbumRepository albumsDao, ItemRepository itemsDao, ImageRepository imagesDao) {
+    public ItemController(UserRepository usersDao, AlbumRepository albumsDao, ItemRepository itemsDao, ImageRepository imagesDao, InterestRepository interestsDao) {
         this.usersDao = usersDao;
         this.albumsDao = albumsDao;
         this.itemsDao = itemsDao;
         this.imagesDao = imagesDao;
+        this.interestsDao = interestsDao;
     }
 
     @GetMapping("/items/items")
@@ -49,7 +46,7 @@ public class ItemController {
         model.addAttribute("item", item);
         model.addAttribute("photos", photos);
         model.addAttribute("videos", videos);
-        return "items/item";
+        return "/items/item";
     }
 
     @GetMapping("/items/{id}/edit")
@@ -120,6 +117,18 @@ public class ItemController {
         Image deleteImage = imagesDao.getOne(imageId);
         imagesDao.delete(deleteImage);
         return "redirect:/items/" + itemId + "/edit";
+    }
+
+    @PostMapping("/items/{itemsId}/user/{userId}/{rank}")
+    public String interest(@PathVariable long itemsId, @PathVariable long userId, @PathVariable int rank) {
+        Item item = itemsDao.getOne(itemsId);
+        User user = usersDao.getOne(userId);
+        Interest interest = new Interest();
+        interest.setInterestedUser(user);
+        interest.setItem(item);
+        interest.setInterestRanking(rank);
+        interestsDao.save(interest);
+        return "redirect:/items/" + itemsId;
     }
 
 }
