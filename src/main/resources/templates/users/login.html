@@ -5,12 +5,14 @@
 <head th:replace="partials/head :: header-links (pageTitle = 'Login')">
 </head>
 <body class="text-center">
+
 <nav th:replace="partials/navbar :: navbar"/>
 
-<!--is Authenticated to see-->
-<!--<div sec:authorize="isAuthenticated()">-->
-<!--    <a href="/login">Go back to login page</a>-->
-<!--</div>-->
+<!--this content is only shown to Authenticated users-->
+<div sec:authorize="isAuthenticated()">
+<!--    If user is already logged in and visits the login page, include this-->
+    <a href="/">Go Back to Home Page</a>
+</div>
 
 <div class="container">
 
