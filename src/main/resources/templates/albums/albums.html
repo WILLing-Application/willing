@@ -13,106 +13,51 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="text-center">Users Name Albums </h1>
-    <p class="text-center">
-        Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly napster hipmunk prezi chartly
-        bitly spock. Loopt twones meebo hipmunk, fleck xobni.<br> Convore bebo rovio vimeo zanga handango blekko
-        koofers, loopt twitter imvu flickr kaboodle chegg. Zillow lala mzinga, sifteo. Voki heekya sococo geni oovoo
-        disqus, empressr doostang lijit.
-    </p>
-    <div class="row">
-        <!--ALBUM #1-->
-        <div class="col-md-4">
-            <div class="single-album">
-                <p class="album-meta">By User <span>August 20, 2020</span></p>
-                <!--        MAYBE MAKE USER PROFILE IMAGE-->
-                <img th:src="@{${'/photos/placeholder.jpeg'}}">
-                <h2><a href="#">1926 Antique Camera</a></h2>
-                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
-                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
-                <p><a href="#" class="read-more-btn">View Item</a>
-                    <!--         MAYBE ADD HEART FOR FAVORITE-->
-                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
+    <div th:each="album : ${albums}">
+        <div class="card mb-3">
+            <div class="card body">
+                <a th:href="@{/albums/{id}(id=${album.id})}">
+                    <h3 class="card-title" th:text="${album.title}"></h3>
+                </a>
+                <p class="card-text" th:text="${album.description}">
                 </p>
-            </div>
-        </div>
-        <!--ALBUM #2-->
-        <div class="col-md-4">
-            <div class="single-album">
-                <p class="album-meta">By User <span>August 20, 2020</span></p>
-                <!--        MAYBE MAKE USER PROFILE IMAGE-->
-                <img th:src="@{${'/photos/placeholder.jpeg'}}">
-                <h2><a href="#">Holocaust Ring</a></h2>
-                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
-                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
-                <p><a href="#" class="read-more-btn">View Item</a>
-                    <!--         MAYBE ADD HEART FOR FAVORITE-->
-                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
-                </p>
-            </div>
-            <!--ALBUM #3-->
-        </div>
-        <div class="col-md-4">
-            <div class="single-album">
-                <p class="album-meta">By User <span>August 20, 2020</span></p>
-                <!--        MAYBE MAKE USER PROFILE IMAGE-->
-                <img th:src="@{${'/photos/placeholder.jpeg'}}">
-                <h2><a href="#">Stamp Collection</a></h2>
-                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
-                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
-                <p><a href="#" class="read-more-btn">View Item</a>
-                    <!--         MAYBE ADD HEART FOR FAVORITE-->
-                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
-                </p>
-            </div>
-        </div>
-        <br><br>
-        <!--ALBUM #4-->
-        <div class="col-md-4">
-            <div class="single-album">
-                <p class="album-meta">By User <span>August 20, 2020</span></p>
-                <!--        MAYBE MAKE USER PROFILE IMAGE-->
-                <img th:src="@{${'/photos/placeholder.jpeg'}}">
-                <h2><a href="#">Dresser</a></h2>
-                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
-                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
-                <p><a href="#" class="read-more-btn">View Item</a>
-                    <!--         MAYBE ADD HEART FOR FAVORITE-->
-                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
-                </p>
-            </div>
-        </div>
-        <!--ALBUM #5-->
-        <div class="col-md-4">
-            <div class="single-album">
-                <p class="album-meta">By User <span>August 20, 2020</span></p>
-                <!--        MAYBE MAKE USER PROFILE IMAGE-->
-                <img th:src="@{${'/photos/placeholder.jpeg'}}">
-                <h2><a href="#">Super Nintendo</a></h2>
-                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
-                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
-                <p><a href="#" class="read-more-btn">View Item</a>
-                    <!--         MAYBE ADD HEART FOR FAVORITE-->
-                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
-                </p>
-            </div>
-        </div>
-        <!--ALBUM #6-->
-        <div class="col-md-4">
-            <div class="single-album">
-                <p class="album-meta">By User <span>August 20, 2020</span></p>
-                <!--        MAYBE MAKE USER PROFILE IMAGE-->
-                <img th:src="@{${'/photos/placeholder.jpeg'}}">
-                <h2><a href="#">Family Photo Album</a></h2>
-                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly
-                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>
-                <p><a href="#" class="read-more-btn">View Item</a>
-                    <!--         MAYBE ADD HEART FOR FAVORITE-->
-                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>
-                </p>
+                <!--        href - sends to another page-->
+                <!--        action - submits a form-->
+                <div class="card-footer text-right">
+                    <span class="float-left" th:each="user : ${album.owner}" th:text="${album.owner.email}"></span>
+                    <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i class="fas fa-edit"></i>Edit</a>
+                    <a th:href="@{/posts/{id}/delete(id=${album.id})}" class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</a>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<!--<div class="container">-->
+<!--    <h1 class="text-center">Users Name Albums </h1>-->
+<!--    <p class="text-center">-->
+<!--        Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly napster hipmunk prezi chartly-->
+<!--        bitly spock. Loopt twones meebo hipmunk, fleck xobni.<br> Convore bebo rovio vimeo zanga handango blekko-->
+<!--        koofers, loopt twitter imvu flickr kaboodle chegg. Zillow lala mzinga, sifteo. Voki heekya sococo geni oovoo-->
+<!--        disqus, empressr doostang lijit.-->
+<!--    </p>-->
+<!--    <div class="row">-->
+<!--        &lt;!&ndash;ALBUM #1&ndash;&gt;-->
+<!--        <div class="col-md-4">-->
+<!--            <div class="single-album">-->
+<!--                <p class="album-meta">By User <span>August 20, 2020</span></p>-->
+<!--                &lt;!&ndash;        MAYBE MAKE USER PROFILE IMAGE&ndash;&gt;-->
+<!--                <img th:src="@{${'/photos/placeholder.jpeg'}}">-->
+<!--                <h2><a href="#">1926 Antique Camera</a></h2>-->
+<!--                <p class="album-text">Webtwo ipsum orkut reddit meebo skype vimeo jajah spock empressr zimbra, mobly-->
+<!--                    napster hipmunk prezi chartly bitly spock. Loopt twones meebo hipmunk, fleck xobni.</p>-->
+<!--                <p><a href="#" class="read-more-btn">View Item</a>-->
+<!--                    &lt;!&ndash;         MAYBE ADD HEART FOR FAVORITE&ndash;&gt;-->
+<!--                    <a href="#"><span><i class="fas fa-star"></i>Favorite</span></a>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
