@@ -3,22 +3,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Album Owner Panel</title>
+    <title>Item View Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
 
-<div th:fragment="panel-album">
-    <div class="card border-primary mb-3" style="max-width: 30rem;">
-        <div class="card-header">Owner Album Panel</div>
+
+<div th:fragment="panel-item">
+    <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Owner Item Panel</div>
         <div class="card-body text-primary">
-            <h4>Album: Album Name</h4>
-            <button th:action="">New Album</button>
-            <button th:action="">New Item</button>
-            <button th:action="">Edit Album</button>
-            <button th:action="">Delete Album</button>
+            <h4>Item: itemReference</h4>
+            <button th:action="">Edit Item</button>
+            <button th:action="">Delete Item</button>
         </div>
     </div>
 </div>

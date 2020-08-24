@@ -10,22 +10,26 @@
 </head>
 <body>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-        <form action="/albums/" class="form-horizontal" method="POST" role="form" id="panel">
-
-        </form>
+<div th:fragment="panel-view">
+    <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Owner Main View Panel</div>
+        <div class="card-body text-primary">
+            <h4>Main View</h4>
+            <button th:action="">New Album</button>
+            <button th:action="">New Item</button>
+        </div>
     </div>
-
 </div>
 
 
-
-
-</div>
-
-
+<!--<div class="container-fluid">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-12">-->
+<!--        <form action="/albums/" class="form-horizontal" method="POST" role="form" id="panel">-->
+<!--        </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 <!-- OPTIONAL JAVASCRIPT -->
