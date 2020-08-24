@@ -19,13 +19,20 @@
     <h2>Items</h2>
     <div>
         <div th:each="item : ${items}">
-            <div th:each="image : ${item.images[0]}">
-                <img th:src="${image.filename}" alt="">
+            <div class="card" style="width: 18rem;">
+                <div th:each="image : ${item.images[0]}">
+                    <img th:src="${image.filename}" class="card-img-top" alt="">
+                </div>
+                <div class="card-body">
+                    <h5 th:text="${item.title}" class="card-title"></h5>
+                    <p th:text="${item.lineage}" class="card-text"></p>
+                </div>
+                <div class="card-body">
+                    <a th:href="@{/items/{id}(id=${item.id})}" class="card-link">View Item</a>
+                </div>
             </div>
-            <h5 th:text="${item.title}"></h5>
-            <p th:text="${item.lineage}"></p>
         </div>
-        <a th:href="@{/items/create}" class="btn btn-primary">Add an item</a>
+        <a th:href="@{/albums/{id}/items/create(id=${album.id})}" class="btn btn-primary">Add an item</a>
     </div>
 </main>
 <footer th:replace="partials/footer :: footer"/>

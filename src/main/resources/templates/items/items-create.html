@@ -4,7 +4,7 @@
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <h1>Create an item</h1>
-<form th:action="@{/items/create}" method="post">
+<form th:action="@{/albums/{id}/items/create(id=${album.id})}" method="post">
     <label for="item-name">Item name</label>
     <input type="text" id="item-name" name="item-name" required autofocus maxlength="60">
 
