@@ -124,10 +124,8 @@ public class AlbumController {
     }
 
     @GetMapping("/albums")
-//    @ResponseBody
     public String index(Model model) {
         model.addAttribute("albums", albumsDao.findAll());
-        //return albums index;
         return "albums/albums";
     }
 
@@ -135,15 +133,16 @@ public class AlbumController {
     public String show(@PathVariable long id, Model model) {
         Album grabbedAlbum = albumsDao.getOne(id);
         List<Image> images = new ArrayList<>();
-        List<Item> items = grabbedAlbum.getItems();
-        for (Item x : items) {
-            if (x.getImages() != null) {
-                if (x.getImages().get(0) != null) {
-                    images.add(x.getImages().get(0));
-                }
+        Image image = new Image();
+        image.setFilename("https://cdn.filestackcontent.com/ixlBgvOrR7OiTMVdrX4F");
+        image.setFileType("image/jpeg");
+        images.add(image);
+        for (Item x : grabbedAlbum.getItems()) {
+            if (x.getImages().isEmpty()) {
+                x.setImages(images);
+                System.out.println(x.getImages().get(0).getFilename());
             }
         }
-        model.addAttribute("images", images);
         model.addAttribute("album", grabbedAlbum);
         model.addAttribute("items", grabbedAlbum.getItems());
         return "/albums/show";
@@ -229,6 +228,7 @@ public class AlbumController {
 
     @PostMapping("/albums/{id}/delete")
     public String deleteAlbum(@PathVariable long id) {
+        albumsDao.delete(albumsDao.getOne(id));
         return "redirect:/albums";
     }
 

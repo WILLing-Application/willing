@@ -88,21 +88,22 @@ public class ItemController {
         return "redirect:/items/" + id;
     }
 
-    @GetMapping("/items/create")
-    public String createItems(Model model) {
+    @GetMapping("/albums/{id}/items/create")
+    public String createItems(@PathVariable long id, Model model) {
+        model.addAttribute("album", albumsDao.getOne(id));
         return "/items/items-create";
     }
 
-    @PostMapping("/items/create")
-    public String newlyCreatedItems(@RequestParam(name = "item-name") String itemName, @RequestParam(name = "item-description") String itemDescription, @RequestParam(name = "item-lineage") String itemLineage, @RequestParam(name = "images") String[] images, @RequestParam(name = "file-type") String[] fileType) {
+    @PostMapping("/albums/{id}/items/create")
+    public String newlyCreatedItems(@PathVariable long id, @RequestParam(name = "item-name") String itemName, @RequestParam(name = "item-description") String itemDescription, @RequestParam(name = "item-lineage") String itemLineage, @RequestParam(name = "images") String[] images, @RequestParam(name = "file-type") String[] fileType) {
         List<String> newImages = Arrays.asList(images);
         List<String> fileTypes = Arrays.asList(fileType);
-        Album album = albumsDao.getOne(1L);
+        Album album = albumsDao.getOne(id);
         Item item = new Item(album, itemName, itemDescription, itemLineage);
         itemsDao.save(item);
         for (int i = 0; i < newImages.size(); i++) {
             Image newImage = new Image();
-            newImage.setAlbumWithImages(album);
+//            newImage.setAlbumWithImages(album);
             newImage.setFilename(newImages.get(i));
             newImage.setFileType(fileTypes.get(i));
             newImage.setItemImage(item);
