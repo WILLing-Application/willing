@@ -5,20 +5,21 @@
 <head th:replace="partials/head :: header-links (Profile)">
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
-<!--Forcing space since text currently overlaps the navbar items-->
+<!--Forcing some space since text currently overlaps the navbar items-->
 <br><br><br>
 
 <div class="container">
     <!-- This content is only shown to authenticated users.-->
     <div class="row" sec:authorize="isAuthenticated()">
         <div class="col-sm-8 col-md-8">
-            My Albums
+            Placeholder
 
         </div>
 
         <div class="col-sm-4 col-md-4">
-            <!-- ID is temporary - just for debugging -->
-            <div><img th:src="${user.profilePhoto}" alt="" class="mb-3"></div>
+            <!-- Placeholder photo if none has been uploaded -->
+            <div><img th:src="@{/photos/placeholder.jpg}"
+                      alt="profile-photo" class="img-responsive mb-3"></div>
 <!--            For edit page-->
 <!--            <img th:src="${photo.filename}" alt="" class="mb-3">-->
             <p>Welcome, <span th:text="${user.firstName}"/>
@@ -35,6 +36,7 @@
     </div>
 </div>
 
+<div th:replace="partials/scripts :: assets"></div>
 </body>
 <footer th:replace="partials/footer :: footer"/>
 </html>

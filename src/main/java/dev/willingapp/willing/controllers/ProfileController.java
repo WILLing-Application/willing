@@ -30,6 +30,7 @@ public class ProfileController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", usersDao.getOne(user.getId()));
         if (user.getProfilePhoto() == null) {
+            System.out.println("profile photo is null");
             user.setProfilePhoto("/photos/placeholder.jpg");
         }
         return "profile";
