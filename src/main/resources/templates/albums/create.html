@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--<head th:include="partials/head :: header-links">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <!--ANIMATE.CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
-    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
-    <title>Create Post</title>
-</head>
+<head th:include="partials/head :: header-links (Create-Album)"/>
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"-->
+<!--          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">-->
+<!--ANIMATE.CSS-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>-->
+<!--    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>-->
+<!--    <title>Create Post</title>-->
+<!--</head>-->
 <div class="container mt-5">
     <h3>Create Album</h3>
 
-    <form th:action="@{/albums/create}" th:method="POST" th:object="${album}">
+    <form th:action="@{/albums/create}" th:method="POST">
         <div class="form-group">
             <label for="title">Album Title</label>
-            <input type="text" class="form-control" id="title" th:field="*{title}" maxlength="50" required autofocus>
+            <input type="text" class="form-control" id="title" name="title" maxlength="50" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="title">Album Lineage</label>
+            <input type="text" class="form-control" id="lineage" name="lineage" maxlength="50" required autofocus>
         </div>
         <div class="form-group">
             <label for="description">Album Description</label>
-            <textarea class="form-control" id="description" th:field="*{description}" required></textarea>
+            <textarea class="form-control" id="description" name="description" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-sm btn-block">Save</button>
+        <div id="files"></div>
+        <input type="hidden" id="images" value="" name="images">
+        <input type="hidden" id="file-type" value="" name="file-type">
+        <button id="upload" class="btn btn-primary mb-2">Upload images/videos</button>
+        <button class="btn btn-primary btn-sm btn-block">Save</button>
     </form>
 </div>
+<div th:replace="partials/scripts :: assets"></div>
 </body>
 <!--<footer th:replace="partials/footer :: footer"/>-->
 </html>
