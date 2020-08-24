@@ -10,17 +10,18 @@
 </head>
 <body>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <form action="/albums/{id}/edit" class="form-horizontal" method="POST" role="form" id="panel">
-
-            </form>
+<div th:fragment="panel-album">
+    <div class="card border-primary mb-3" style="max-width: 30rem;">
+        <div class="card-header">Owner Album Panel</div>
+        <div class="card-body text-primary">
+            <h4>Album: Album Name</h4>
+            <button th:action="">New Album</button>
+            <button th:action="">New Item</button>
+            <button th:action="">Edit Album</button>
+            <button th:action="">Delete Album</button>
         </div>
-
     </div>
-
-
-
-
 </div>
+
+</body>
+</html>
