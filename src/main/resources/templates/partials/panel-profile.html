@@ -14,6 +14,39 @@
     <div class="card border-primary mb-3" style="max-width: 20rem;">
         <div class="card-header">Owner Item Panel</div>
         <div class="card-body text-primary">
+    <!-- Owner Matrix -->
+        <table class="card-table table table-striped table-sm" id="ownerMatrix">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>User 1</th>
+                    <th>User 2</th>
+                    <th>User 3</th>
+                    <!--th and a for:ea loop to list all users in this album-->
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Item 1</th>
+                    <td>data item 1 user 1</td>
+                    <td>data item 1 user 2</td>
+                    <td>data item 1 user 3</td>
+                </tr>
+                <tr>
+                    <th scope="row">Item 2</th>
+                    <td>data item 2 user 1</td>
+                    <td>data item 2 user 2</td>
+                    <td>data item 2 user 3</td>
+                </tr>
+                <tr>
+                    <th scope="row">Item 3</th>
+                    <td>data item 3 user 1</td>
+                    <td>data item 3 user 2</td>
+                    <td>data item 3 user 3</td>
+                </tr>
+            </tbody>
+        </table>
+    <!-- End Owner Matrix -->
             <h4>Item: itemReference</h4>
             <button th:action="">New Album</button>
             <button th:action="">New Item</button>
@@ -21,7 +54,37 @@
     </div>
 </div>
 
+<!--JS for scrolling-->
 
+<!--$(document).ready(function () {-->
+<!--$('ownerMatrix').DataTable({-->
+<!--"scrollX": true,-->
+<!--"scrollY": 200,-->
+<!--});-->
+<!--$('.dataTables_length').addClass('bs-select');-->
+<!--});-->
 
+<!--CSS options:-->
 
-</div>
+<!--.dtHorizontalVerticalExampleWrapper {-->
+<!--max-width: 600px;-->
+<!--margin: 0 auto;-->
+<!--}-->
+<!--#dtHorizontalVerticalExample th, td {-->
+<!--white-space: nowrap;-->
+<!--}-->
+<!--table.dataTable thead .sorting:after,-->
+<!--table.dataTable thead .sorting:before,-->
+<!--table.dataTable thead .sorting_asc:after,-->
+<!--table.dataTable thead .sorting_asc:before,-->
+<!--table.dataTable thead .sorting_asc_disabled:after,-->
+<!--table.dataTable thead .sorting_asc_disabled:before,-->
+<!--table.dataTable thead .sorting_desc:after,-->
+<!--table.dataTable thead .sorting_desc:before,-->
+<!--table.dataTable thead .sorting_desc_disabled:after,-->
+<!--table.dataTable thead .sorting_desc_disabled:before {-->
+<!--bottom: .5em;-->
+<!--}-->
+
+</body>
+</html>
