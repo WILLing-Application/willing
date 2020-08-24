@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/head :: header-links (Album)"/>
 <body>
-
+<div th:replace="partials/navbar :: navbar"></div>
+<main class="container">
+    <div>
+        Album: <span th:text="${album.title}"></span>
+    </div>
+    <div>
+        Album description: <span th:text="${album.description}"></span>
+    </div>
+    <div>
+        Album lineage: <span th:text="${album.lineage}"></span>
+    </div>
+    <div>
+        Album deadline: <span th:text="${album.deadline}"></span>
+    </div>
+    <h2>Items</h2>
+    <div>
+        <div th:each="item : ${items}">
+            <div th:each="image : ${item.images[0]}">
+                <img th:src="${image.filename}" alt="">
+            </div>
+            <h5 th:text="${item.title}"></h5>
+            <p th:text="${item.lineage}"></p>
+        </div>
+        <a th:href="@{/items/create}" class="btn btn-primary">Add an item</a>
+    </div>
+</main>
+<footer th:replace="partials/footer :: footer"/>
+<div th:replace="partials/scripts :: assets"></div>
 </body>
 </html>

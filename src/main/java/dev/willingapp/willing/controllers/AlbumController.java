@@ -2,8 +2,11 @@ package dev.willingapp.willing.controllers;
 
 import com.sun.xml.bind.v2.TODO;
 import dev.willingapp.willing.models.Album;
+import dev.willingapp.willing.models.Image;
+import dev.willingapp.willing.models.Item;
 import dev.willingapp.willing.models.User;
 import dev.willingapp.willing.repositories.AlbumRepository;
+import dev.willingapp.willing.repositories.ImageRepository;
 import dev.willingapp.willing.repositories.UserRepository;
 import org.dom4j.rule.Mode;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //@Controller
@@ -110,29 +115,42 @@ import java.util.List;
 public class AlbumController {
     private final AlbumRepository albumsDao;
     private final UserRepository usersDao;
+    private final ImageRepository imagesDao;
 
-    public AlbumController(AlbumRepository albumsDao, UserRepository usersDao) {
+    public AlbumController(AlbumRepository albumsDao, UserRepository usersDao, ImageRepository imagesDao) {
         this.albumsDao = albumsDao;
         this.usersDao = usersDao;
+        this.imagesDao = imagesDao;
     }
 
     @GetMapping("/albums")
 //    @ResponseBody
-    public String index(Model model){
+    public String index(Model model) {
         model.addAttribute("albums", albumsDao.findAll());
         //return albums index;
         return "albums/albums";
     }
 
     @GetMapping("/albums/{id}")
-    public String show(@PathVariable long id, Model model){
+    public String show(@PathVariable long id, Model model) {
         Album grabbedAlbum = albumsDao.getOne(id);
+        List<Image> images = new ArrayList<>();
+        List<Item> items = grabbedAlbum.getItems();
+        for (Item x : items) {
+            if (x.getImages() != null) {
+                if (x.getImages().get(0) != null) {
+                    images.add(x.getImages().get(0));
+                }
+            }
+        }
+        model.addAttribute("images", images);
         model.addAttribute("album", grabbedAlbum);
-        return "albums";
+        model.addAttribute("items", grabbedAlbum.getItems());
+        return "/albums/show";
 //        TODO: RETURN IS SUBJECT TO CHANGE
     }
 
-//    RETURNS CREATE FORM
+    //    RETURNS CREATE FORM
 //    TODO: MAKE CREATE ALBUM INDEX
     @GetMapping("/albums/create")
     public String showAlbumForm(Model model) {
@@ -140,10 +158,15 @@ public class AlbumController {
         return "albums/create";
     }
 
-//    POSTING NEWLY CREATED FORM
+    //    POSTING NEWLY CREATED FORM
     @PostMapping("/albums/create")
-    public String createAlbum(@ModelAttribute Album album){
-
+    public String createAlbum(@RequestParam(name = "title") String title, @RequestParam(name = "description") String description, @RequestParam(name = "lineage") String lineage, @RequestParam(name = "images") String[] images, @RequestParam(name = "file-type") String[] fileType) {
+        Album album = new Album();
+        album.setTitle(title);
+        album.setDescription(description);
+        album.setLineage(lineage);
+        List<String> newImages = Arrays.asList(images);
+        List<String> fileTypes = Arrays.asList(fileType);
         LocalDateTime currentDate = LocalDateTime.now();
 //        FORMATTING TIME
         DateTimeFormatter currentDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
@@ -153,25 +176,67 @@ public class AlbumController {
         album.setOwner(user);
         album.setDeadline(dateString);
         albumsDao.save(album);
-        return"redirect:/albums/";
+        for (int i = 0; i < newImages.size(); i++) {
+            Image newImage = new Image();
+            newImage.setAlbumWithImages(album);
+            newImage.setFilename(newImages.get(i));
+            newImage.setFileType(fileTypes.get(i));
+            imagesDao.save(newImage);
+        }
+        return "redirect:/albums/";
     }
 
-//    TODO: CREATE EDIT INDEX
+    //    TODO: CREATE EDIT INDEX
     @GetMapping("albums/{id}/edit")
-    public String editAlbum(@PathVariable long id, Model model){
-        model.addAttribute("album", albumsDao.getOne(id));
+    public String editAlbum(@PathVariable long id, Model model) {
+        Album album = albumsDao.getOne(id);
+        List<Image> images = album.getImages();
+        List<Image> photos = new ArrayList<>();
+        List<Image> videos = new ArrayList<>();
+        for (Image x : images) {
+            if (x.getFileType().equalsIgnoreCase("video/mp4")) {
+                videos.add(x);
+            } else if (x.getFileType().equalsIgnoreCase("image/jpeg")) {
+                photos.add(x);
+            }
+        }
+        model.addAttribute("album", album);
+        model.addAttribute("photos", photos);
+        model.addAttribute("videos", videos);
         return "albums/edit";
     }
 
     @PostMapping("/albums/{id}/edit")
-    public String editAlbums(@PathVariable long id, @ModelAttribute Album album){
+    public String editAlbums(@PathVariable long id, @RequestParam(name = "title") String title, @RequestParam(name = "description") String description, @RequestParam(name = "lineage") String lineage, @RequestParam(name = "images") String[] images, @RequestParam(name = "file-type") String[] fileType) {
         User user = usersDao.getOne(1L);
+        Album album = albumsDao.getOne(id);
+        album.setTitle(title);
+        album.setDescription(description);
+        album.setLineage(lineage);
         album.setOwner(user);
         albumsDao.save(album);
+        List<String> newImages = Arrays.asList(images);
+        List<String> fileTypes = Arrays.asList(fileType);
+        for (int i = 0; i < newImages.size(); i++) {
+            Image newImage = new Image();
+            newImage.setAlbumWithImages(album);
+            newImage.setFilename(newImages.get(i));
+            newImage.setFileType(fileTypes.get(i));
+            imagesDao.save(newImage);
+        }
         return "redirect:/albums";
     }
+
     @PostMapping("/albums/{id}/delete")
     public String deleteAlbum(@PathVariable long id) {
         return "redirect:/albums";
+    }
+
+    @PostMapping("/albums/{albumId}/image/{imageId}")
+    public String deleteAlbumImage(@PathVariable long albumId, @PathVariable long imageId) {
+        Image imageDelete = imagesDao.getOne(imageId);
+        imagesDao.delete(imageDelete);
+        return "redirect:/albums/" + albumId + "/edit";
+
     }
 }

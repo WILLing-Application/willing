@@ -108,8 +108,7 @@ public class ItemController {
             newImage.setItemImage(item);
             imagesDao.save(newImage);
         }
-
-        return "albums";
+        return "redirect:/albums/" + album.getId();
     }
 
     @PostMapping("/items/{itemId}/image/{imageId}")
