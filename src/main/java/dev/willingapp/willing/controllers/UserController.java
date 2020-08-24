@@ -1,7 +1,13 @@
 package dev.willingapp.willing.controllers;
 
 import dev.willingapp.willing.models.User;
+import dev.willingapp.willing.models.UserWithRoles;
 import dev.willingapp.willing.repositories.UserRepository;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,13 +15,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Collections;
+
 @Controller
 public class UserController {
-    private UserRepository users;
+    private UserRepository usersDao;
     private PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
-        this.users = users;
+    public UserController(UserRepository usersDao, PasswordEncoder passwordEncoder) {
+        this.usersDao = usersDao;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -29,7 +37,19 @@ public class UserController {
     public String saveUser(@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        users.save(user);
-        return "redirect:/login"; // temporary redirect until routes/views have controllers
+        usersDao.save(user);
+//        authenticate(user);
+        return "redirect:/";
+    }
+
+    private void authenticate(User user) {
+        UserDetails userDetails = new UserWithRoles(user);
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                userDetails.getPassword(),
+                userDetails.getAuthorities()
+        );
+        SecurityContext context = SecurityContextHolder.getContext();
+        context.setAuthentication(auth);
     }
 }
