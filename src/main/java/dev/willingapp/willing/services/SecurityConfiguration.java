@@ -53,14 +53,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/interests", // only authenticated users can view albums/items filtered interests page
                         "/create", // only authenticated users can create albums/items
                         "/albums/{id}", // only authenticated users can view albums
-                        "/albums/edit", // only authenticated users can edit albums
-                        "/albums/delete",      // only authenticated users can delete albums
+                        "/albums/{id}/edit", // only authenticated users can edit albums
+                        "/albums/{id}/delete",      // only authenticated users can delete albums
                         "/items/{id}", // only authenticated users can view items
-                        "/items/edit", // only authenticated users can edit items
-                        "/items/delete", // only authenticated users can delete items
+                        "/items/{id}/edit", // only authenticated users can edit items
+                        "/items/{id}/delete", // only authenticated users can delete items
                         "/profile", // only authenticated users can view the user profile page
-                        "/profile/edit", // only authenticated users can edit the user profile page
-                        "/profile/delete" // only authenticated users can delete the user account
+                        "/profile/{id}/edit", // only authenticated users can edit the user profile page
+                        "/profile/{id}/delete" // only authenticated users can delete the user account
                 )
                 .authenticated()
         ;
