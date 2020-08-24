@@ -7,21 +7,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        .matrixWrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        #ownerMatrix th, td {
+            white-space: nowrap;
+        }
+        table.dataTable thead .sorting:after,
+        table.dataTable thead .sorting:before,
+        table.dataTable thead .sorting_asc:after,
+        table.dataTable thead .sorting_asc:before,
+        table.dataTable thead .sorting_asc_disabled:after,
+        table.dataTable thead .sorting_asc_disabled:before,
+        table.dataTable thead .sorting_desc:after,
+        table.dataTable thead .sorting_desc:before,
+        table.dataTable thead .sorting_desc_disabled:after,
+        table.dataTable thead .sorting_desc_disabled:before {
+            bottom: .5em;
+        }
+    </style>
 </head>
 <body>
 
 <div th:fragment="panel-profile">
-    <div class="card border-primary mb-3" style="max-width: 20rem;">
-        <div class="card-header">Owner Item Panel</div>
+    <div class="card border-primary mb-3" style="max-width: 50rem; max-height: 40rem">
+        <div class="card-header">Owner Profile Matrix Panel</div>
         <div class="card-body text-primary">
+        <div class="matrixWrapper">
     <!-- Owner Matrix -->
-        <table class="card-table table table-striped table-sm" id="ownerMatrix">
+        <table class="table table-striped table-sm dataTables_wrapper" th:id="ownerMatrix">
             <thead>
                 <tr>
                     <th></th>
+<!--                    <th th:each="user : ${users}">userlist</th>-->
                     <th>User 1</th>
                     <th>User 2</th>
                     <th>User 3</th>
+                    <th>User 4</th>
                     <!--th and a for:ea loop to list all users in this album-->
                 </tr>
             </thead>
@@ -31,25 +55,55 @@
                     <td>data item 1 user 1</td>
                     <td>data item 1 user 2</td>
                     <td>data item 1 user 3</td>
+                    <td>data item 1 user 4</td>
                 </tr>
                 <tr>
                     <th scope="row">Item 2</th>
                     <td>data item 2 user 1</td>
                     <td>data item 2 user 2</td>
                     <td>data item 2 user 3</td>
+                    <td>data item 1 user 3</td>
                 </tr>
                 <tr>
                     <th scope="row">Item 3</th>
                     <td>data item 3 user 1</td>
                     <td>data item 3 user 2</td>
                     <td>data item 3 user 3</td>
+                    <td>data item 1 user 3</td>
                 </tr>
+<!--                <tr>-->
+<!--                    <th scope="row">Item 4</th>-->
+<!--                    <td>data item 4 user 1</td>-->
+<!--                    <td>data item 4 user 2</td>-->
+<!--                    <td>data item 4 user 3</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row">Item 3</th>-->
+<!--                    <td>data item 3 user 1</td>-->
+<!--                    <td>data item 3 user 2</td>-->
+<!--                    <td>data item 3 user 3</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row">Item 3</th>-->
+<!--                    <td>data item 3 user 1</td>-->
+<!--                    <td>data item 3 user 2</td>-->
+<!--                    <td>data item 3 user 3</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row">Item 3</th>-->
+<!--                    <td>data item 3 user 1</td>-->
+<!--                    <td>data item 3 user 2</td>-->
+<!--                    <td>data item 3 user 3</td>-->
+<!--                </tr>-->
             </tbody>
         </table>
+        </div>
     <!-- End Owner Matrix -->
-            <h4>Item: itemReference</h4>
-            <button th:action="">New Album</button>
-            <button th:action="">New Item</button>
+            <div class="container">
+            <h4>Album: drop down</h4>
+            <a th:href="@{/albums/create}" class="btn btn-primary">Add an Album</a>
+<!--            <a th:href="@{/items/create}" class="btn btn-primary">Add an item</a>-->
+            </div>
         </div>
     </div>
 </div>
@@ -86,5 +140,11 @@
 <!--bottom: .5em;-->
 <!--}-->
 
+<!--Datatable CDNs-->
+<script th:src="@{https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css}"></script>
+<script th:src="@{https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js}"></script>
+
+<script src="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"></script>
+<script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 </body>
 </html>
