@@ -45,6 +45,9 @@
 </div>
 <br><br>
 <a th:href="@{/items/{id}/edit(id=${item.id})}" class="btn btn-secondary">Edit Item</a>
+<form th:action="@{/albums/{albumId}/items/{itemId}/delete(albumId=${item.albumForItems.id},itemId=${item.id})}" method="post">
+    <button class="btn btn-secondary">Delete Item</button>
+</form>
 <div th:replace="partials/scripts :: assets"></div>
 </body>
 </html>
