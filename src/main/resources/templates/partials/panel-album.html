@@ -16,6 +16,19 @@
         <div class="card-body text-primary">
             <h5>Album: Album Name</h5>
             <div class="card">
+                <form action="">
+                    <h5>Invite a User</h5>
+                    <label for="email">Email</label>
+                    <input type="text" id="email">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName">
+                    <input type="submit">
+                </form>
+            </div>
+
+            <div class="card d-inline-block">
                 <ul>Current Album Users
 <!--these will be href links to take the owner to that album...-->
                     <li>Name / Email <button>remove</button></li>
@@ -28,19 +41,7 @@ The owner can select the matching user to enable access to that album
 (view and URL still TBD-update: incorporated into dashboard)-->
                 </ul>
             </div>
-            <div class="card">
-                <form action="">
-                    <h5>Invite a User</h5>
-                    <label for="email">Email</label>
-                    <input type="text" id="email">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName">
-                    <input type="submit">
-                </form>
-            </div>
-            <div class="card">
+            <div class="card d-inline-block">
                 <h5>Invite History</h5>
                 <ul>
                     <li>Name / Email</li>
@@ -49,6 +50,7 @@ The owner can select the matching user to enable access to that album
                     <li>Name / Email</li>
                 </ul>
             </div>
+
             <div class="border-primary">
                 <h5>Search Users to Add</h5>
                 <h7>*email req'd and must be exact</h7>
