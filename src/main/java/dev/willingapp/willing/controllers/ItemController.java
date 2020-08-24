@@ -111,6 +111,12 @@ public class ItemController {
         return "redirect:/albums/" + album.getId();
     }
 
+    @PostMapping("/albums/{albumId}/items/{itemId}/delete")
+    public String deleteItem(@PathVariable long albumId, @PathVariable long itemId) {
+        itemsDao.delete(itemsDao.getOne(itemId));
+        return "redirect:/albums/" + albumId;
+    }
+
     @PostMapping("/items/{itemId}/image/{imageId}")
     public String deleteImage(@PathVariable long itemId, @PathVariable long imageId) {
         Image deleteImage = imagesDao.getOne(imageId);
