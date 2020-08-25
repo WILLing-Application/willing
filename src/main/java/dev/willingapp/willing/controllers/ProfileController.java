@@ -26,10 +26,15 @@ public class ProfileController {
     public String showUserProfile(Model model) throws NullPointerException {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", usersDao.getOne(user.getId()));
+        System.out.println("User profile_photo: " + user.getProfilePhoto()); // DEBUG
+        return "/users/profile";
+    }
 
-        System.out.println("User profile_photo: " + user.getProfilePhoto());
-//            user.setProfilePhoto("'https://cdn.filestackcontent.com/lxecmZylQJkbG0ZabcDA'");
-//            user.setProfilePhoto("../../resources/photos/placeholder.jpeg");
+    @GetMapping("/profile/edit")
+    public String editUserProfile(Model model) throws NullPointerException {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", usersDao.getOne(user.getId()));
+        System.out.println("User profile_photo: " + user.getProfilePhoto()); // DEBUG
         return "/users/profile";
     }
 
