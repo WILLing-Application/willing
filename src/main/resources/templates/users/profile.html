@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head th:replace="partials/head :: header-links (Profile)">
+<body>
+<div th:replace="partials/navbar :: navbar"></div>
+
+<!--Forcing some space since text currently overlaps the navbar items-->
+<br><br><br>
+
+<div class="container">
+    <!-- This content is only shown to authenticated users.-->
+    <div class="row" sec:authorize="isAuthenticated()">
+        <div class="col-sm-8 col-md-8">
+            Placeholder for owner summary (dashboard matrix, summaries - items/#interested users, users/#interested items)
+        </div>
+
+        <div class="col-sm-4 col-md-4">
+<!--            USER PROFILE PHOTO-->
+            <div>
+                <!-- Display user profile photo, if it has been uploaded -->
+                <div th:if="${user.profilePhoto}">
+                    <img th:src="${user.profilePhoto}" class="rounded-circle img-responsive m-2"
+                         height="120" width="120" alt="profile-photo">
+                </div>
+                <!-- Display placeholder image if user profile photo does not exist -->
+                <div th:unless="${user.profilePhoto}">
+                    <img src="../../static/photos/placeholder.jpeg" class="rounded-circle img-responsive m-2"
+                         width="100" th:src="@{photos/placeholder.jpeg}"/>
+                </div>
+            </div>
+
+            <p>Welcome, <span th:text="${user.firstName}"/>
+                <span th:text="${user.lastName}"/>!</p>
+            <p>Username: <span th:text="${user.username}"/><br>
+            Email: <span th:text="${user.email}"/><br>
+            Address: <span th:text="${user.address1}"/> <span th:text="${user.address2}"/><br>
+                <span th:text="${user.city}"/>,
+                <span th:text="${user.state}"/>  <span th:text="${user.zip}"/><br>
+            Phone: <span th:text="${user.phone}"/></p>
+            <a th:href="@{/profile/{id}/edit(id=${user.id})}" class="btn btn-muted btn-sm">
+                <i class="fas fa-edit mr-2"> </i>Edit My Account Info</a><br>
+            <a th:href="@{/profile/{id}/delete(id=${user.id})}" class="btn btn-muted btn-sm">
+                <i class="fas fa-trash mr-2"> </i>Delete My Account</a><br>
+        </div>
+    </div>
+</div>
+
+<div th:replace="partials/scripts :: assets"></div>
+</body>
+<footer th:replace="partials/footer :: footer"/>
+</html>

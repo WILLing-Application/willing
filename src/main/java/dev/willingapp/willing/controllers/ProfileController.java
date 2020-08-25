@@ -27,13 +27,10 @@ public class ProfileController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", usersDao.getOne(user.getId()));
 
-//        if(user.getProfilePhoto() == null) {
-////            user.setProfilePhoto("'https://cdn.filestackcontent.com/lxecmZylQJkbG0ZabcDA'");
+        System.out.println("User profile_photo: " + user.getProfilePhoto());
+//            user.setProfilePhoto("'https://cdn.filestackcontent.com/lxecmZylQJkbG0ZabcDA'");
 //            user.setProfilePhoto("../../resources/photos/placeholder.jpeg");
-//        }
-//        System.out.println("User photo is set to: " + user.getProfilePhoto());
-
-        return "profile";
+        return "/users/profile";
     }
 
 }
