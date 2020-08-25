@@ -10,11 +10,86 @@
 </head>
 <body>
 
+<!--Use collapseable or accordian to save space
+https://www.w3schools.com/w3css/w3css_accordions.asp
+-->
+
 <div th:fragment="panel-album">
-    <div class="card border-primary mb-3" style="max-width: 30rem;">
+    <div class="card border-primary mb-3">
         <div class="card-header">Owner Album Panel</div>
         <div class="card-body text-primary">
-            <h4>Album: Album Name</h4>
+            <h5>Album: Album Name</h5>
+            <div class="card">
+                <form action="">
+                    <h5>Invite a User</h5>
+                    <label for="email">Email</label>
+                    <input type="text" id="email">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName">
+                    <input type="submit">
+                </form>
+            </div>
+
+
+            <div class="card-group">
+<!---->
+            <div class="card d-inline-block">
+                <ul>Current Album Users
+<!--these will be href links to take the owner to that album...-->
+                    <li>Name / Email <button>remove</button></li>
+                    <li>Name / Email <button>remove</button></li>
+                    <li>Name / Email <button>remove</button></li>
+                    <li>Name / Email <button>remove</button></li>
+<!--Create a view to list the email invites sent,
+and the name of any registered user with a matching email address.
+The owner can select the matching user to enable access to that album
+(view and URL still TBD-update: incorporated into dashboard)-->
+                </ul>
+            </div>
+            <div class="card d-inline-block">
+                <h5>Invite History</h5>
+                <ul>
+                    <li>Name / Email</li>
+                    <li>Name / Email</li>
+                    <li>Name / Email</li>
+                    <li>Name / Email</li>
+                </ul>
+            </div>
+<!---->
+            </div>
+
+
+            <div class="border-primary">
+                <h5>Search Users to Add</h5>
+                <h7>*email req'd and must be exact</h7>
+                <form action="">
+                    <label for="emailSearch">Email</label>
+                    <input type="text" id="emailSearch">
+                    <label for="nameSearch">Name</label>
+                    <input type="text" id="nameSearch">
+                    <input type="submit">
+                </form>
+                <div>
+                    <ul>Click to add to this Album:
+                        <li>
+                            <a href="">SEARCH RESULTS RETURN AREA</a>
+                        </li>
+                        <li>
+                            <a href="">FirstName LastName Email</a>
+                        </li>
+                        <li>
+                            <a href="">names will be linked</a>
+                        </li>
+                        <li>
+                            <a href="">in order to quickly add them</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
             <button th:action="">New Album</button>
             <button th:action="">New Item</button>
             <button th:action="">Edit Album</button>
