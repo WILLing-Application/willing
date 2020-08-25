@@ -36,6 +36,7 @@ public class ItemController {
         List<Image> images = item.getImages();
         List<Image> photos = new ArrayList<>();
         List<Image> videos = new ArrayList<>();
+        boolean hasPhotos = false;
         for (Image x : images) {
             if (x.getFileType().equalsIgnoreCase("video/mp4")) {
                 videos.add(x);
@@ -43,8 +44,12 @@ public class ItemController {
                 photos.add(x);
             }
         }
-        Image singleImage = photos.remove(0);
-        model.addAttribute("singleImage", singleImage);
+        if (!images.isEmpty()) {
+            hasPhotos = true;
+            Image singleImage = photos.remove(0);
+            model.addAttribute("hasPhotos", hasPhotos);
+            model.addAttribute("singleImage", singleImage);
+        }
         model.addAttribute("item", item);
         model.addAttribute("photos", photos);
         model.addAttribute("videos", videos);
