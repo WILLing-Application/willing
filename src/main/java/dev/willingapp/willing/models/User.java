@@ -70,8 +70,8 @@ public class User {
     })
     @JoinTable(
             name = "album_user",
-            joinColumns = {@JoinColumn(name = "album_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "album_id")}
     )
     private List<Album> albums;
 
