@@ -6,9 +6,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProfileController {
@@ -31,7 +28,7 @@ public class ProfileController {
         model.addAttribute("user", usersDao.getOne(user.getId()));
         if (user.getProfilePhoto() == null) {
             System.out.println("profile photo is null");
-            user.setProfilePhoto("/photos/placeholder.jpg");
+            user.setProfilePhoto("/templates/photos/placeholder.jpg");
         }
         return "profile";
     }
