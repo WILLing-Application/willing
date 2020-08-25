@@ -43,6 +43,8 @@ public class ItemController {
                 photos.add(x);
             }
         }
+        Image singleImage = photos.remove(0);
+        model.addAttribute("singleImage", singleImage);
         model.addAttribute("item", item);
         model.addAttribute("photos", photos);
         model.addAttribute("videos", videos);
