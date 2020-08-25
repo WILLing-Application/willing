@@ -125,7 +125,15 @@ public class AlbumController {
 
     @GetMapping("/albums")
     public String index(Model model) {
-        model.addAttribute("albums", albumsDao.findAll());
+        List<Album> albums = albumsDao.findAll();
+        List<Album> ownerAlbums = new ArrayList<>();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User newUser = usersDao.getOne(user.getId());
+        if (!newUser.getOwnerAlbums().isEmpty()) {
+            model.addAttribute("albums", newUser.getOwnerAlbums());
+        } else {
+            model.addAttribute("albums", newUser.getAlbums());
+        }
         return "albums/albums";
     }
 
