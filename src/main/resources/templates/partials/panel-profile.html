@@ -46,8 +46,7 @@ https://bootsnipp.com/snippets/Al9ZE
             <thead>
                 <tr>
                     <th></th>
-                    <th th:each="user : ${users}">userlist</th>
-                    <th>User 1</th>
+                    <th th:each="user : ${album.users}">userlist</th>
                     <th>User 2</th>
                     <th>User 3</th>
                     <th>User 4</th>
@@ -57,7 +56,7 @@ https://bootsnipp.com/snippets/Al9ZE
             <tbody>
                 <tr>
                     <th scope="row">Item 1</th>
-                    <td>data item 1 user 1</td>
+                    <td th:each="user : ${items}"></td>
                     <td>data item 1 user 2</td>
                     <td>data item 1 user 3</td>
                     <td>data item 1 user 4</td>
@@ -103,9 +102,20 @@ https://bootsnipp.com/snippets/Al9ZE
             </tbody>
         </table>
         </div>
-    <!-- End Owner Matrix -->
+    <!-- End Owner Matrix Table-->
             <div class="container">
-            <h4>Album: drop down</h4>
+            <h4>Album: <span th:text="${albums/{id}">#</span></h4>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="matrixAlbumSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Album Select
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div th:each="${album}">
+                        <a class="dropdown-item" href="#" id="matrixAlbumSelection">"${album.name}"</a>
+                        <h6>album1</h6>
+                    </div>
+                </div>
+            </div>
             <a th:href="@{/albums/create}" class="btn btn-primary">Add an Album</a>
 <!--            <a th:href="@{/items/create}" class="btn btn-primary">Add an item</a>-->
             </div>
