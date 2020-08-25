@@ -26,7 +26,9 @@
                 <div class="card-footer text-right">
                     <span class="float-left" th:each="user : ${album.owner}" th:text="${album.owner.email}"></span>
                     <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i class="fas fa-edit"></i>Edit</a>
-                    <a th:href="@{/posts/{id}/delete(id=${album.id})}" class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</a>
+                    <form th:action="@{/albums/{id}/delete(id=${album.id})}" method="post">
+                        <button class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
