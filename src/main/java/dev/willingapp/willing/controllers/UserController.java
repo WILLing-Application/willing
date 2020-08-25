@@ -38,11 +38,12 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersDao.save(user);
-//        authenticate(user);
-        return "redirect:/";
+        authenticate(user); // login the new user
+        return "redirect:/"; // redirect to the home page
     }
 
     private void authenticate(User user) {
+//        UserDetails userDetails = new UserWithRoles(user, Collections.emptyList());
         UserDetails userDetails = new UserWithRoles(user);
         Authentication auth = new UsernamePasswordAuthenticationToken(
                 userDetails,

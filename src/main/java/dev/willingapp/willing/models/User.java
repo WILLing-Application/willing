@@ -3,6 +3,8 @@ package dev.willingapp.willing.models;
 import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.persistence.*;
+//import javax.validation.constraints.*;
+
 import java.util.List;
 
 @Entity
@@ -14,6 +16,8 @@ public class User {
     private long id;
 
     @Column(nullable = false, length = 60, unique = true)
+//    @NotNull
+//    @NotEmpty
     private String email;
 
     @Column(nullable = false, length = 60, unique = true)
@@ -52,7 +56,7 @@ public class User {
     @Column(columnDefinition = "TINYINT(1) UNSIGNED DEFAULT '1'") // default true
     private int isActive;
 
-    @Column(length = 150) // add default value for placeholder, columnDefinition = "DEFAULT 'path/filename.ext'"
+    @Column(length = 150)
     private String profilePhoto;
 
 // === Albums that the owner has created ===

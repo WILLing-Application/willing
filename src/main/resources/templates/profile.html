@@ -5,6 +5,7 @@
 <head th:replace="partials/head :: header-links (Profile)">
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
+
 <!--Forcing some space since text currently overlaps the navbar items-->
 <br><br><br>
 
@@ -12,16 +13,27 @@
     <!-- This content is only shown to authenticated users.-->
     <div class="row" sec:authorize="isAuthenticated()">
         <div class="col-sm-8 col-md-8">
-            Placeholder
-
+            Placeholder for owner summary (dashboard matrix, summaries - items/#interested users, users/#interested items)
         </div>
 
         <div class="col-sm-4 col-md-4">
-            <!-- Placeholder photo if none has been uploaded -->
-            <div><img th:src="@{/photos/placeholder.jpeg}"
-                      alt="profile-photo" class="img-responsive mb-3"></div>
-<!--            For edit page-->
-<!--            <img th:src="${photo.filename}" alt="" class="mb-3">-->
+            <!-- Want to use placeholder photo uploaded to my filestack account as the default -->
+            <!-- This works hardcoded with a placeholder photo but will break w/new filestack account -->
+<!--            <div><img th:src="@{https://cdn.filestackcontent.com/lxecmZylQJkbG0ZabcDA}" alt="profile-photo" class="img-responsive mb-3"></div>-->
+
+            <!-- This works to display the static placeholder photo-->
+            <div>
+                <img src="../static/photos/placeholder.jpeg" width="100" class="rounded-circle img-responsive m-2"
+                     th:src="@{photos/placeholder.jpeg}"/>
+            </div>
+
+            <!-- Tried to use Thymeleaf conditionals to use placeholder if photo is null... not working-->
+<!--            <img th:if='${user.profilePhoto != null} ? ${user.profilePhoto} : "@{photos/placeholder.jpeg}"' width="100"/>-->
+
+            <!-- This works if the placeholder image cdn is in the DB -->
+            <!-- But it does not work if it's null in the DB and the cdn is passed via controller logic-->
+<!--            <div><img th:src="${user.profilePhoto}" class="rounded-circle img-responsive m-2" height="120" width="120" alt="profile-photo"></div>-->
+
             <p>Welcome, <span th:text="${user.firstName}"/>
                 <span th:text="${user.lastName}"/>!</p>
             <p>Username: <span th:text="${user.username}"/><br>
