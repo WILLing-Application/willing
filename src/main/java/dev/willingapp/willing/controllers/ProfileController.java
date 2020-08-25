@@ -27,7 +27,7 @@ public class ProfileController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", usersDao.getOne(user.getId()));
         System.out.println("User profile_photo: " + user.getProfilePhoto()); // DEBUG
-        return "/users/profile";
+        return "users/profile";
     }
 
 //    @GetMapping("/profile/edit")
