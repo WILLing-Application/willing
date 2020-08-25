@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,78 +44,83 @@ https://bootsnipp.com/snippets/Al9ZE
         <div class="card-body text-primary">
         <div class="matrixWrapper">
     <!-- Owner Matrix -->
-        <table class="table table-striped table-sm dataTables_wrapper" th:id="ownerMatrix">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th th:each="user : ${album.users}">userlist</th>
-                    <th>User 2</th>
-                    <th>User 3</th>
-                    <th>User 4</th>
-                    <!--th and a for:ea loop to list all users in this album-->
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Item 1</th>
-                    <td th:each="user : ${items}"></td>
-                    <td>data item 1 user 2</td>
-                    <td>data item 1 user 3</td>
-                    <td>data item 1 user 4</td>
-                </tr>
-                <tr>
-                    <th scope="row">Item 2</th>
-                    <td>data item 2 user 1</td>
-                    <td>data item 2 user 2</td>
-                    <td>data item 2 user 3</td>
-                    <td>data item 1 user 3</td>
-                </tr>
-                <tr>
-                    <th scope="row">Item 3</th>
-                    <td>data item 3 user 1</td>
-                    <td>data item 3 user 2</td>
-                    <td>data item 3 user 3</td>
-                    <td>data item 1 user 3</td>
-                </tr>
+<!--        <table class="table table-striped table-sm dataTables_wrapper" th:id="ownerMatrix">-->
+<!--            <thead>-->
 <!--                <tr>-->
-<!--                    <th scope="row">Item 4</th>-->
-<!--                    <td>data item 4 user 1</td>-->
-<!--                    <td>data item 4 user 2</td>-->
-<!--                    <td>data item 4 user 3</td>-->
+<!--                    <th></th>-->
+<!--                    <th th:each="user : ${album.users}">userlist</th>-->
+<!--                    <th>User 2</th>-->
+<!--                    <th>User 3</th>-->
+<!--                    <th>User 4</th>-->
+<!--                    &lt;!&ndash;th and a for:ea loop to list all users in this album&ndash;&gt;-->
+<!--                </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--                <tr>-->
+<!--                    <th scope="row">Item 1</th>-->
+<!--                    <td th:each="user : ${items}"></td>-->
+<!--                    <td>data item 1 user 2</td>-->
+<!--                    <td>data item 1 user 3</td>-->
+<!--                    <td>data item 1 user 4</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row">Item 2</th>-->
+<!--                    <td>data item 2 user 1</td>-->
+<!--                    <td>data item 2 user 2</td>-->
+<!--                    <td>data item 2 user 3</td>-->
+<!--                    <td>data item 1 user 3</td>-->
 <!--                </tr>-->
 <!--                <tr>-->
 <!--                    <th scope="row">Item 3</th>-->
 <!--                    <td>data item 3 user 1</td>-->
 <!--                    <td>data item 3 user 2</td>-->
 <!--                    <td>data item 3 user 3</td>-->
+<!--                    <td>data item 1 user 3</td>-->
 <!--                </tr>-->
-<!--                <tr>-->
-<!--                    <th scope="row">Item 3</th>-->
-<!--                    <td>data item 3 user 1</td>-->
-<!--                    <td>data item 3 user 2</td>-->
-<!--                    <td>data item 3 user 3</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <th scope="row">Item 3</th>-->
-<!--                    <td>data item 3 user 1</td>-->
-<!--                    <td>data item 3 user 2</td>-->
-<!--                    <td>data item 3 user 3</td>-->
-<!--                </tr>-->
-            </tbody>
-        </table>
+<!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <th scope="row">Item 4</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 4 user 1</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 4 user 2</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 4 user 3</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <th scope="row">Item 3</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 3 user 1</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 3 user 2</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 3 user 3</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <th scope="row">Item 3</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 3 user 1</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 3 user 2</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 3 user 3</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <th scope="row">Item 3</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 3 user 1</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 3 user 2</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>data item 3 user 3</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--            </tbody>-->
+<!--        </table>-->
         </div>
     <!-- End Owner Matrix Table-->
             <div class="container">
-            <h4>Album: <span th:text="${albums/{id}">#</span></h4>
+            <h4>Album:
+<!--                <span th:text="${albums/{id}(id=${album.id})}">#</span>-->
+            </h4>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="matrixAlbumSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Album Select
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <div th:each="${albums/{id}">
-                        <a class="dropdown-item" href="#" id="matrixAlbumSelection">"${album.name}"</a>
-                        <h6>album1</h6>
-                    </div>
+<!--                    <div th:each="${albums/{id}(id=${album.id})}">-->
+<!--                        <a class="dropdown-item" href="#">"${album.name}"</a>-->
+<!--                        <h6>album1</h6>-->
+<!--                    </div>-->
+                    <a class="dropdown-item" href="#">"${album.name}"</a>
+                    <a class="dropdown-item" href="#">"${album.name}"</a>
+                    <a class="dropdown-item" href="#">"${album.name}"</a>
                 </div>
             </div>
             <a th:href="@{/albums/create}" class="btn btn-primary">Create an Album</a>
@@ -133,28 +140,8 @@ https://bootsnipp.com/snippets/Al9ZE
 <!--$('.dataTables_length').addClass('bs-select');-->
 <!--});-->
 
-<!--CSS options:-->
 
-<!--.dtHorizontalVerticalExampleWrapper {-->
-<!--max-width: 600px;-->
-<!--margin: 0 auto;-->
-<!--}-->
-<!--#dtHorizontalVerticalExample th, td {-->
-<!--white-space: nowrap;-->
-<!--}-->
-<!--table.dataTable thead .sorting:after,-->
-<!--table.dataTable thead .sorting:before,-->
-<!--table.dataTable thead .sorting_asc:after,-->
-<!--table.dataTable thead .sorting_asc:before,-->
-<!--table.dataTable thead .sorting_asc_disabled:after,-->
-<!--table.dataTable thead .sorting_asc_disabled:before,-->
-<!--table.dataTable thead .sorting_desc:after,-->
-<!--table.dataTable thead .sorting_desc:before,-->
-<!--table.dataTable thead .sorting_desc_disabled:after,-->
-<!--table.dataTable thead .sorting_desc_disabled:before {-->
-<!--bottom: .5em;-->
-<!--}-->
-
+<div th:include="partials/scripts :: assets"></div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -170,5 +157,7 @@ https://bootsnipp.com/snippets/Al9ZE
 
 <script src="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"></script>
 <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+<script th:src="@{/js/panels.js}"></script>
 </body>
 </html>
