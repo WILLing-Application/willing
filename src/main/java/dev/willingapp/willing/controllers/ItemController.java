@@ -28,7 +28,7 @@ public class ItemController {
     }
 
     @GetMapping("/items/items")
-    public String showItem(Model model) { return "/items/items";}
+    public String showItem(Model model) { return "items/items";}
 
     @GetMapping("/items/{id}")
     public String showSingleItem(@PathVariable long id, Model model) {
@@ -53,7 +53,7 @@ public class ItemController {
         model.addAttribute("item", item);
         model.addAttribute("photos", photos);
         model.addAttribute("videos", videos);
-        return "/items/item";
+        return "items/item";
     }
 
     @GetMapping("/items/{id}/edit")
@@ -72,7 +72,7 @@ public class ItemController {
         model.addAttribute("item", item);
         model.addAttribute("photos", photos);
         model.addAttribute("videos", videos);
-        return "/items/edit";
+        return "items/edit";
     }
 
     @PostMapping("/items/{id}/edit")
@@ -98,7 +98,7 @@ public class ItemController {
     @GetMapping("/albums/{id}/items/create")
     public String createItems(@PathVariable long id, Model model) {
         model.addAttribute("album", albumsDao.getOne(id));
-        return "/items/items-create";
+        return "items/items-create";
     }
 
     @PostMapping("/albums/{id}/items/create")

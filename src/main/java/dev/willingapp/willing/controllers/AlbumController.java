@@ -161,7 +161,7 @@ public class AlbumController {
         }
         model.addAttribute("album", grabbedAlbum);
         model.addAttribute("items", grabbedAlbum.getItems());
-        return "/albums/show";
+        return "albums/show";
 //        TODO: RETURN IS SUBJECT TO CHANGE
     }
 

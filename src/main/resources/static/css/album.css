@@ -1,3 +1,214 @@
+* {
+    boxing-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #303032;
+}
+
+.platform {
+    margin-top: 55px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr repeat(12, minmax(auto, 60px)) 1fr;
+    grid-gap: 40px;
+    padding: 60px 0;
+}
+
+.text--medium {
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #ecf0f1
+}
+
+.cards {
+    grid-column: 2 / span 12;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(auto, 60px));
+    grid-gap: 40px;
+}
+
+.card {
+    grid-column-end: span 4;
+    display: flex;
+    flex-direction: column;
+    background-color: #39393b;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+}
+
+.card_image-container {
+    width: 100%;
+    padding-top: 56.25%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 55px;
+}
+
+.card_image-container img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card_content {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-footer {
+    /*margin-top: 50px;*/
+}
+
+.card-title {
+    text-transform: uppercase;
+    font-family: "Kohinoor Devanagari";
+}
+
+p .card-text {
+    margin-bottom: 20px;
+}
+
+.card_title {
+    margin-bottom: 20px;
+}
+
+.card_info {
+    display: flex;
+    align-self: end;
+    align-items: center;
+}
+
+.email {
+    text-align: center;
+}
+
+.delete_icon {
+    text-align: center;
+}
+
+
+
+@media only screen and (max-width:100px)  {
+    .card {
+        grid-column-end: span 6;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    main {
+        grid-gap: 20px;
+    }
+    .card {
+        grid-column-end: span 12;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    main {
+        grid-template-columns: 10px repeat(6, 1fr) 10px;
+        grid-gap: 10px;
+    }
+
+    .cards {
+        grid-column: 2 / span 6;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 20px;
+    }
+
+    .card {
+        grid-column-end: span 6;
+    }
+
+
+
+}
+
+/*body{*/
+/*    color: #434444;*/
+/*}*/
+
+hr {
+    width: 300px;
+    border: 3px solid #434444;
+    width: 100%;
+}
+
+.wrapper {
+    margin-top: 75px;
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    /*grid-gap: 10px;*/
+    /*grid-template-rows: 100px 100px 100px;*/
+}
+/*PRODUCT GRID*/
+.product-grid {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.product-grid:hover {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.image {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(67, 68, 68, 0.7);
+}
+
+.image:hover .overlay {
+    opacity: 1;
+}
+
+.detail {
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+-ms-scroll-translate(-50%, -50%);
+}
+
+.click {
+    background-color: transparent;
+    color: #434444;
+    border-radius: 0;
+    border: 1px solid #434444;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.click:hover {
+    background-color: #434444;
+    color: #fff;
+}
+/*==================================================================*/
+IDK WHAT THIS IS
 body {
     background-color: #efefef; !important;
 }
