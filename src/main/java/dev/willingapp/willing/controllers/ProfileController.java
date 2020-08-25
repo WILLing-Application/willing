@@ -23,13 +23,16 @@ public class ProfileController {
 
     // view logged in user profile
     @GetMapping("/profile")
-    public String showUserProfile(Model model){
+    public String showUserProfile(Model model) throws NullPointerException {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", usersDao.getOne(user.getId()));
-        if (user.getProfilePhoto() == null) {
-            System.out.println("profile photo is null");
-            user.setProfilePhoto("/templates/photos/placeholder.jpg");
-        }
+
+//        if(user.getProfilePhoto() == null) {
+////            user.setProfilePhoto("'https://cdn.filestackcontent.com/lxecmZylQJkbG0ZabcDA'");
+//            user.setProfilePhoto("../../resources/photos/placeholder.jpeg");
+//        }
+//        System.out.println("User photo is set to: " + user.getProfilePhoto());
+
         return "profile";
     }
 
