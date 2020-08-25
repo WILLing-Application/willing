@@ -125,7 +125,23 @@ public class AlbumController {
 
     @GetMapping("/albums")
     public String index(Model model) {
-        model.addAttribute("albums", albumsDao.findAll());
+        List<Album> albums = albumsDao.findAll();
+        List<Album> ownerAlbums = new ArrayList<>();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User newUser = usersDao.getOne(user.getId());
+//        Album newAlbum = albumsDao.getOne(5L);
+//        if (newUser.getAlbums().isEmpty()) {
+//            usersDao.getOne(newUser.getId()).getAlbums().add(newAlbum);
+//            albumsDao.getOne(newAlbum.getId()).getUsers().add(newUser);
+//            usersDao.save(newUser);
+//            albumsDao.save(newAlbum);
+//
+//        }
+        if (!newUser.getOwnerAlbums().isEmpty()) {
+            model.addAttribute("albums", newUser.getOwnerAlbums());
+        } else {
+            model.addAttribute("albums", newUser.getAlbums());
+        }
         return "albums/albums";
     }
 
@@ -224,6 +240,51 @@ public class AlbumController {
             imagesDao.save(newImage);
         }
         return "redirect:/albums";
+    }
+
+    @GetMapping("/albums/{id}/guest")
+    public String guestPage(@PathVariable long id, Model model) {
+        boolean isVisible = false;
+        model.addAttribute("isVisible", isVisible);
+        model.addAttribute("album", albumsDao.getOne(id));
+        return "albums/add-guest";
+    }
+
+    @GetMapping("/albums/{id}/search/guest")
+    public String searchGuest(@PathVariable long id, Model model, @RequestParam(name = "email") String email, @RequestParam(name = "firstname") String firstName, @RequestParam(name = "lastname") String lastName) {
+        model.addAttribute("album", albumsDao.getOne(id));
+        boolean isVisible = true;
+        model.addAttribute("isVisible", isVisible);
+        User user = new User();
+        String userNotFound = "Sorry, cannot find user with those credentials";
+        boolean isRegistered = false;
+        if (usersDao.findByEmail(email) != null) {
+            user = usersDao.findByEmail(email);
+            isRegistered = true;
+            model.addAttribute("user", user);
+            model.addAttribute("isRegistered", isRegistered);
+        } else if (usersDao.findByFirstName(firstName) != null && usersDao.findByLastName(lastName) != null) {
+            user = usersDao.findByFirstName(firstName);
+            isRegistered = true;
+            model.addAttribute("user", user);
+            model.addAttribute("isRegistered", isRegistered);
+        } else {
+            isRegistered = false;
+            model.addAttribute("userNotFound", userNotFound);
+            model.addAttribute("isRegistered", isRegistered);
+        }
+        return "albums/add-guest";
+    }
+
+    @PostMapping("/albums/{albumId}/guest/{guestId}")
+    public String addGuestToAlbum(@PathVariable long albumId, @PathVariable long guestId) {
+        Album album = albumsDao.getOne(albumId);
+        User user = usersDao.getOne(guestId);
+        user.getAlbums().add(album);
+        album.getUsers().add(user);
+        albumsDao.save(album);
+        usersDao.save(user);
+        return "redirect:/albums/" + albumId;
     }
 
     @PostMapping("/albums/{id}/delete")

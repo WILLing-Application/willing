@@ -33,6 +33,7 @@
             </div>
         </div>
         <a th:href="@{/albums/{id}/items/create(id=${album.id})}" class="btn btn-primary">Add an item</a>
+        <a th:href="@{/albums/{id}/guest(id=${album.id})}" class="btn btn-primary">Add a guest to this album</a>
     </div>
 </main>
 <footer th:replace="partials/footer :: footer"/>

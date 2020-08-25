@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface AlbumRepository extends JpaRepository<Album, Long> {
     List<Album> findAllByOrderByIdDesc();
+    List<Album> findAlbumsByUsersId(long id);
 }
 
 
