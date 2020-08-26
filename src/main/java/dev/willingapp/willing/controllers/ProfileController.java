@@ -27,22 +27,14 @@ public class ProfileController {
 
     // EDIT USER PROFILE (FORM)
     @GetMapping("/profile/{id}/edit")
-    public String editUserProfile(@RequestParam(name = "email") String email,
-                                  @RequestParam(name = "username") String username,
-                                  @RequestParam(name = "password") String password,
-//                                  @RequestParam(name = "firstname") String firstName,
-//                                  @RequestParam(name = "lastname") String lastName,
-//                                  @RequestParam(name = "address1") String address1,
-//                                  @RequestParam(name = "address2") String address2,
-//                                  @RequestParam(name = "city") String city,
-//                                  @RequestParam(name = "state") String state,
-//                                  @RequestParam(name = "zip") String zip,
-                                  @RequestParam(name = "phone") String phone,
-                                  Model model) {
+    public String editUserProfile(@PathVariable long id, Model model) {
         User myUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", usersDao.getOne(myUser.getId()));
 
-        boolean isDifferent = false;
+//        boolean isDifferent = false;
+
+        return "users/edit";
+    }
 
         // snippet from AlbumController & add-guest.html
 //        if (usersDao.findByEmail(email) != null) {
@@ -60,8 +52,7 @@ public class ProfileController {
 //            model.addAttribute("userNotFound", userNotFound);
 //            model.addAttribute("isRegistered", isRegistered);
 //        }
-        return "users/edit";
-    }
+
 
     // snippet from user controller
 //    String hash = passwordEncoder.encode(user.getPassword());
