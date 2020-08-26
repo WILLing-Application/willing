@@ -40,15 +40,18 @@
             <p>Description: <span th:text="${item.description}"></span></p>
             <p> Deadline: <span th:text="${item.albumForItems.deadline}"></span></p>
             <div class="btn-group">
-                <form th:action="@{/items/{itemsId}/user/1/1(itemsId=${item.id})}" method="post">
+                <form th:action="@{/items/{itemsId}/user/{userId}/1(itemsId=${item.id}, userId=${user.id})}" method="post">
                     <button>I kind of want it</button>
                 </form>
-                <form th:action="@{/items/{itemsId}/user/1/2(itemsId=${item.id})}" method="post">
+                <form th:action="@{/items/{itemsId}/user/{userId}/2(itemsId=${item.id}, userId=${user.id})}" method="post">
                     <button>I want it</button>
                 </form>
-                <form th:action="@{/items/{itemsId}/user/1/3(itemsId=${item.id})}" method="post">
+                <form th:action="@{/items/{itemsId}/user/{userId}/3(itemsId=${item.id}, userId=${user.id})}" method="post">
                     <button>I REALLY want it</button>
                 </form>
+            </div>
+            <div th:if="${isRepeated}">
+                <p class="alert alert-danger" role="alert">You've already selected that rank.</p>
             </div>
             <br><br>
             <th:block th:if="${isOwner}">
