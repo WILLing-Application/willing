@@ -74,6 +74,9 @@ https://www.w3schools.com/w3css/w3css_accordions.asp
                     <input type="text" id="lastname" name="lastname">
                     <button>Submit</button>
                 </form>
+                <div th:if="${isInvalid}">
+                    <p>This user already exists in this album.</p>
+                </div>
                 <div th:if="${isVisible}">
                     <th:block th:if="${isRegistered}">
                         <form th:action="@{/albums/{albumId}/guest/{guestId}(albumId=${album.id},guestId=${user.id})}" method="post">
