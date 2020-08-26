@@ -1,108 +1,305 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>User Albums</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <!--ANIMATE.CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
-    <link th:href="@{/css/album.css}" rel="stylesheet">
-    <style>
-        header {
-            background-image: url("/../photos/camera.jpg");
-            padding-top: 10px;
-            width: 100%;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <title>Albums</title>
 
-        header h1 {
-            opacity: .7;
-            font-weight: 400;
-        }
-    </style>
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--    CSS FILES-->
+    <link th:href="@{/css/fontawesome.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <link th:href="@{/css/owl.css}" rel="stylesheet">
 </head>
 <body>
-<div th:replace="partials/navbar :: navbar"></div>
-<section class="container platform">
-    <header class="jumbotron d-none d-lg-block">
-        <h1 class="text-center bg-light">Welcome WILLing Albums</h1>
-    </header>
+<!--<header class="jumbotron jumbotron-fluid">-->
+<!--    <div class="container text-center">-->
+<!--        <h1 class="banner-title"><strong><em>WILLING</em></strong></h1>-->
+<!--        <p class="sub-title">Willing is the future of departing with your belongings, The <strong><em>FAST</em></strong> and <strong><em>EASY</em></strong> </p>-->
+<!--    </div>-->
+<!--</header>-->
 
-    <div class="card">
-        <a th:href="@{/albums/create}" class="btn btn-primary text-center">Create an album</a>
+<div id="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span>DIVIDE YOUR BELONGINGS WITH US!</span>
+            </div>
+        </div>
     </div>
+</div>
 
-    <h2 class="text-center">Browse through are albums !</h2>
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Albums
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Developers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-</section>
+<!-- ITEMS START HERE -->
+<div class="main-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h1 class="animate__animated animate__fadeInUp animate__delay-1s">WILLing ALBUMS</h1>
+                    <div class="card">
+                    <a th:href="@{/albums/create}" class="btn btn-primary text-center">Create an album</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div id="filters" class="button-group">
+                    <button class="btn btn-primary" data-filter="*">All Albums</button>
+                    <button class="btn btn-primary" data-filter=".new">Newest</button>
+                    <button class="btn btn-primary" data-filter=".low">Oldest</button>
+                    <button class="btn btn-primary" data-filter=".high">Sort</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<hr>
-
-<main class="container wrapper">
-    <section class="cards">
-        <div th:each="album : ${albums}" class="card product-grid">
-            <!--            ALBUM IMAGE-->
-            <!--            TODO: MAYBE PUT BACK card_image-container CLASS-->
-            <div class="image">
-                <a>
+<div class="featured container no-gutter">
+    <div class="row posts">
+        <div th:each="album : ${albums}"  id="1" class="item new col-md-4">
+            <a>
+                <div  class="featured-item">
                     <div th:each="image : ${album.images[0]}">
                         <img class="w-100" th:src="${image.filename}" alt="First slide">
                     </div>
-                    <div class="overlay">
-                        <div class="detail">View Detail</div>
-                    </div>
-                </a>
-            </div>
-            <!--            ALBUM IMAGE ENDS-->
-            <!--            =====================================-->
-
-            <!--            ALBUM TITLE-->
-            <div class="card_content">
-                <!-
-                <a th:href="@{/albums/{id}(id=${album.id})}">
-                    <h3 class="card-title text-center" th:text="${album.title}"></h3>
-                </a>
-                <!--                =====================================================================-->
-                <p class="card-text" th:text="${album.lineage}">
-                <hr>
-                <!--                =========================================================================-->
-                <!--           ALBUM DESCRIPTION-->
-                <p class="card-text text-center" th:text="${album.description}">
-                    <!--                    ============================================================================-->
-                    <!--            VIEW ALBUM-->
-                    <a href="#" class="btn click">View Album</a>
-                    <!--                WHERE GREY BOX STARTS-->
-                <div class="card-footer text-right">
-                    <!--                ==================================================================================-->
-                    <!--                ALBUM EMAIL-->
-                    <div class="email">
-                        <span th:each="user : ${album.owner}" th:text="${album.owner.email}"></span>
-                    </div>
-                    <!--                ==============================================================================-->
-                    <!--                VIEW ALBUM BUTTON-->
+                    <a th:href="@{/albums/{id}(id=${album.id})}">
+                        <h3 class="text-center" th:text="${album.title}"></h3>
+                    </a>
+                    <p class="card-text text-center" th:text="${album.lineage}"></p>
                     <a th:href="@{/albums/{id}(id=${album.id})}" class="btn click">View Album</a>
-                    <!--                =======================================================================-->
-                    <!--             EDIT AND DELETE BUTTONS  -->
-                    <th:block th:if="${isOwner}">
-                        <div class="delete_icon">
-                            <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i
-                                    class="fas fa-edit"></i>Edit</a>
-                            <form th:action="@{/albums/{id}/delete(id=${album.id})}" method="post">
-                                <button class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</button>
-                            </form>
-                        </div>
-                    </th:block>
-
-
                 </div>
-                <!--            ALBUM INFO ENDS-->
-            </div>
-            <!--        CARD END ===============================================-->
+            </a>
         </div>
-    </section>
-</main>
+        <div id="2" class="item high col-md-4">
+            <a href="single-product.html">
+                <div class="featured-item">
+                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    <h4>Erat odio rhoncus</h4>
+                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                </div>
+            </a>
+        </div>
+        <div id="3" class="item low col-md-4">
+            <a href="single-product.html">
+                <div class="featured-item">
+                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    <h4>Integer vel turpis</h4>
+                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                </div>
+            </a>
+        </div>
+        <div id="4" class="item low col-md-4">
+            <a href="single-product.html">
+                <div class="featured-item">
+                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    <h4>Sed purus quam</h4>
+                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                </div>
+            </a>
+        </div>
+        <div id="5" class="item new high col-md-4">
+            <a href="single-product.html">
+                <div class="featured-item">
+                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    <h4>Morbi aliquet</h4>
+                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                </div>
+            </a>
+        </div>
+        <div id="6" class="item new col-md-4">
+            <a href="single-product.html">
+                <div class="featured-item">
+                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    <h4>Urna ac diam</h4>
+                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                </div>
+            </a>
+        </div>
+        <div id="7" class="item new high col-md-4">
+            <a href="single-product.html">
+                <div class="featured-item">
+                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    <h4>Proin eget imperdiet</h4>
+                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                </div>
+            </a>
+        </div>
+        <div id="8" class="item low new col-md-4">
+            <a href="single-product.html">
+                <div class="featured-item">
+                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
+                    <h4>Nullam risus nisl</h4>
+                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                </div>
+            </a>
+<!--            &lt;!&ndash;            ===============================================================================&ndash;&gt;-->
+            <div class="page-nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul>
+                                <li class="current-page"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="partials/scripts :: assets"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<!--======================================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head>-->
+<!--    <title>User Albums</title>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"-->
+<!--          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">-->
+<!--    &lt;!&ndash;ANIMATE.CSS&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>-->
+<!--    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>-->
+<!--    <script src="/static/test.js"></script>-->
+<!--    <link th:href="@{/css/album.css}" rel="stylesheet">-->
+<!--    <style>-->
+<!--        header {-->
+<!--            background-image: url("/../photos/camera.jpg");-->
+<!--            padding-top: 10px;-->
+<!--            width: 100%;-->
+<!--        }-->
+
+<!--        header h1 {-->
+<!--            opacity: .7;-->
+<!--            font-weight: 400;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--OLD CODE-->
+<!--&lt;!&ndash;=====================================================================&ndash;&gt;-->
+<!--<div th:replace="partials/navbar :: navbar"></div>-->
+<!--<section class="container platform">-->
+<!--    <header class="jumbotron d-none d-lg-block">-->
+<!--        <h1 class="text-center bg-light">Welcome WILLing Albums</h1>-->
+<!--    </header>-->
+
+<!--    <div class="card">-->
+<!--        <a th:href="@{/albums/create}" class="btn btn-primary text-center">Create an album</a>-->
+<!--    </div>-->
+
+<!--    <h2 class="text-center">Browse through are albums !</h2>-->
+
+<!--</section>-->
+
+<!--<hr>-->
+
+<!--<main class="container wrapper">-->
+<!--    <section class="cards">-->
+<!--        <div th:each="album : ${albums}" class="card product-grid">-->
+<!--            &lt;!&ndash;            ALBUM IMAGE&ndash;&gt;-->
+<!--            &lt;!&ndash;            TODO: MAYBE PUT BACK card_image-container CLASS&ndash;&gt;-->
+<!--            <div class="image">-->
+<!--                <a>-->
+<!--                    <div th:each="image : ${album.images[0]}">-->
+<!--                        <img class="w-100" th:src="${image.filename}" alt="First slide">-->
+<!--                    </div>-->
+<!--                    <div class="overlay">-->
+<!--                        <div class="detail">View Detail</div>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;            ALBUM IMAGE ENDS&ndash;&gt;-->
+<!--            &lt;!&ndash;            =====================================&ndash;&gt;-->
+
+<!--            &lt;!&ndash;            ALBUM TITLE&ndash;&gt;-->
+<!--            <div class="card_content">-->
+<!--                <!- -->
+<!--&lt;!&ndash;                <a th:href="@{/albums/{id}(id=${album.id})}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h3 class="card-title text-center" th:text="${album.title}"></h3>&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                =====================================================================&ndash;&gt;-->
+<!--                <p class="card-text" th:text="${album.lineage}">-->
+<!--                <hr>-->
+<!--                &lt;!&ndash;                =========================================================================&ndash;&gt;-->
+<!--                &lt;!&ndash;           ALBUM DESCRIPTION&ndash;&gt;-->
+<!--                <p class="card-text text-center" th:text="${album.description}">-->
+<!--                    &lt;!&ndash;                    ============================================================================&ndash;&gt;-->
+<!--                    &lt;!&ndash;            VIEW ALBUM&ndash;&gt;-->
+<!--                    <a href="#" class="btn click">View Album</a>-->
+<!--                    &lt;!&ndash;                WHERE GREY BOX STARTS&ndash;&gt;-->
+<!--                <div class="card-footer text-right">-->
+<!--                    &lt;!&ndash;                ==================================================================================&ndash;&gt;-->
+<!--                    &lt;!&ndash;                ALBUM EMAIL&ndash;&gt;-->
+<!--                    <div class="email">-->
+<!--                        <span th:each="user : ${album.owner}" th:text="${album.owner.email}"></span>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;                ==============================================================================&ndash;&gt;-->
+<!--                    &lt;!&ndash;                VIEW ALBUM BUTTON&ndash;&gt;-->
+<!--                    <a th:href="@{/albums/{id}(id=${album.id})}" class="btn click">View Album</a>-->
+<!--                    &lt;!&ndash;                =======================================================================&ndash;&gt;-->
+<!--                    &lt;!&ndash;             EDIT AND DELETE BUTTONS  &ndash;&gt;-->
+<!--                    <th:block th:if="${isOwner}">-->
+<!--                        <div class="delete_icon">-->
+<!--                            <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i-->
+<!--                                    class="fas fa-edit"></i>Edit</a>-->
+<!--                            <form th:action="@{/albums/{id}/delete(id=${album.id})}" method="post">-->
+<!--                                <button class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</button>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </th:block>-->
+
+
+<!--                </div>-->
+<!--                &lt;!&ndash;            ALBUM INFO ENDS&ndash;&gt;-->
+<!--            </div>-->
+<!--            &lt;!&ndash;        CARD END ===============================================&ndash;&gt;-->
+<!--        </div>-->
+<!--    </section>-->
+<!--</main>-->
 
 
 <!-- =====================================================================================-->
@@ -204,15 +401,15 @@
 <!--        </div>-->
 <!--    </div>-->
 
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+<!--</div>-->
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"-->
+<!--        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"-->
+<!--        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"-->
+<!--        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--</body>-->
+<!--</html>-->
