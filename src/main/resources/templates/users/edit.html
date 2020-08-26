@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head th:replace="partials/head :: header-links ('Edit Profile')">
+<body>
+<div th:replace="partials/navbar :: navbar"></div>
+
+<!--Forcing some space since text currently overlaps the navbar items-->
+<br><br><br>
+
+<div class="container">
+    <!-- This content is only shown to authenticated users.-->
+    <div class="row" sec:authorize="isAuthenticated()">
+        <div>
+
+                        USER PROFILE PHOTO
+            <div>
+                <!-- Display user profile photo, if it has been uploaded -->
+                <div th:if="${user.profilePhoto}">
+                    <img th:src="${user.profilePhoto}" class="rounded-circle img-responsive m-2"
+                         height="120" width="120" alt="profile-photo">
+                </div>
+                <!-- Display placeholder image if user profile photo does not exist -->
+                <div th:unless="${user.profilePhoto}">
+                    <img src="../../static/photos/placeholder.jpeg" class="rounded-circle img-responsive m-2"
+                         width="100" th:src="@{photos/placeholder.jpeg}"/>
+                </div>
+                <!-- Upload user profile photo -->
+                <div id="files"></div>
+                <button id="upload" class="btn btn-muted btn-sm mb-2">Upload image</button>
+            </div>
+
+            <p>Welcome, <span th:text="${user.firstName}"/>
+                <span th:text="${user.lastName}"/>!</p>
+            <p>Username: <span th:text="${user.username}"/><br>
+                Email: <span th:text="${user.email}"/><br>
+                Address: <span th:text="${user.address1}"/> <span th:text="${user.address2}"/><br>
+                <span th:text="${user.city}"/>,
+                <span th:text="${user.state}"/> <span th:text="${user.zip}"/><br>
+                Phone: <span th:text="${user.phone}"/></p>
+            <a th:href="@{/profile/{id}/edit(id=${user.id})}" class="btn btn-muted btn-sm">
+                <i class="fas fa-edit mr-2"> </i>Edit My Account Info</a><br>
+            <a th:href="@{/profile/{id}/delete(id=${user.id})}" class="btn btn-muted btn-sm">
+                <i class="fas fa-trash mr-2"> </i>Delete My Account</a><br>
+
+
+<!--                <h5>Search Users to Add</h5>-->
+<!--                <h7>*email req'd and must be exact</h7>-->
+<!--                <form th:action="@{/albums/{id}/search/guest(id=${album.id})}" th:method="get">-->
+<!--                    <label for="email">Email</label>-->
+<!--                    <input type="text" id="email" name="email">-->
+<!--                    <p>- Or -</p>-->
+<!--                    <label for="firstname">First Name</label>-->
+<!--                    <input type="text" id="firstname" name="firstname">-->
+<!--                    <label for="lastname">Last Name</label>-->
+<!--                    <input type="text" id="lastname" name="lastname">-->
+<!--                    <button>Submit</button>-->
+<!--                </form>-->
+<!--                <div th:if="${isInvalid}">-->
+<!--                    <p>This user already exists in this album.</p>-->
+<!--                </div>-->
+<!--                <div th:if="${isVisible}">-->
+<!--                    <th:block th:if="${isRegistered}">-->
+<!--                        <form th:action="@{/albums/{albumId}/guest/{guestId}(albumId=${album.id},guestId=${user.id})}" method="post">-->
+<!--                            <div th:text="${user.email}"></div>-->
+<!--                            <div>First Name: <span th:text="${user.firstName}"></span></div>-->
+<!--                            <div>Last Name: <span th:text="${user.lastName}"></span></div>-->
+<!--                            &lt;!&ndash;                            <input type="hidden" name="email" th:value="${user.email}">&ndash;&gt;-->
+<!--                            <p>If you'd like to invite this guest to the album, hit submit</p>-->
+<!--                            <button>Submit</button>-->
+<!--                        </form>-->
+<!--                    </th:block>-->
+<!--                    <th:block th:if="${!isRegistered}">-->
+<!--                        <div th:text="${userNotFound}"></div>-->
+<!--                    </th:block>-->
+<!--                </div>-->
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="partials/scripts :: assets"></div>
+</body>
+<footer th:replace="partials/footer :: footer"/>
+</html>
