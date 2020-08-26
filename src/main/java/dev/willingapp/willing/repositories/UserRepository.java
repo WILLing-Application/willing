@@ -9,5 +9,4 @@ public interface UserRepository extends JpaRepository<User, Long> { // curriculu
     User findByEmail(String email);
     User findByFirstName(String firstName);
     User findByLastName(String lastName);
-//    User findByAlbumId(long id);
 }
