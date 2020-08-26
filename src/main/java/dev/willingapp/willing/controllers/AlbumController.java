@@ -125,10 +125,16 @@ public class AlbumController {
 
     @GetMapping("/albums")
     public String index(Model model) {
+        boolean isOwner = true;
         List<Album> albums = albumsDao.findAll();
         List<Album> ownerAlbums = new ArrayList<>();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User newUser = usersDao.getOne(user.getId());
+        List<Image> images = new ArrayList<>();
+        Image image = new Image();
+        image.setFilename("https://cdn.filestackcontent.com/ixlBgvOrR7OiTMVdrX4F");
+        image.setFileType("image/jpeg");
+        images.add(image);
 //        Album newAlbum = albumsDao.getOne(5L);
 //        if (newUser.getAlbums().isEmpty()) {
 //            usersDao.getOne(newUser.getId()).getAlbums().add(newAlbum);
@@ -138,8 +144,21 @@ public class AlbumController {
 //
 //        }
         if (!newUser.getOwnerAlbums().isEmpty()) {
+            for (Album x : newUser.getOwnerAlbums()) {
+                if (x.getImages().isEmpty()) {
+                    x.setImages(images);
+                }
+            }
+            model.addAttribute("isOwner", isOwner);
             model.addAttribute("albums", newUser.getOwnerAlbums());
         } else {
+            for (Album x : newUser.getAlbums()) {
+                if (x.getImages().isEmpty()) {
+                    x.setImages(images);
+                }
+            }
+            isOwner = false;
+            model.addAttribute("isOwner", isOwner);
             model.addAttribute("albums", newUser.getAlbums());
         }
         return "albums/albums";
@@ -147,7 +166,10 @@ public class AlbumController {
 
     @GetMapping("/albums/{id}")
     public String show(@PathVariable long id, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User thisUser = usersDao.getOne(user.getId());
         Album grabbedAlbum = albumsDao.getOne(id);
+        boolean isOwner = false;
         List<Image> images = new ArrayList<>();
         Image image = new Image();
         image.setFilename("https://cdn.filestackcontent.com/ixlBgvOrR7OiTMVdrX4F");
@@ -156,8 +178,11 @@ public class AlbumController {
         for (Item x : grabbedAlbum.getItems()) {
             if (x.getImages().isEmpty()) {
                 x.setImages(images);
-                System.out.println(x.getImages().get(0).getFilename());
             }
+        }
+        if (grabbedAlbum.getOwner().getId() == thisUser.getId()) {
+            isOwner = true;
+            model.addAttribute("isOwner", isOwner);
         }
         model.addAttribute("album", grabbedAlbum);
         model.addAttribute("items", grabbedAlbum.getItems());
@@ -176,6 +201,8 @@ public class AlbumController {
     //    POSTING NEWLY CREATED FORM
     @PostMapping("/albums/create")
     public String createAlbum(@RequestParam(name = "title") String title, @RequestParam(name = "description") String description, @RequestParam(name = "lineage") String lineage, @RequestParam(name = "images") String[] images, @RequestParam(name = "file-type") String[] fileType) {
+        User tempUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.getOne(tempUser.getId());
         Album album = new Album();
         album.setTitle(title);
         album.setDescription(description);
@@ -187,7 +214,7 @@ public class AlbumController {
         DateTimeFormatter currentDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
 //        CONVERTING IT TO A STRING
         String dateString = currentDate.format(currentDateFormat);
-        User user = usersDao.getOne(1L);
+//        User user = usersDao.getOne(1L);
         album.setOwner(user);
         album.setDeadline(dateString);
         albumsDao.save(album);
@@ -252,12 +279,14 @@ public class AlbumController {
 
     @GetMapping("/albums/{id}/search/guest")
     public String searchGuest(@PathVariable long id, Model model, @RequestParam(name = "email") String email, @RequestParam(name = "firstname") String firstName, @RequestParam(name = "lastname") String lastName) {
-        model.addAttribute("album", albumsDao.getOne(id));
-        boolean isVisible = true;
-        model.addAttribute("isVisible", isVisible);
+        Album album = albumsDao.getOne(id);
+        model.addAttribute("album", album);
+        model.addAttribute("isVisible", true);
+        model.addAttribute("isInvalid", false);
         User user = new User();
         String userNotFound = "Sorry, cannot find user with those credentials";
         boolean isRegistered = false;
+
         if (usersDao.findByEmail(email) != null) {
             user = usersDao.findByEmail(email);
             isRegistered = true;
@@ -277,9 +306,17 @@ public class AlbumController {
     }
 
     @PostMapping("/albums/{albumId}/guest/{guestId}")
-    public String addGuestToAlbum(@PathVariable long albumId, @PathVariable long guestId) {
+    public String addGuestToAlbum(@PathVariable long albumId, @PathVariable long guestId, Model model) {
         Album album = albumsDao.getOne(albumId);
         User user = usersDao.getOne(guestId);
+        for (User x : album.getUsers()) {
+            if (x.getId() == guestId) {
+                model.addAttribute("album", album);
+                model.addAttribute("isVisible", false);
+                model.addAttribute("isInvalid", true);
+                return "albums/add-guest";
+            }
+        }
         user.getAlbums().add(album);
         album.getUsers().add(user);
         albumsDao.save(album);
