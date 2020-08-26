@@ -20,9 +20,12 @@
                 </div>
             </div>
         </th:block>
+            <div class="card">
+                <div class="card-header">List</div>
                 <th:block th:each="user : ${users}">
                     <p th:text="${user.firstName}"></p>
                 </th:block>
+            </div>
     </section>
     </div>
 </div>
