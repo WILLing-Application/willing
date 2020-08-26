@@ -39,6 +39,14 @@ public class ItemController {
         List<Image> images = item.getImages();
         List<Image> photos = new ArrayList<>();
         List<Image> videos = new ArrayList<>();
+        List<Interest> interests = interestsDao.findAll();
+        for (Interest x : interests) {
+            if (x.getInterestedUser().getId() == thisUser.getId() && x.getItem().getId() == id) {
+                model.addAttribute("hasRank", true);
+                model.addAttribute("interest", x);
+                break;
+            }
+        }
         boolean isOwner = false;
         boolean hasPhotos = false;
         for (Image x : images) {
@@ -58,6 +66,8 @@ public class ItemController {
             model.addAttribute("hasPhotos", hasPhotos);
             model.addAttribute("singleImage", singleImage);
         }
+
+        model.addAttribute("user", thisUser);
         model.addAttribute("item", item);
         model.addAttribute("photos", photos);
         model.addAttribute("videos", videos);
@@ -141,14 +151,60 @@ public class ItemController {
     }
 
     @PostMapping("/items/{itemsId}/user/{userId}/{rank}")
-    public String interest(@PathVariable long itemsId, @PathVariable long userId, @PathVariable int rank) {
+    public String interest(@PathVariable long itemsId, @PathVariable long userId, @PathVariable int rank, Model model) {
         Item item = itemsDao.getOne(itemsId);
         User user = usersDao.getOne(userId);
         Interest interest = new Interest();
-        interest.setInterestedUser(user);
-        interest.setItem(item);
-        interest.setInterestRanking(rank);
-        interestsDao.save(interest);
+        List<Interest> interests = new ArrayList<>();
+        if (user.getInterests().isEmpty()) {
+            interest.setInterestedUser(user);
+            interest.setItem(item);
+            interest.setInterestRanking(rank);
+            interestsDao.save(interest);
+            user.getInterests().add(interest);
+            usersDao.save(user);
+            return "redirect:/items/" + itemsId;
+        } else {
+            int num = 0;
+            for (Interest x : user.getInterests()) {
+                if (x.getItem().getId() == itemsId) {
+                    num += 1;
+                }
+            }
+            if (num == 0) {
+                    interest.setInterestedUser(user);
+                    interest.setItem(item);
+                    interest.setInterestRanking(rank);
+                    interestsDao.save(interest);
+                    user.getInterests().add(interest);
+                    usersDao.save(user);
+                    return "redirect:/items/" + itemsId;
+            }
+        }
+//        else {
+//            for (Interest x : user.getInterests()) {
+//                if (x.getItem().getId() == itemsId && x.getInterestRanking() == rank) {
+//                    return "redirect:/items/" + itemsId;
+//                } else if (x.getItem().getId() == itemsId && x.getInterestRanking() != rank) {
+//                    Interest deleteInterest = interestsDao.getOne(x.getId());
+//                    interestsDao.delete(deleteInterest);
+//                    interest.setInterestedUser(user);
+//                    interest.setItem(item);
+//                    interest.setInterestRanking(rank);
+//                    interestsDao.save(interest);
+//                    interests.add(interest);
+//                    user.setInterests(interests);
+//                    usersDao.save(user);
+//                    return "redirect:/items/" + itemsId;
+//                }
+//            }
+//        }
+//        interest.setInterestedUser(user);
+//        interest.setItem(item);
+//        interest.setInterestRanking(rank);
+//        user.getInterests().add(interest);
+//        usersDao.save(user);
+//        interestsDao.save(interest);
         return "redirect:/items/" + itemsId;
     }
 
