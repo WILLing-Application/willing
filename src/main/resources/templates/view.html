@@ -11,22 +11,54 @@
 <div class="card border-primary">
 <div class="card-header">Owner Item Assignment</div>
     <div class="card-body">
-    <section sec:authorize="isAuthenticated()">
-        <th:block th:each="album : ${albums}"  class="card border-primary">
-            <div class="row">
-                <h1 th:text="${album.title}"></h1>
-                <div th:each="item : ${album.getItems()}" class="card">
-                    <p th:text="${item.title}">  </p>
-                </div>
-            </div>
-        </th:block>
-            <div class="card">
-                <div class="card-header">List</div>
+        <section sec:authorize="isAuthenticated()">
+        <div class="row">
+            <div class="card" style="width: 15rem; min-height: 18rem">
+                <div class="card-header">Users List</div>
                 <th:block th:each="user : ${users}">
                     <p th:text="${user.firstName}"></p>
                 </th:block>
+                <div class="card-footer text-muted">
+                    To give a User an Item,
+                    Select one User and one Item.
+                    Then click 'Assign Item'.
+                </div>
             </div>
-    </section>
+            <th:block th:each="album : ${albums}">
+
+                    <div class="col-sm-3">
+
+                        <div class="card border-primary" style="width: 15rem">
+
+                            <div class="card-body">
+
+                            <h3 th:text="${album.title}" class="card-header"></h3>
+                                <div th:each="item : ${album.getItems()}" class="card">
+                                    <p th:text="${item.title}">  </p>
+                            </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+            </th:block>
+        </div>
+            <br>
+<!--                <div class="card" style="width: 15rem; height: 30rem">-->
+<!--                    <div class="card-header">Users List</div>-->
+<!--                    <th:block th:each="user : ${users}">-->
+<!--                        <p th:text="${user.firstName}"></p>-->
+<!--                    </th:block>-->
+<!--                    <div class="card-footer text-muted">-->
+<!--                        To give a User an Item,-->
+<!--                        Select one User and one Item.-->
+<!--                        Then click 'Assign Item'.-->
+<!--                    </div>-->
+<!--                </div>-->
+            <button type="submit">Assign Item</button>
+        </section>
     </div>
 </div>
 
