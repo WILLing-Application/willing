@@ -13,12 +13,13 @@
     <!-- This content is only shown to authenticated users.-->
     <div class="row" sec:authorize="isAuthenticated()">
         <div class="col-sm-8 col-md-8">
-            Placeholder for owner summary (dashboard matrix, summaries - items/#interested users, users/#interested items)
+            Placeholder for owner summary (dashboard matrix, summaries - items/#interested users, users/#interested
+            items)
+            <!-- <div th:replace="partials :: panel-profile"></div>-->
+            <div th:replace="partials/matrix :: matrix"></div>
         </div>
-<!--        <div th:replace="partials :: panel-profile"></div>-->
-<div th:replace="partials/matrix :: matrix"></div>
         <div class="col-sm-4 col-md-4">
-<!--            USER PROFILE PHOTO-->
+            <!-- USER PROFILE PHOTO-->
             <div>
                 <!-- Display user profile photo, if it has been uploaded -->
                 <div th:if="${user.profilePhoto}">
@@ -31,18 +32,18 @@
                          width="100" th:src="@{photos/placeholder.jpeg}"/>
                 </div>
             </div>
-
+            <!-- USER PROFILE DETAILS-->
             <p>Welcome, <span th:text="${user.firstName}"/>
                 <span th:text="${user.lastName}"/>!</p>
             <p>Username: <span th:text="${user.username}"/><br>
-            Email: <span th:text="${user.email}"/><br>
-            Address: <span th:text="${user.address1}"/> <span th:text="${user.address2}"/><br>
+                Email: <span th:text="${user.email}"/><br>
+                Address: <span th:text="${user.address1}"/> <span th:text="${user.address2}"/><br>
                 <span th:text="${user.city}"/>,
-                <span th:text="${user.state}"/>  <span th:text="${user.zip}"/><br>
-            Phone: <span th:text="${user.phone}"/></p>
+                <span th:text="${user.state}"/> <span th:text="${user.zip}"/><br>
+                Phone: <span th:text="${user.phone}"/></p>
             <a th:href="@{/profile/{id}/edit(id=${user.id})}" class="btn btn-muted btn-sm">
                 <i class="fas fa-edit mr-2"> </i>Edit My Account Info</a><br>
-            <a th:href="@{/profile/{id}/delete(id=${user.id})}" class="btn btn-muted btn-sm">
+            <a th:href="@{/profile/delete}" class="btn btn-muted btn-sm">
                 <i class="fas fa-trash mr-2"> </i>Delete My Account</a><br>
         </div>
     </div>
