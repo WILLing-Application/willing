@@ -41,17 +41,17 @@
             <p> Deadline: <span th:text="${item.albumForItems.deadline}"></span></p>
             <div class="btn-group">
                 <form th:action="@{/items/{itemsId}/user/{userId}/1(itemsId=${item.id}, userId=${user.id})}" method="post">
-                    <button>I kind of want it</button>
+                    <button id="button-rank1">I'm interested!</button>
                 </form>
-                <form th:action="@{/items/{itemsId}/user/{userId}/2(itemsId=${item.id}, userId=${user.id})}" method="post">
-                    <button>I want it</button>
-                </form>
-                <form th:action="@{/items/{itemsId}/user/{userId}/3(itemsId=${item.id}, userId=${user.id})}" method="post">
-                    <button>I REALLY want it</button>
-                </form>
+<!--                <form th:action="@{/items/{itemsId}/user/{userId}/2(itemsId=${item.id}, userId=${user.id})}" method="post">-->
+<!--                    <button id="button-rank2">I want it</button>-->
+<!--                </form>-->
+<!--                <form th:action="@{/items/{itemsId}/user/{userId}/3(itemsId=${item.id}, userId=${user.id})}" method="post">-->
+<!--                    <button id="button-rank3">I REALLY want it</button>-->
+<!--                </form>-->
             </div>
-            <div th:if="${isRepeated}">
-                <p class="alert alert-danger" role="alert">You've already selected that rank.</p>
+            <div th:if="${hasRank}">
+                <div class="alert alert-primary">You have added this item into your Interests!</div>
             </div>
             <br><br>
             <th:block th:if="${isOwner}">
