@@ -43,7 +43,7 @@
                 Phone: <span th:text="${user.phone}"/></p>
             <a th:href="@{/profile/{id}/edit(id=${user.id})}" class="btn btn-muted btn-sm">
                 <i class="fas fa-edit mr-2"> </i>Edit My Account Info</a><br>
-            <a th:href="@{/profile/{id}/delete(id=${user.id})}" class="btn btn-muted btn-sm">
+            <a th:href="@{/profile/delete}" class="btn btn-muted btn-sm">
                 <i class="fas fa-trash mr-2"> </i>Delete My Account</a><br>
         </div>
     </div>

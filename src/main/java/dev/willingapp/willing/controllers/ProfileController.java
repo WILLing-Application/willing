@@ -5,9 +5,7 @@ import dev.willingapp.willing.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ProfileController {
@@ -18,32 +16,84 @@ public class ProfileController {
         this.usersDao = usersDao;
     }
 
-    // view logged in user profile
+    // VIEW USER PROFILE
     @GetMapping("/profile")
     public String showUserProfile(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", usersDao.getOne(user.getId()));
+        User myUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        model.addAttribute("user", usersDao.getOne(myUser.getId()));
+        model.addAttribute("user", myUser);
         return "users/profile";
     }
 
-    @GetMapping("/profile/edit")
-    public String editUserProfile(Model model) throws NullPointerException {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", usersDao.getOne(user.getId()));
+    // EDIT USER PROFILE (FORM)
+    @GetMapping("/profile/{id}/edit")
+    public String editUserProfile(@RequestParam(name = "email") String email,
+                                  @RequestParam(name = "username") String username,
+                                  @RequestParam(name = "password") String password,
+//                                  @RequestParam(name = "firstname") String firstName,
+//                                  @RequestParam(name = "lastname") String lastName,
+//                                  @RequestParam(name = "address1") String address1,
+//                                  @RequestParam(name = "address2") String address2,
+//                                  @RequestParam(name = "city") String city,
+//                                  @RequestParam(name = "state") String state,
+//                                  @RequestParam(name = "zip") String zip,
+                                  @RequestParam(name = "phone") String phone,
+                                  Model model) {
+        User myUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", usersDao.getOne(myUser.getId()));
+
+        boolean isDifferent = false;
+
+        // snippet from AlbumController & add-guest.html
+//        if (usersDao.findByEmail(email) != null) {
+//            user = usersDao.findByEmail(email);
+//            isNotUnique = false;
+//            model.addAttribute("user", user);
+//            model.addAttribute("isRegistered", isRegistered);
+//        } else if (usersDao.findByFirstName(firstName) != null && usersDao.findByLastName(lastName) != null) {
+//            user = usersDao.findByFirstName(firstName);
+//            isRegistered = true;
+//            model.addAttribute("user", user);
+//            model.addAttribute("isRegistered", isRegistered);
+//        } else {
+//            isRegistered = false;
+//            model.addAttribute("userNotFound", userNotFound);
+//            model.addAttribute("isRegistered", isRegistered);
+//        }
         return "users/edit";
     }
 
-    @PostMapping("/profile/edit")
-    public String editUserDetail(@RequestParam(name="username") String username,
+    // snippet from user controller
+//    String hash = passwordEncoder.encode(user.getPassword());
+//        user.setPassword(hash);
+//        usersDao.save(user);
+
+
+    // EDIT/SAVE USER PROFILE
+    @PostMapping("/profile/{id}/edit")
+    public String saveUserProfile(@RequestParam(name="username") String username,
                                  @RequestParam(name="password") String password,
                                  @RequestParam(name="email") String email,
                                  @RequestParam(name="phone") String phone, Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", usersDao.getOne(user.getId()));
-        // set attributes from form
+        User myUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", usersDao.getOne(myUser.getId()));
+        // check and set all the attributes sent with the form
         return "users/edit";
 
     }
 
+    @GetMapping("/profile/delete")
+    public String deleteProfileById(Model model) {
+        User myUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", usersDao.getOne(myUser.getId()));
+        System.out.println("value of myUser id: " + myUser.getId()); // DEBUG
+        return "users/delete";
+    }
+
+    @PostMapping("/profile/delete")
+    public String deleteProfile(@RequestParam(name="delete-user") long id) {
+        usersDao.deleteById(id);
+        return "redirect:/";
+    }
 
 }
