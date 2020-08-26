@@ -26,89 +26,89 @@
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <section class="container platform">
-        <header class="jumbotron d-none d-lg-block">
-            <h1 class="text-center bg-light">Welcome WILLing Albums</h1>
-        </header>
+    <header class="jumbotron d-none d-lg-block">
+        <h1 class="text-center bg-light">Welcome WILLing Albums</h1>
+    </header>
 
-        <div class="card">
-            <a th:href="@{/albums/create}" class="btn btn-primary text-center">Create an album</a>
-        </div>
+    <div class="card">
+        <a th:href="@{/albums/create}" class="btn btn-primary text-center">Create an album</a>
+    </div>
 
-        <h2 class="text-center">Browse through are albums !</h2>
+    <h2 class="text-center">Browse through are albums !</h2>
 
 </section>
 
 <hr>
 
 <main class="container wrapper">
-    <section  class="cards">
+    <section class="cards">
         <div th:each="album : ${albums}" class="card product-grid">
             <!--            ALBUM IMAGE-->
-<!--            TODO: MAYBE PUT BACK card_image-container CLASS-->
+            <!--            TODO: MAYBE PUT BACK card_image-container CLASS-->
             <div class="image">
                 <a>
-                    <img class="w-100" th:src="@{${'/photos/placeholder.jpeg'}}" alt="First slide">
+                    <div th:each="image : ${album.images[0]}">
+                        <img class="w-100" th:src="${image.filename}" alt="First slide">
+                    </div>
                     <div class="overlay">
                         <div class="detail">View Detail</div>
                     </div>
                 </a>
             </div>
-<!--            ALBUM IMAGE ENDS-->
-<!--            =====================================-->
+            <!--            ALBUM IMAGE ENDS-->
+            <!--            =====================================-->
 
-<!--            ALBUM TITLE-->
+            <!--            ALBUM TITLE-->
             <div class="card_content">
-<!-
+                <!-
                 <a th:href="@{/albums/{id}(id=${album.id})}">
                     <h3 class="card-title text-center" th:text="${album.title}"></h3>
                 </a>
-<!--                =====================================================================-->
+                <!--                =====================================================================-->
                 <p class="card-text" th:text="${album.lineage}">
                 <hr>
-<!--                =========================================================================-->
+                <!--                =========================================================================-->
                 <!--           ALBUM DESCRIPTION-->
                 <p class="card-text text-center" th:text="${album.description}">
-<!--                    ============================================================================-->
+                    <!--                    ============================================================================-->
                     <!--            VIEW ALBUM-->
                     <a href="#" class="btn click">View Album</a>
-<!--                WHERE GREY BOX STARTS-->
+                    <!--                WHERE GREY BOX STARTS-->
                 <div class="card-footer text-right">
-<!--                ==================================================================================-->
-<!--                ALBUM EMAIL-->
-                   <div class="email">
-                       <span th:each="user : ${album.owner}" th:text="${album.owner.email}"></span>
-                   </div>
-<!--                ==============================================================================-->
-<!--                VIEW ALBUM BUTTON-->
-                    <a href="#" class="btn click">View Album</a>
-<!--                =======================================================================-->
+                    <!--                ==================================================================================-->
+                    <!--                ALBUM EMAIL-->
+                    <div class="email">
+                        <span th:each="user : ${album.owner}" th:text="${album.owner.email}"></span>
+                    </div>
+                    <!--                ==============================================================================-->
+                    <!--                VIEW ALBUM BUTTON-->
+                    <a th:href="@{/albums/{id}(id=${album.id})}" class="btn click">View Album</a>
+                    <!--                =======================================================================-->
                     <!--             EDIT AND DELETE BUTTONS  -->
-                <div class="delete_icon">
-                    <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i class="fas fa-edit"></i>Edit</a>
-                    <form th:action="@{/albums/{id}/delete(id=${album.id})}" method="post">
-                        <button class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</button>
-                    </form>
+                    <th:block th:if="${isOwner}">
+                        <div class="delete_icon">
+                            <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i
+                                    class="fas fa-edit"></i>Edit</a>
+                            <form th:action="@{/albums/{id}/delete(id=${album.id})}" method="post">
+                                <button class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</button>
+                            </form>
+                        </div>
+                    </th:block>
+
+
                 </div>
-
-
+                <!--            ALBUM INFO ENDS-->
             </div>
-<!--            ALBUM INFO ENDS-->
+            <!--        CARD END ===============================================-->
         </div>
-<!--        CARD END ===============================================-->
-            </div>
     </section>
 </main>
-
-
 
 
 <!-- =====================================================================================-->
 <!--    =====================================================================================-->
 <!--    =====================================================================================-->
 <!--    =====================================================================================-->
-
-
-
 
 
 <!--<div class="container wrapper">-->

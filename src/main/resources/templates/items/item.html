@@ -51,7 +51,9 @@
                 </form>
             </div>
             <br><br>
-            <a th:href="@{/items/{id}/edit(id=${item.id})}" class="btn btn-secondary">Edit Item</a>
+            <th:block th:if="${isOwner}">
+                <a th:href="@{/items/{id}/edit(id=${item.id})}" class="btn btn-secondary">Edit Item</a>
+            </th:block>
             <div th:replace="partials/scripts :: assets"></div>
         </div>
 

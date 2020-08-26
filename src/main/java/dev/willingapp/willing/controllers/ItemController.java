@@ -2,6 +2,7 @@ package dev.willingapp.willing.controllers;
 
 import dev.willingapp.willing.models.*;
 import dev.willingapp.willing.repositories.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,10 +33,13 @@ public class ItemController {
 
     @GetMapping("/items/{id}")
     public String showSingleItem(@PathVariable long id, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User thisUser = usersDao.getOne(user.getId());
         Item item = itemsDao.getOne(id);
         List<Image> images = item.getImages();
         List<Image> photos = new ArrayList<>();
         List<Image> videos = new ArrayList<>();
+        boolean isOwner = false;
         boolean hasPhotos = false;
         for (Image x : images) {
             if (x.getFileType().equalsIgnoreCase("video/mp4")) {
@@ -43,6 +47,10 @@ public class ItemController {
             } else if (x.getFileType().equalsIgnoreCase("image/jpeg")) {
                 photos.add(x);
             }
+        }
+        if (item.getAlbumForItems().getOwner().getId() == thisUser.getId()) {
+            isOwner = true;
+            model.addAttribute("isOwner", true);
         }
         if (!images.isEmpty()) {
             hasPhotos = true;
