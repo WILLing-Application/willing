@@ -15,14 +15,23 @@
         <!--CSS LINK-->
         <link th:href="@{/css/main.css}" rel="stylesheet">
         <link th:href="@{/css/navbar.css}" rel="stylesheet">
+        <link th:href="@{/css/index.css}" rel="stylesheet">
     <!--    <link type="text/javascript" th:src="@{/js/main.js}">-->
 <!--        <script th:src="|${js}/main.js|"></script>-->
 
     </head>
     <body>
-    <div th:replace="partials/navbar :: navbar">
-
+    <div id="pre-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span>DIVIDE YOUR BELONGINGS WITH US!</span>
+                </div>
+            </div>
+        </div>
     </div>
+    <div th:replace="partials/navbar :: navbar"></div>
+
 <!--    IMAGE CAROUSEL-->
         <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
             <ol class="carousel-indicators">
