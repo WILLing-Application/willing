@@ -5,28 +5,103 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!--ANIMATE.CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link th:href="@{/css/dev_profiles.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!--<div th:replace="partials/navbar :: navbar">-->
-
+<div id="pre-header">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-12">
+                <span>DIVIDE YOUR BELONGINGS WITH US!</span>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="assets/images/.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{albums}">Albums</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{view}">Interests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{profile}">Profile</a>
+                    </li>
+                </th:block>
+                <!--                Show these items always-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{devs}">Developers</a>
+                </li>
+                <!--                Show these items when logged out -->
+                <th:block sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
+                    </li>
+                </th:block>
+                <!--IF AUTHENTICATED SHOW THESE-->
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="nav-link btn btn-muted">Logout</button>
+                        </form>
+                    </li>
+                </th:block>
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Home</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item active">-->
+                <!--                    <a class="nav-link" href="#">Albums-->
+                <!--                        <span class="sr-only">(current)</span>-->
+                <!--                    </a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Profile</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Developers</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Login</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Logout</a>-->
+                <!--                </li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br>
+<br><br>
+<div class="container quote">
+    <h1 class="text-center">Developer Team</h1>
+    <p class=" text-center">“It is literally true that you can succeed best and quickest by helping others to succeed.”
+        -<strong><em>Napolean Hill </em></strong></p>
 </div>
 
 <section class="team">
-    <div class="container">
+    <div class="box">
         <div class="row">
-            <div class="row">
-                <h1>Developer Team</h1>
-                <p class="start">"Teamwork is the ability to work together toward a common vision. The ability to direct
-                    individual accomplishments toward organizational objectives.
-                    It is the fuel that allows common people to attain uncommon results." – <strong><em>Andrew
-                        Carnegie</em></strong></p>
-            </div>
             <hr>
-            <!--                    <br><br>-->
+            <br><br>
             <div class="row mgt50px">
                 <div class="column">
                     <div class="imgBox">

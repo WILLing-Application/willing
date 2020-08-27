@@ -20,6 +20,15 @@ header h1 {
     width: 100%;
 }
 
+.btn-blood {
+    background-color: #8b0000;
+    text-transform: uppercase;
+}
+
+.cap {
+    text-transform: uppercase;
+}
+
 .jumbotron {
     background-image: url("../photos/sunset.jpg");
 }
@@ -168,7 +177,7 @@ header h1 {
     border: 1px solid #eee;
     padding: 20px;
     transition: all 0.5s;
-    min-height: 450px;
+    /*min-height: 450px;*/
 }
 .featured-item:hover {
     opacity: 0.9;
@@ -182,6 +191,7 @@ header h1 {
     color: #1e1e1e;
     margin-top: 15px;
     transition: all 0.5s;
+    text-transform: uppercase;
 }
 .featured-item:hover h4 {
     color: #8b0000;
@@ -191,6 +201,37 @@ header h1 {
     font-size: 15px;
     font-weight: 700;
     margin-bottom: 0px;
+}
+
+.pulsate:hover {
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    opacity: 0.5;
+}
+@-webkit-keyframes pulsate {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1.0;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.click {
+    background-color: transparent;
+    color: #fff;
+    border-radius: 0;
+    border: 1px solid #434444;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.click:hover {
+    background-color: #8b0000;
+    color: #fff;
 }
 
 .card {
@@ -627,3 +668,5 @@ header h1 {
     }
 
 }
+
+
