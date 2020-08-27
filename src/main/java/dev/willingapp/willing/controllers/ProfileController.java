@@ -1,6 +1,8 @@
 package dev.willingapp.willing.controllers;
 
+import dev.willingapp.willing.models.Image;
 import dev.willingapp.willing.models.User;
+import dev.willingapp.willing.repositories.ImageRepository;
 import dev.willingapp.willing.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -11,16 +13,25 @@ import org.springframework.web.bind.annotation.*;
 public class ProfileController {
 
     private final UserRepository usersDao;
+    private final ImageRepository imagesDao;
 
-    public ProfileController(UserRepository usersDao){
+    public ProfileController(UserRepository usersDao, ImageRepository imagesDao){
         this.usersDao = usersDao;
+        this.imagesDao = imagesDao;
     }
 
     // VIEW USER PROFILE
     @GetMapping("/profile")
     public String showUserProfile(Model model) {
         User myUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", usersDao.getOne(myUser.getId()));
+        User user = usersDao.getOne(myUser.getId());
+        if (!user.getProfilePhoto().isEmpty()) {
+            model.addAttribute("hasPhoto", true);
+        } else {
+            model.addAttribute("noPhoto", true);
+            model.addAttribute("placeholder", "https://cdn.filestackcontent.com/TWDYVD0lTM2pav6BAs6u");
+        }
+        model.addAttribute("user", user);
         return "users/profile";
     }
 
@@ -28,7 +39,14 @@ public class ProfileController {
     @GetMapping("/profile/{id}/edit")
     public String editUserProfile(@PathVariable long id, Model model) {
 //        User myUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", usersDao.getOne(id));
+        User user = usersDao.getOne(id);
+        if (!user.getProfilePhoto().isEmpty()) {
+            model.addAttribute("hasPhoto", true);
+        } else {
+            model.addAttribute("noPhoto", true);
+            model.addAttribute("placeholder", "https://cdn.filestackcontent.com/TWDYVD0lTM2pav6BAs6u");
+        }
+        model.addAttribute("user", user);
         return "users/edit";
     }
 
@@ -43,9 +61,12 @@ public class ProfileController {
                                   @RequestParam(name="state") String state,
                                   @RequestParam(name="zip") String zip,
                                   @RequestParam(name="phone") String phone,
+                                  @RequestParam(name = "images") String image,
+                                  @RequestParam(name = "file-type") String fileType,
                                   Model model) {
         User myUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = usersDao.getOne(myUser.getId());
+        Image newImage = new Image();
         user.setId(id);
         user.setFirstName(firstName);
         user.setLastName(lastName);
@@ -55,6 +76,9 @@ public class ProfileController {
         user.setState(state);
         user.setZip(zip);
         user.setPhone(phone);
+        user.setProfilePhoto(image);
+//        newImage.setFilename(image);
+//        newImage.setFileType(fileType);
         usersDao.save(user);
         return "redirect:/profile";
     }
