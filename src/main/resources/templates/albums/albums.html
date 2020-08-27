@@ -37,28 +37,64 @@
 <!-- NAV -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
+        <a class="navbar-brand" href="#"><img src="assets/images/.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{albums}">Albums</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{view}">Interests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{profile}">Profile</a>
+                    </li>
+                </th:block>
+                <!--                Show these items always-->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" th:href="@{devs}">Developers</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Albums
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Developers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
-                </li>
+                <!--                Show these items when logged out -->
+                <th:block sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
+                    </li>
+                </th:block>
+                <!--IF AUTHENTICATED SHOW THESE-->
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item text-center">
+                        <form  th:action="@{/logout}" th:method="post">
+                            <button class="nav-link btn btn-muted">Logout</button>
+                        </form>
+                    </li>
+                </th:block>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Home</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item active">-->
+<!--                    <a class="nav-link" href="#">Albums-->
+<!--                        <span class="sr-only">(current)</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Profile</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Developers</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Login</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Logout</a>-->
+<!--                </li>-->
             </ul>
         </div>
     </div>
@@ -71,9 +107,9 @@
             <div class="col-md-4 col-sm-12">
                 <div class="section-heading">
                     <div class="line-dec"></div>
-                    <h1 class="animate__animated animate__fadeInUp animate__delay-1s">WILLing ALBUMS</h1>
+                    <h1 class="animate__animated animate__fadeInUp animate__delay-1s caps">WILLing ALBUMS</h1>
                     <div class="card">
-                    <a th:href="@{/albums/create}" class="btn btn-primary text-center">Create an album</a>
+                    <a th:href="@{/albums/create}" class="btn btn-blood text-center">Create an album</a>
                 </div>
                 </div>
             </div>
@@ -98,10 +134,19 @@
                         <img class="w-100" th:src="${image.filename}" alt="First slide">
                     </div>
                     <a th:href="@{/albums/{id}(id=${album.id})}">
-                        <h3 class="text-center" th:text="${album.title}"></h3>
+                        <h4 class="text-center pulsate" th:text="${album.title}"></h4>
                     </a>
-                    <p class="card-text text-center" th:text="${album.lineage}"></p>
-                    <a th:href="@{/albums/{id}(id=${album.id})}" class="btn click">View Album</a>
+                    <h6 class="card-text text-center" th:text="${album.lineage}"></h6>
+                    <a th:href="@{/albums/{id}(id=${album.id})}" class="btn click btn-blood">View Album</a>
+<!--                    <th:block th:if="${isOwner}">-->
+<!--                        <div class="delete_icon">-->
+<!--                            <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i-->
+<!--                                    class="fas fa-edit"></i>Edit</a>-->
+<!--                            <form th:action="@{/albums/{id}/delete(id=${album.id})}" method="post">-->
+<!--                                <button class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</button>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </th:block>-->
                 </div>
             </a>
         </div>
@@ -109,8 +154,9 @@
             <a href="single-product.html">
                 <div class="featured-item">
                     <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4>Erat odio rhoncus</h4>
-                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                    <h4 class="text-center pulsate">Tommy vercetti</h4>
+                    <h6 class="text-center">there ain't no 'up north', anymore. It's all down south now</h6>
+                    <a class="btn click btn-blood">View Album</a>
                 </div>
             </a>
         </div>
@@ -118,8 +164,9 @@
             <a href="single-product.html">
                 <div class="featured-item">
                     <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4>Integer vel turpis</h4>
-                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                    <h4 class="text-center pulsate">Leon Kennedy</h4>
+                    <h6 class="text-center">Six years have passed since that horrendous incident</h6>
+                    <a class="btn click btn-blood">View Album</a>
                 </div>
             </a>
         </div>
@@ -127,8 +174,9 @@
             <a href="single-product.html">
                 <div class="featured-item">
                     <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4>Sed purus quam</h4>
-                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                    <h4 class="text-center pulsate">Benny Blanco</h4>
+                    <h6 class="text-center">Hey, remember me? Benny Blanco From The Bronx?</h6>
+                    <a class="btn click btn-blood">View Album</a>
                 </div>
             </a>
         </div>
@@ -136,8 +184,9 @@
             <a href="single-product.html">
                 <div class="featured-item">
                     <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4>Morbi aliquet</h4>
-                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                    <h4 class="text-center pulsate">sherman klump</h4>
+                    <h6 class="text-center">Yes i can!!!</h6>
+                    <a class="btn click btn-blood">View Album</a>
                 </div>
             </a>
         </div>
@@ -145,8 +194,9 @@
             <a href="single-product.html">
                 <div class="featured-item">
                     <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4>Urna ac diam</h4>
-                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                    <h4 class="text-center pulsate">ash ketchum</h4>
+                    <h6 class="text-center">Maybe you think I’m a little too brash. But the Master is here! And my name is Ash.</h6>
+                    <a class="btn click btn-blood">View Album</a>
                 </div>
             </a>
         </div>
@@ -154,8 +204,9 @@
             <a href="single-product.html">
                 <div class="featured-item">
                     <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4>Proin eget imperdiet</h4>
-                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                    <h4 class="text-center pulsate">Jill Valentine</h4>
+                    <h6 class="text-center">Wesker... you're PATHETIC</h6>
+                    <a class="btn click btn-blood">View Album</a>
                 </div>
             </a>
         </div>
@@ -163,8 +214,9 @@
             <a href="single-product.html">
                 <div class="featured-item">
                     <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4>Nullam risus nisl</h4>
-                    <h6>Lorem ipsum dolor amet mustache knausgaard </h6>
+                    <h4 class="text-center pulsate">princess zelda</h4>
+                    <h6 class="text-center">Fight bravely and Hyrule shall shine brightly once more!</h6>
+                    <a class="btn click btn-blood">View Album</a>
                 </div>
             </a>
 <!--            &lt;!&ndash;            ===============================================================================&ndash;&gt;-->

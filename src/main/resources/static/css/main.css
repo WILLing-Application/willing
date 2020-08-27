@@ -3,10 +3,6 @@ img {
     height: 100vh;
 }
 
-/*.navbar {*/
-/*    transition: all 0.4s;*/
-/*}*/
-
 .carousel-item{
     height: 100vh;
     min-height: 300px;
