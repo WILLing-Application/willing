@@ -22,14 +22,14 @@
             <!-- USER PROFILE PHOTO-->
             <div>
                 <!-- Display user profile photo, if it has been uploaded -->
-                <div th:if="${user.profilePhoto}">
+                <div th:if="${hasPhoto}">
                     <img th:src="${user.profilePhoto}" class="rounded-circle img-responsive m-2"
                          height="120" width="120" alt="profile-photo">
                 </div>
                 <!-- Display placeholder image if user profile photo does not exist -->
-                <div th:unless="${user.profilePhoto}">
-                    <img src="../../static/photos/placeholder.jpeg" class="rounded-circle img-responsive m-2"
-                         width="100" th:src="@{photos/placeholder.jpeg}"/>
+                <div th:if="${noPhoto}">
+                    <img th:src="${placeholder}" class="rounded-circle img-responsive m-2"
+                         width="100"/>
                 </div>
             </div>
             <!-- USER PROFILE DETAILS-->
