@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
-<head th:replace="partials/head :: header-links (Profile)">
+<head th:replace="partials/head :: header-links (pageTitle)"></head>
 <!--<head>-->
 <!--    <meta charset="UTF-8">-->
 <!--    <title>WILLing Item Assignment</title>-->
@@ -121,17 +121,25 @@
     <div class="card-body">
         <section sec:authorize="isAuthenticated()">
         <div class="row">
-            <div class="card" style="width: 15rem; min-height: 18rem">
+
+            <div class="card" style="width: 10rem; min-height: 18rem">
+                <div class="card-header">Items with Interests</div>
+
+            </div>
+
+            <div class="card" style="width: 10rem; min-height: 18rem">
                 <div class="card-header">Users List</div>
                 <th:block th:each="user : ${users}">
-                    <p th:text="${user.username}"></p>
+                    <p th:text="${user.username}" class="card"></p>
                 </th:block>
-                <div class="card-footer text-muted">
+                <p class="card-footer text-muted">
+                    HINT:
                     To give a User an Item,
                     Select one User and one Item.
                     Then click 'Assign Item'.
-                </div>
+                </p>
             </div>
+
             <th:block th:each="album : ${albums}">
 
                     <div class="col-sm-3">

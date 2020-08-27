@@ -3,7 +3,9 @@ package dev.willingapp.willing.controllers;
 
 import dev.willingapp.willing.models.Album;
 import dev.willingapp.willing.models.User;
+import dev.willingapp.willing.models.Item;
 import dev.willingapp.willing.repositories.AlbumRepository;
+import dev.willingapp.willing.repositories.ItemRepository;
 import dev.willingapp.willing.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,16 +19,19 @@ public class ViewController {
 
     private final AlbumRepository albumsDao;
     private final UserRepository usersDao;
+    private final ItemRepository itemsDao;
 
-    public ViewController(AlbumRepository albumsDao, UserRepository usersDao){
+    public ViewController(AlbumRepository albumsDao, UserRepository usersDao, ItemRepository itemsDao){
         this.albumsDao = albumsDao;
         this.usersDao = usersDao;
+        this.itemsDao = itemsDao;
     }
 
     @GetMapping("/view")
     public String showView(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Album> albumsList = albumsDao.findAllByOwner(user);
+        List<Item> itemsList = itemsDao.findAll();
         model.addAttribute("albums", albumsList);
         System.out.println(albumsList);
         model.addAttribute("users", usersDao.findAll());
