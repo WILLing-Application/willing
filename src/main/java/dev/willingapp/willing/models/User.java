@@ -94,8 +94,24 @@ public class User {
         password = copy.password;
     }
 
-    // Constructor used for sign-up registration
+    // Constructor used for sign-up registration (create)
     public User(String email, String username, String password, String firstName, String lastName, String address1, String address2, String city, String state, String zip, String phone) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address1 = address1;
+        this.address2 = address2;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.phone = phone;
+    }
+
+    // Constructor used for user profile (edit)
+    public User(long id, String email, String username, String password, String firstName, String lastName, String address1, String address2, String city, String state, String zip, String phone, String profilePhoto) {
+        this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;

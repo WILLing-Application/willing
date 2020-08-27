@@ -36,15 +36,15 @@ Feature: (curriculum) a component of the program that performs a specific functi
 ## USER STORIES
 
 1.	Visitors can view a landing page with a description of the service and register to create an account.
-2.	Visitors can respond to emailed invitations to register for an account, in order to view the Owner’s "album" and listed items (after being given access by the Owner).
+2.	Visitors can respond to word-of-mouth or emailed invitations to register for an account, in order to view the Owner’s "album" and listed items (after being given access by the Owner).
 3.	Upon registering successfully by entering account details (username, password, email, name, address, phone#), the User is directed to the view page. (Optionally display a welcome message.)
-4.	Users can CRUD their own User information (username, password, email, name, address, phone#).
+4.	Users can edit their own User details (name, address, and phone#).
 5.	Users can view and search listed albums and items by keyword, from the albums they have been given access to.
-6.	Users can "bid" on item(s) by indicating their interest, by selecting a ranking from 1 (may be interested) to 5 (very interested).
+6.	Users can "bid" on item(s) by indicating their interest, by selecting a ranking from 1 (may be interested) to 3 (very interested).
 7.	Owners (a user who created/owns an album), can CRUD their own album(s) with title, description, lineage, deadline for responses, upload photo(s) and video(s).
 8.	Owners (a user who created/owns an album), can CRUD their album's items, with title, description, lineage, upload photo(s) and video(s).
-9.	Owners (a user who created/owns an album), can invite a list of people by email to visit the site by clicking on a link, which takes them to the registration/sign up page.
-10.	Owners (a user who created/owns an album), can view a list of email invites sent, with the name of any registered user with a matching email address. The Owner can select the matching user to enable access.
+9.	Owners (a user who created/owns an album), can invite people to the site by emailing them a link to the registration/sign up page.
+10.	Owners (a user who created/owns an album), can search for registered users by name or email address. The Owner can select the matching user to enable access.
 11.	Owners (a user who created/owns an album), can view a dashboard with summary information by album: <br>
 A.	a grid/matrix of items and users, with color-coded interest ranking <br>
 B.	a list by item with a count of interested users, click to list the interested users for an item <br>
@@ -63,20 +63,21 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 *	Lock down the user profile page, allow the user to CRUD their own user account details. 4
 *	Allow users to view the albums and listed items they have access to. 5 
 *	Search functionality that allows users to search in the albums and listed items they have access to, by title, description, and/or lineage. 5
-*	Indicate interest in an item by ranking it from low (1) to high (5), and save the user’s interest ranking# in the database. 6
+*	Indicate interest in an item by ranking it from low (1) to high (3), and save the user’s interest ranking# in the database. 6
 *	Create an Album view page with links to each individual Album page. 7 
 *	Allow the user/owner to create, update and delete albums. 7
 *	Create an Item index page with links to each individual Item page. 8
 *	Allow the user/owner to create, update and delete items. 8 
 *	Implement the Filestack API for uploading photos and videos. 7, 8
 *	Allow uploading photos and videos to albums and items. 7, 8
-*	Create an email invitation associated with an album, allow owner to enter a list of email addresses to send the invitation to. The link in the email is to the registration/signup page. 9
-*	Create a view to list the email invites sent, and the name of any registered user with a matching email address. The owner can select the matching user to enable access to that album. 10
 *	Create an admin/owner dashboard with color-coded summary info by album. 11, A/B/C
 
 ---
 
 ### Extra Features (Optional functionality)
+
+* create an email invitation associated with an album, allow owner to enter a list of email addresses to send the invitation to. The link in the email is to the registration/signup page. 9
+*	create a view to list the email invites sent, and the name of any registered user with a matching email address. The owner can select the matching user to enable access to that album. 10
 
 ##### Users
  
