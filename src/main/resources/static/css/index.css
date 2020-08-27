@@ -82,17 +82,19 @@ header h1 {
     text-align: center;
     width: 100%;
     position: relative;
-    padding: 25px 0px;
+    /*CONTROLS GREY BAR*/
+    padding: 0px 0px;
 }
 .bg-dark {
     background-color: #696969!important;
 
 }
+/*NAVBAR HEIGHT AJUSTMENT*/
 #navbarResponsive {
     z-index: 999;
     position: absolute;
     left: 50%;
-    top: 105px;
+    top: 50px;
     transform: translateX(-50%);
 }
 .navbar-dark .navbar-nav .nav-item {
