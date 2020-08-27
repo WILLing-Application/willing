@@ -151,11 +151,11 @@
 
             <div class="card" style="width: 10rem; min-height: 18rem">
                 <div class="card-header">Users List</div>
-                <th:block th:each="user : ${users}">
-                    <p th:text="${user.username}" class="card"></p>
-                </th:block>
-                <div class="card-body">
-
+<!--                <th:block th:each="user : ${users}">-->
+<!--                    <p th:text="${user.username}" class="card"></p>-->
+<!--                </th:block>-->
+                <div th:each="user : ${users}" class="card">
+                    <input type="radio" name="users" th:value="${user.username}" th:text="${user.username}">
                 </div>
                 <p class="card-footer text-muted">
                     HINT:
@@ -167,7 +167,7 @@
 
             <th:block th:each="album : ${albums}">
 
-                    <div class="col-sm-3">
+<!--                    <div class="col-sm-3">-->
 
                         <div class="card border-primary" style="width: 15rem">
 
@@ -175,7 +175,8 @@
 
                             <h3 th:text="${album.title}" class="card-header"></h3>
                                 <div th:each="item : ${album.getItems()}" class="card">
-                                    <p th:text="${item.title}">  </p>
+<!--                                    <p th:text="${item.title}">  </p>-->
+                                    <input type="radio" name="items" th:value="${item.title}" th:text="${item.title}">
                                 </div>
 
 
@@ -183,7 +184,7 @@
 
                         </div>
 
-                    </div>
+<!--                    </div>-->
 
             </th:block>
         </div>
@@ -199,7 +200,7 @@
 <!--                        Then click 'Assign Item'.-->
 <!--                    </div>-->
 <!--                </div>-->
-            <button type="submit">Assign Item</button>
+            <button type="submit" class="btn-primary">Assign Item</button>
         </section>
     </div>
 </div>
