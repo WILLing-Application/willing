@@ -124,7 +124,29 @@
 
             <div class="card" style="width: 10rem; min-height: 18rem">
                 <div class="card-header">Items with Interests</div>
+<!--                <th:block th:each="item : ${item}" th:text="${item}">-->
+<!--                    <p th:each="interest : ${interest}" th:text="${interest}"></p>-->
+<!--                </th:block>-->
+                    <div class="card">
+                        <div th:each="interest : ${interests}">
+                            <!--        <p th:each="users : ${}"></p>-->
+                            <p th:text="${interest.item.title}">
+                                <th:block th:each="album : ${albums}">
+                                    <th:block th:each="item : ${album.items}">
+                                        <th:block th:each="user :${item.interests}">
+                                            <p th:text="${user.username}" class="card"></p>
+                                        </th:block>
 
+                                    </th:block>
+
+                                </th:block>
+
+                            </p>
+                        </div>
+                        <div >
+
+                        </div>
+                    </div>
             </div>
 
             <div class="card" style="width: 10rem; min-height: 18rem">
@@ -179,6 +201,16 @@
     </div>
 </div>
 
+<div class="card">
+    <div class="card-header">Users Who Have Indicated Interest</div>
+    <div th:each="interest : ${interests}">
+<!--        <p th:each="users : ${}"></p>-->
+        <p th:text="${interest.interestedUser.username}"></p>
+        <p th:text="${interest.item.title}"></p>
+
+
+    </div>
+</div>
 <!--    <div th:each="item : ${items}">-->
 <!--        <div class="card" style="width: 18rem;">-->
 <!--            <div th:each="image : ${item.images[0]}">-->
