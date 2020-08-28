@@ -33,72 +33,72 @@
         </div>
     </div>
 </div>
-
+<div th:replace="partials/navbar :: navbar"></div>
 <!-- NAV -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="#"><img src="assets/images/.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{albums}">Albums</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{view}">Interests</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{profile}">Profile</a>
-                    </li>
-                </th:block>
-                <!--                Show these items always-->
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{devs}">Developers</a>
-                </li>
-                <!--                Show these items when logged out -->
-                <th:block sec:authorize="!isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
-                    </li>
-                </th:block>
-                <!--IF AUTHENTICATED SHOW THESE-->
-                <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item text-center">
-                        <form  th:action="@{/logout}" th:method="post">
-                            <button class="nav-link btn btn-muted">Logout</button>
-                        </form>
-                    </li>
-                </th:block>
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">-->
+<!--    <div class="container">-->
+<!--        <a class="navbar-brand" href="#"><img src="assets/images/.png" alt=""></a>-->
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarResponsive">-->
+<!--            <ul class="navbar-nav ml-auto">-->
+<!--                <th:block sec:authorize="isAuthenticated()">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{albums}">Albums</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{view}">Interests</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{profile}">Profile</a>-->
+<!--                    </li>-->
+<!--                </th:block>-->
+<!--                &lt;!&ndash;                Show these items always&ndash;&gt;-->
 <!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="#">Home</a>-->
+<!--                    <a class="nav-link" th:href="@{devs}">Developers</a>-->
 <!--                </li>-->
-<!--                <li class="nav-item active">-->
-<!--                    <a class="nav-link" href="#">Albums-->
-<!--                        <span class="sr-only">(current)</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="#">Profile</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="#">Developers</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="#">Login</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="#">Logout</a>-->
-<!--                </li>-->
-            </ul>
-        </div>
-    </div>
-</nav>
+<!--                &lt;!&ndash;                Show these items when logged out &ndash;&gt;-->
+<!--                <th:block sec:authorize="!isAuthenticated()">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{/login}">Login</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>-->
+<!--                    </li>-->
+<!--                </th:block>-->
+<!--                &lt;!&ndash;IF AUTHENTICATED SHOW THESE&ndash;&gt;-->
+<!--                <th:block sec:authorize="isAuthenticated()">-->
+<!--                    <li class="nav-item text-center">-->
+<!--                        <form  th:action="@{/logout}" th:method="post">-->
+<!--                            <button class="nav-link btn btn-muted">Logout</button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                </th:block>-->
+<!--&lt;!&ndash;                <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a class="nav-link" href="#">Home</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="nav-item active">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a class="nav-link" href="#">Albums&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="sr-only">(current)</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a class="nav-link" href="#">Profile</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a class="nav-link" href="#">Developers</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a class="nav-link" href="#">Login</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a class="nav-link" href="#">Logout</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
 
 <!-- ITEMS START HERE -->
 <div class="main-page">
@@ -138,103 +138,103 @@
                     </a>
                     <h6 class="card-text text-center" th:text="${album.lineage}"></h6>
                     <a th:href="@{/albums/{id}(id=${album.id})}" class="btn click btn-blood">View Album</a>
-<!--                    <th:block th:if="${isOwner}">-->
-<!--                        <div class="delete_icon">-->
-<!--                            <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i-->
-<!--                                    class="fas fa-edit"></i>Edit</a>-->
-<!--                            <form th:action="@{/albums/{id}/delete(id=${album.id})}" method="post">-->
-<!--                                <button class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</button>-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                    </th:block>-->
-                </div>
-            </a>
-        </div>
-        <div id="2" class="item high col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4 class="text-center pulsate">Tommy vercetti</h4>
-                    <h6 class="text-center">there ain't no 'up north', anymore. It's all down south now</h6>
-                    <a class="btn click btn-blood">View Album</a>
-                </div>
-            </a>
-        </div>
-        <div id="3" class="item low col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4 class="text-center pulsate">Leon Kennedy</h4>
-                    <h6 class="text-center">Six years have passed since that horrendous incident</h6>
-                    <a class="btn click btn-blood">View Album</a>
-                </div>
-            </a>
-        </div>
-        <div id="4" class="item low col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4 class="text-center pulsate">Benny Blanco</h4>
-                    <h6 class="text-center">Hey, remember me? Benny Blanco From The Bronx?</h6>
-                    <a class="btn click btn-blood">View Album</a>
-                </div>
-            </a>
-        </div>
-        <div id="5" class="item new high col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4 class="text-center pulsate">sherman klump</h4>
-                    <h6 class="text-center">Yes i can!!!</h6>
-                    <a class="btn click btn-blood">View Album</a>
-                </div>
-            </a>
-        </div>
-        <div id="6" class="item new col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4 class="text-center pulsate">ash ketchum</h4>
-                    <h6 class="text-center">Maybe you think I’m a little too brash. But the Master is here! And my name is Ash.</h6>
-                    <a class="btn click btn-blood">View Album</a>
-                </div>
-            </a>
-        </div>
-        <div id="7" class="item new high col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4 class="text-center pulsate">Jill Valentine</h4>
-                    <h6 class="text-center">Wesker... you're PATHETIC</h6>
-                    <a class="btn click btn-blood">View Album</a>
-                </div>
-            </a>
-        </div>
-        <div id="8" class="item low new col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
-                    <h4 class="text-center pulsate">princess zelda</h4>
-                    <h6 class="text-center">Fight bravely and Hyrule shall shine brightly once more!</h6>
-                    <a class="btn click btn-blood">View Album</a>
-                </div>
-            </a>
-<!--            &lt;!&ndash;            ===============================================================================&ndash;&gt;-->
-            <div class="page-nav">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul>
-                                <li class="current-page"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul>
+                    <th:block th:if="${isOwner}">
+                        <div class="delete_icon" style="display: flex; justify-content: space-between;">
+                            <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i
+                                    class="fas fa-edit"></i>Edit</a>
+                            <form th:action="@{/albums/{id}/delete(id=${album.id})}" method="post">
+                                <button class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</button>
+                            </form>
                         </div>
-                    </div>
+                    </th:block>
                 </div>
-            </div>
+            </a>
         </div>
+<!--        <div id="2" class="item high col-md-4">-->
+<!--            <a href="single-product.html">-->
+<!--                <div class="featured-item">-->
+<!--                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>-->
+<!--                    <h4 class="text-center pulsate">Tommy vercetti</h4>-->
+<!--                    <h6 class="text-center">there ain't no 'up north', anymore. It's all down south now</h6>-->
+<!--                    <a class="btn click btn-blood">View Album</a>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div id="3" class="item low col-md-4">-->
+<!--            <a href="single-product.html">-->
+<!--                <div class="featured-item">-->
+<!--                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>-->
+<!--                    <h4 class="text-center pulsate">Leon Kennedy</h4>-->
+<!--                    <h6 class="text-center">Six years have passed since that horrendous incident</h6>-->
+<!--                    <a class="btn click btn-blood">View Album</a>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div id="4" class="item low col-md-4">-->
+<!--            <a href="single-product.html">-->
+<!--                <div class="featured-item">-->
+<!--                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>-->
+<!--                    <h4 class="text-center pulsate">Benny Blanco</h4>-->
+<!--                    <h6 class="text-center">Hey, remember me? Benny Blanco From The Bronx?</h6>-->
+<!--                    <a class="btn click btn-blood">View Album</a>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div id="5" class="item new high col-md-4">-->
+<!--            <a href="single-product.html">-->
+<!--                <div class="featured-item">-->
+<!--                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>-->
+<!--                    <h4 class="text-center pulsate">sherman klump</h4>-->
+<!--                    <h6 class="text-center">Yes i can!!!</h6>-->
+<!--                    <a class="btn click btn-blood">View Album</a>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div id="6" class="item new col-md-4">-->
+<!--            <a href="single-product.html">-->
+<!--                <div class="featured-item">-->
+<!--                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>-->
+<!--                    <h4 class="text-center pulsate">ash ketchum</h4>-->
+<!--                    <h6 class="text-center">Maybe you think I’m a little too brash. But the Master is here! And my name is Ash.</h6>-->
+<!--                    <a class="btn click btn-blood">View Album</a>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div id="7" class="item new high col-md-4">-->
+<!--            <a href="single-product.html">-->
+<!--                <div class="featured-item">-->
+<!--                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>-->
+<!--                    <h4 class="text-center pulsate">Jill Valentine</h4>-->
+<!--                    <h6 class="text-center">Wesker... you're PATHETIC</h6>-->
+<!--                    <a class="btn click btn-blood">View Album</a>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div id="8" class="item low new col-md-4">-->
+<!--            <a href="single-product.html">-->
+<!--                <div class="featured-item">-->
+<!--                    <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>-->
+<!--                    <h4 class="text-center pulsate">princess zelda</h4>-->
+<!--                    <h6 class="text-center">Fight bravely and Hyrule shall shine brightly once more!</h6>-->
+<!--                    <a class="btn click btn-blood">View Album</a>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--&lt;!&ndash;            &lt;!&ndash;            ===============================================================================&ndash;&gt;&ndash;&gt;-->
+<!--            <div class="page-nav">-->
+<!--                <div class="container">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-12">-->
+<!--                            <ul>-->
+<!--                                <li class="current-page"><a href="#">1</a></li>-->
+<!--                                <li><a href="#">2</a></li>-->
+<!--                                <li><a href="#">3</a></li>-->
+<!--                                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 <div th:replace="partials/scripts :: assets"></div>

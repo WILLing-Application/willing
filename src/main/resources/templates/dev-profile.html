@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<!--<div th:replace="partials/navbar :: navbar">-->
+
 <div id="pre-header">
     <div class="container ">
         <div class="row">
@@ -24,71 +24,52 @@
         </div>
     </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="#"><img src="assets/images/.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{albums}">Albums</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{view}">Interests</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{profile}">Profile</a>
-                    </li>
-                </th:block>
-                <!--                Show these items always-->
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{devs}">Developers</a>
-                </li>
-                <!--                Show these items when logged out -->
-                <th:block sec:authorize="!isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
-                    </li>
-                </th:block>
-                <!--IF AUTHENTICATED SHOW THESE-->
-                <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <form th:action="@{/logout}" th:method="post">
-                            <button class="nav-link btn btn-muted">Logout</button>
-                        </form>
-                    </li>
-                </th:block>
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Home</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item active">-->
-                <!--                    <a class="nav-link" href="#">Albums-->
-                <!--                        <span class="sr-only">(current)</span>-->
-                <!--                    </a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Profile</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Developers</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Login</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Logout</a>-->
-                <!--                </li>-->
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="partials/navbar :: navbar"></div>
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">-->
+<!--    <div class="container">-->
+<!--        <a class="navbar-brand" href="#"><img src="assets/images/.png" alt=""></a>-->
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"-->
+<!--                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarResponsive">-->
+<!--            <ul class="navbar-nav ml-auto">-->
+<!--                <th:block sec:authorize="isAuthenticated()">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{albums}">Albums</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{view}">Interests</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{profile}">Profile</a>-->
+<!--                    </li>-->
+<!--                </th:block>-->
+<!--                &lt;!&ndash;                Show these items always&ndash;&gt;-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{devs}">Developers</a>-->
+<!--                </li>-->
+<!--                &lt;!&ndash;                Show these items when logged out &ndash;&gt;-->
+<!--                <th:block sec:authorize="!isAuthenticated()">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{/login}">Login</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>-->
+<!--                    </li>-->
+<!--                </th:block>-->
+<!--                &lt;!&ndash;IF AUTHENTICATED SHOW THESE&ndash;&gt;-->
+<!--                <th:block sec:authorize="isAuthenticated()">-->
+<!--                    <li class="nav-item">-->
+<!--                        <form th:action="@{/logout}" th:method="post">-->
+<!--                            <button class="nav-link btn btn-muted">Logout</button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                </th:block>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
 <br><br>
 <br><br>
 <div class="container quote">
@@ -96,7 +77,6 @@
     <p class=" text-center">“It is literally true that you can succeed best and quickest by helping others to succeed.”
         -<strong><em>Napolean Hill </em></strong></p>
 </div>
-
 <section class="team">
     <div class="box">
         <div class="row">
@@ -108,7 +88,7 @@
                         <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
                     </div>
                     <div class="details">
-                        <h3>Aaron Singleterry<br><span>Junior Software Developer</span></h3>
+                        <h3>Aaron Singleterry<br><span>Software Developer</span></h3>
                         <ul>
                             <li><a class="icon" href="#"><i class="fab fa-linkedin"></i></a></li>
                             <li><a class="icon" href="#"><i class="fab fa-github"></i></a></li>
@@ -120,7 +100,7 @@
                         <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
                     </div>
                     <div class="details">
-                        <h3>George Williams<br><span>Junior Software Developer</span></h3>
+                        <h3>George Williams<br><span>Software Developer</span></h3>
                         <ul>
                             <li><a class="icon" href="#"><i class="fab fa-linkedin"></i></a></li>
                             <li><a class="icon" href="#"><i class="fab fa-github"></i></a></li>
@@ -132,7 +112,7 @@
                         <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
                     </div>
                     <div class="details">
-                        <h3>Greg Jett<br><span>Junior Software Developer</span></h3>
+                        <h3>Greg Jett<br><span>Software Developer</span></h3>
                         <ul>
                             <li><a class="icon" href="#"><i class="fab fa-linkedin"></i></a></li>
                             <li><a class="icon" href="#"><i class="fab fa-github"></i></a></li>
@@ -144,7 +124,7 @@
                         <img th:src="@{${'/photos/placeholder.jpeg'}}" alt="#"/>
                     </div>
                     <div class="details">
-                        <h3>Laura Davis<br><span>Junior Software Developer</span></h3>
+                        <h3>Laura Davis<br><span>Software Developer</span></h3>
                         <ul>
                             <li><a class="icon" href="#"><i class="fab fa-linkedin"></i></a></li>
                             <li><a class="icon" href="#"><i class="fab fa-github"></i></a></li>

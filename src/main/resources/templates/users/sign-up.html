@@ -3,60 +3,76 @@
       lang="en">
 <head th:replace="partials/head :: header-links (pageTitle = 'Sign up')">
 </head>
-<body class="text-center">
+<body>
 <nav th:replace="partials/navbar :: navbar"/>
 
 <div class="container">
+
     <h1>Create an account</h1>
-    <form th:action="@{/sign-up}" method="POST" th:object="${user}" class="text-center">
-        <label for="username">Username</label>
-        <input id="username" th:field="*{username}" th:required th:autofocus th:maxlength="60"/>
-        <br/>
-        <label for="email">Email</label>
-        <input id="email" th:field="*{email}" th:required th:maxlength="60"/>
-        <br/>
-        <label for="password">Password</label>
-        <input id="password" type="password" th:field="*{password}" th:required th:maxlength="60"/>
-        <br/>
-        <label for="firstName">First Name</label>
-        <input id="firstName" th:field="*{firstName}" th:required th:maxlength="60"/>
-        <br/>
-        <label for="lastName">Last Name</label>
-        <input id="lastName" th:field="*{lastName}" th:required th:maxlength="60"/>
-        <br/>
-        <label for="address1">Address</label>
-        <input id="address1" th:field="*{address1}" th:required th:maxlength="60"/>
-        <br/>
-        <label for="address2">Address</label>
-        <input id="address2" th:field="*{address2}" th:maxlength="60"/>
-        <br/>
-        <label for="city">City</label>
-        <input id="city" th:field="*{city}" th:required th:maxlength="60"/>
-        <br/>
-        <!--    add a state picker widget if time allows-->
-        <label for="state">State</label>
-        <input id="state" th:field="*{state}" th:required th:maxlength="2"/>
-        <br/>
-        <!--    add a Zip code +4 formatter if time allows-->
-        <label for="zip">Zip</label>
-        <input id="zip" th:field="*{zip}" th:required th:maxlength="10"/>
-        <br/>
-        <!--    add a phone# formatter if time allows-->
-        <label for="phone">phone</label>
-        <input id="phone" th:field="*{phone}" th:required th:maxlength="20"/>
-        <br/>
-        <input type="hidden" id="images" name="images" value="" th:field="*{profilePhoto}">
-        <input type="hidden" id="file-type" name="file-type" value="">
+
+    <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" class="form-control" th:field="*{username}" th:required th:autofocus th:maxlength="60"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" th:type="email" class="form-control" th:field="*{email}" th:required th:maxlength="60"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" th:type="password" class="form-control" th:field="*{password}" th:required th:maxlength="60"/>
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input id="firstName" class="form-control" th:field="*{firstName}" th:required th:maxlength="60"/>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" class="form-control" th:field="*{lastName}" th:required th:maxlength="60"/>
+        </div>
+        <div class="form-group">
+            <label for="address1">Address</label>
+            <input id="address1" class="form-control" th:field="*{address1}" th:required th:maxlength="60"/>
+        </div>
+        <div class="form-group">
+            <label for="address2">Address</label>
+            <input id="address2" class="form-control" th:field="*{address2}" th:maxlength="60"/>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input id="city" class="form-control" th:field="*{city}" th:required th:maxlength="60"/>
+        </div>
+        <div class="form-group">
+            <!--    add a state picker widget if time allows-->
+            <label for="state">State</label>
+            <input id="state" class="form-control" th:field="*{state}" th:required th:maxlength="2"/>
+        </div>
+        <div class="form-group">
+            <!--    add a Zip code +4 formatter if time allows-->
+            <label for="zip">Zip</label>
+            <input id="zip" class="form-control" th:field="*{zip}" th:required th:maxlength="10"/>
+        </div>
+        <div class="form-group">
+            <!--    add a phone# formatter if time allows-->
+            <label for="phone">phone</label>
+            <input id="phone" th:type="number" class="form-control" th:field="*{phone}" th:required th:maxlength="20"/>
+        </div>
+        <div class="form-group">
+            <input type="hidden" id="images" name="images" value="" th:field="*{profilePhoto}">
+            <input type="hidden" id="file-type" name="file-type" value="">
+        </div>
         <div class="form-group">
             Upload Profile Photo
             <!-- Upload user profile photo -->
             <div id="files"></div>
-            <button id="upload" class="btn btn-muted btn-sm mb-2">Upload image</button>
+            <button id="upload" class="btn btn-primary btn-sm mb-2">Upload image</button>
         </div>
         <input value="Sign me up!" type="submit"/>
     </form>
 </div>
 <div th:replace="partials/scripts :: assets"></div>
 </body>
-<footer th:replace="partials/footer :: footer"/>
+<!--Commenting out footer for now since it's covering up the form-->
+<!--<footer th:replace="partials/footer :: footer"/>-->
 </html>
