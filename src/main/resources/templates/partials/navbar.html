@@ -24,18 +24,18 @@
                 <ul class="navbar-nav ml-auto">
                     <th:block sec:authorize="isAuthenticated()">
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{albums}">Albums</a>
+                            <a class="nav-link" th:href="@{/albums}">Albums</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{view}">Interests</a>
+                            <a class="nav-link" th:href="@{/view}">Interests</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{profile}">Profile</a>
+                            <a class="nav-link" th:href="@{/profile}">Profile</a>
                         </li>
                     </th:block>
                     <!--                Show these items always-->
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{devs}">Developers</a>
+                        <a class="nav-link" th:href="@{/devs}">Developers</a>
                     </li>
                     <!--                Show these items when logged out -->
                     <th:block sec:authorize="!isAuthenticated()">
