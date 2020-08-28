@@ -257,6 +257,16 @@ header h1 {
     width: 100%;
     margin-top: 20px;
 }
+
+.add {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.button_action {
+    width: 300px;
+    margin: 3px auto;
+}
 /*OWL CAROUSEL*/
 /*.owl-theme .owl-dots {*/
 /*	text-align: center;*/
@@ -557,6 +567,20 @@ header h1 {
     margin-bottom: 5px;
 }
 
+.quote {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 100px;
+    color: #8b0000;
+    text-align: center;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
 /* About Us Style */
 .about-page {
     margin-top: 50px;
@@ -652,6 +676,10 @@ header h1 {
     .main-page {
         margin-top: 80px;
     }
+
+    .quote {
+        margin-top: 80px;
+    }
     .about-page,
     .contact-page {
         margin-top: 0px;
@@ -667,6 +695,10 @@ header h1 {
     .main-page #filters {
         margin-top: 15px;
         text-align: left;
+    }
+
+    .quote {
+        margin-top: 20px;
     }
 
 }
