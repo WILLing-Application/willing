@@ -1,44 +1,184 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/head :: header-links (Album)"/>
+<link th:href="@{/css/index.css}" rel="stylesheet">
 <body>
-<div th:replace="partials/navbar :: navbar"></div>
-<main class="container">
-    <div>
-        Album: <span th:text="${album.title}"></span>
+<!--<header class="jumbotron jumbotron-fluid">-->
+<!--    <div class="container text-center">-->
+<!--        <h1 class="banner-title"><strong><em>WILLING</em></strong></h1>-->
+<!--        <p class="sub-title">Willing is the future of departing with your belongings, The <strong><em>FAST</em></strong> and <strong><em>EASY</em></strong> </p>-->
+<!--    </div>-->
+<!--</header>-->
+
+<div id="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span>DIVIDE YOUR BELONGINGS WITH US!</span>
+            </div>
+        </div>
     </div>
-    <div>
-        Album description: <span th:text="${album.description}"></span>
+</div>
+<!--<div th:replace="partials/navbar :: navbar">-->
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="assets/images/.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{albums}">Albums</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{view}">Interests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{profile}">Profile</a>
+                    </li>
+                </th:block>
+                <!--                Show these items always-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{devs}">Developers</a>
+                </li>
+                <!--                Show these items when logged out -->
+                <th:block sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
+                    </li>
+                </th:block>
+                <!--IF AUTHENTICATED SHOW THESE-->
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item text-center">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="nav-link btn btn-muted">Logout</button>
+                        </form>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
     </div>
-    <div>
-        Album lineage: <span th:text="${album.lineage}"></span>
-    </div>
-    <div>
-        Album deadline: <span th:text="${album.deadline}"></span>
-    </div>
-    <h2>Items</h2>
-    <div>
-        <div th:each="item : ${items}">
-            <div class="card" style="width: 18rem;">
-                <div th:each="image : ${item.images[0]}">
-                    <img th:src="${image.filename}" class="card-img-top" alt="">
+</nav>
+<br><br><br><br>
+<!--<div th:replace="partials/navbar :: navbar"></div>-->
+<!--<div class="container quote">-->
+<!--    <h4 text-center>-->
+<!--        Album: <span th:text="${album.title}"></span>-->
+<!--    </h4>-->
+<!--&lt;!&ndash;    <h4 text-center>&ndash;&gt;-->
+<!--&lt;!&ndash;        Album description: <span th:text="${album.description}"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;    </h4>&ndash;&gt;-->
+<!--    <h4 text-center>-->
+<!--        Album lineage: <span th:text="${album.lineage}"></span>-->
+<!--    </h4>-->
+<!--    <h4 text-center>-->
+<!--        Album deadline: <span th:text="${album.deadline}"></span>-->
+<!--    </h4>-->
+<!--</div>-->
+<!-- ITEMS START HERE -->
+<div class="main-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h1 class="animate__animated animate__fadeInUp animate__delay-1s caps"><span class="caps" th:text="${album.title}"></span>'S ITEMS</h1>
+                    <div class="add">
+                        <th:block th:if="${isOwner}">
+                            <a th:href="@{/albums/{id}/items/create(id=${album.id})}"  class="btn btn-blood button_action text-cente">Add an
+                                item
+                            </a>
+                            <a th:href="@{/albums/{id}/guest(id=${album.id})}" class="btn btn-blood button_action text-center">Add a guest to
+                                this album
+                            </a>
+                        </th:block>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 th:text="${item.title}" class="card-title"></h5>
-                    <p th:text="${item.lineage}" class="card-text"></p>
-                </div>
-                <div class="card-body">
-                    <a th:href="@{/items/{id}(id=${item.id})}" class="card-link">View Item</a>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div id="filters" class="button-group">
+                    <button class="btn btn-primary" data-filter="*">All Albums</button>
+                    <button class="btn btn-primary" data-filter=".new">Newest</button>
+                    <button class="btn btn-primary" data-filter=".low">Oldest</button>
+                    <button class="btn btn-primary" data-filter=".high">Sort</button>
                 </div>
             </div>
         </div>
-        <th:block th:if="${isOwner}">
-            <a th:href="@{/albums/{id}/items/create(id=${album.id})}" class="btn btn-primary">Add an item</a>
-            <a th:href="@{/albums/{id}/guest(id=${album.id})}" class="btn btn-primary">Add a guest to this album</a>
-        </th:block>
     </div>
-</main>
-<footer th:replace="partials/footer :: footer"/>
+</div>
+
+<div class="featured container no-gutter">
+    <div class="row posts">
+        <div th:each="item : ${items}" id="1" class="item new col-md-4">
+            <a>
+                <div class="featured-item">
+                    <div th:each="image : ${item.images[0]}">
+                        <img th:src="${image.filename}" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body">
+                        <h4 th:text="${item.title}" class="card-title text-center pulsate"></h4>
+                        <h6 th:text="${item.lineage}" class=" card-text text-center"></h6>
+                    </div>
+                    <div>
+                    <a th:href="@{/items/{id}(id=${item.id})}" class="btn click btn-blood">View Item</a>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+<!--<footer th:replace="partials/footer :: footer"/>-->
 <div th:replace="partials/scripts :: assets"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
 </body>
-</html>
+<!--<body>-->
+<!--<div th:replace="partials/navbar :: navbar"></div>-->
+<!--<main class="container">-->
+<!--    <div>-->
+<!--        Album: <span th:text="${album.title}"></span>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        Album description: <span th:text="${album.description}"></span>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        Album lineage: <span th:text="${album.lineage}"></span>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        Album deadline: <span th:text="${album.deadline}"></span>-->
+<!--    </div>-->
+<!--    <h2>Items</h2>-->
+<!--    <div>-->
+<!--        <div th:each="item : ${items}">-->
+<!--            <div class="card" style="width: 18rem;">-->
+<!--                <div th:each="image : ${item.images[0]}">-->
+<!--                    <img th:src="${image.filename}" class="card-img-top" alt="">-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <h5 th:text="${item.title}" class="card-title"></h5>-->
+<!--                    <p th:text="${item.lineage}" class="card-text"></p>-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <a th:href="@{/items/{id}(id=${item.id})}" class="card-link">View Item</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <th:block th:if="${isOwner}">-->
+<!--            <a th:href="@{/albums/{id}/items/create(id=${album.id})}" class="btn btn-primary">Add an item</a>-->
+<!--            <a th:href="@{/albums/{id}/guest(id=${album.id})}" class="btn btn-primary">Add a guest to this album</a>-->
+<!--        </th:block>-->
+<!--    </div>-->
+<!--</main>-->
+<!--<footer th:replace="partials/footer :: footer"/>-->
+<!--<div th:replace="partials/scripts :: assets"></div>-->
+<!--</body>-->
+<!--</html>-->
