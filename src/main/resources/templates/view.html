@@ -2,7 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
-<head th:replace="partials/head :: header-links (pageTitle)"></head>
+<!--<head th:replace="partials/head :: header-links (pageTitle)"></head>-->
+<head>
+    <meta charset="UTF-8">
+    <title>Item Assignment Page</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css}">
+    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{https://kit.fontawesome.com/8d58347b96.js}" crossorigin="anonymous"></script>
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+</head>
+
 <!--<head>-->
 <!--    <meta charset="UTF-8">-->
 <!--    <title>WILLing Item Assignment</title>-->
@@ -38,7 +50,6 @@
 <!--</head>-->
 <body>
 <!--<div th:replace="partials/navbar :: navbar"></div>-->
-
 <div id="pre-header">
     <div class="container">
         <div class="row">
@@ -89,26 +100,6 @@
                         </form>
                     </li>
                 </th:block>
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Home</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item active">-->
-                <!--                    <a class="nav-link" href="#">Albums-->
-                <!--                        <span class="sr-only">(current)</span>-->
-                <!--                    </a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Profile</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Developers</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Login</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Logout</a>-->
-                <!--                </li>-->
             </ul>
         </div>
     </div>
@@ -120,40 +111,53 @@
 <div class="card-header">Owner Item Assignment</div>
     <div class="card-body">
         <section sec:authorize="isAuthenticated()">
+
+
         <div class="row">
 
-            <div class="card" style="width: 10rem; min-height: 18rem">
-                <div class="card-header">Items with Interests</div>
-<!--                <th:block th:each="item : ${item}" th:text="${item}">-->
-<!--                    <p th:each="interest : ${interest}" th:text="${interest}"></p>-->
-<!--                </th:block>-->
-                    <div class="card">
-                        <div th:each="interest : ${interests}">
-                            <!--        <p th:each="users : ${}"></p>-->
-                            <p th:text="${interest.item.title}">
-                                <th:block th:each="album : ${albums}">
-                                    <th:block th:each="item : ${album.items}">
-                                        <th:block th:each="user :${item.interests}">
-                                            <p th:text="${user.username}" class="card"></p>
-                                        </th:block>
 
+            <div class="column">
+                <div class="card" style="width: 10rem; min-height: 18rem">
+                    <div class="card-header">Items with Interests</div>
+    <!--                <th:block th:each="item : ${item}" th:text="${item}">-->
+    <!--                    <p th:each="interest : ${interest}" th:text="${interest}"></p>-->
+    <!--                </th:block>-->
+                        <div class="card">
+                            <div th:each="interest : ${interests}">
+                                <!--        <p th:each="users : ${}"></p>-->
+                                <p th:text="${interest.item.title}" class="card">
+                                    <th:block th:each="album : ${albums}">
+<!--                                        <th:block th:each="item : ${album.items}">-->
+<!--                                            <th:block th:each="user :${item.interests}">-->
+<!--                                                <p th:text="${user.username}" class="card"></p>-->
                                     </th:block>
 
-                                </th:block>
-
-                            </p>
+                                </p>
+                            </div>
                         </div>
-                        <div >
-
-                        </div>
+                </div>
+                <div class="card" style="width: 10rem; min-height: 18rem">
+                    <div class="card-header">Users Who Have Indicated Interest</div>
+                    <div th:each="interest : ${interests}">
+                        <!--        <p th:each="users : ${}"></p>-->
+                        <p th:text="${interest.interestedUser.username}"></p>
+                        <p th:text="${interest.item.title}"></p>
                     </div>
-            </div>
+                </div>
 
-            <div class="card" style="width: 10rem; min-height: 18rem">
+            </div>
+<!--        </div>-->
+
+<!--            USERS LIST -->
+        <div class="column">
+            <div class="card" style="width: 15rem; min-height: 20rem">
                 <div class="card-header">Users List</div>
-                <th:block th:each="user : ${users}">
-                    <p th:text="${user.username}" class="card"></p>
-                </th:block>
+<!--                <th:block th:each="user : ${users}">-->
+<!--                    <p th:text="${user.username}" class="card"></p>-->
+<!--                </th:block>-->
+                <div th:each="user : ${users}" class="card">
+                    <input type="radio" name="users" th:value="${user.username}" th:text="${user.username}">
+                </div>
                 <p class="card-footer text-muted">
                     HINT:
                     To give a User an Item,
@@ -161,56 +165,38 @@
                     Then click 'Assign Item'.
                 </p>
             </div>
+            <br>
+            <button type="submit" class="btn-primary">Assign Item</button>
+        </div>
+
+<!--            END USERS LIST-->
+
+<!--            ALBUMS GRID-->
 
             <th:block th:each="album : ${albums}">
-
-                    <div class="col-sm-3">
-
-                        <div class="card border-primary" style="width: 15rem">
+                        <div class="card border-primary" style="width: 12rem; max-height: 15rem">
 
                             <div class="card-body">
 
-                            <h3 th:text="${album.title}" class="card-header"></h3>
+                            <div th:text="${album.title}" class="card-header"></div>
                                 <div th:each="item : ${album.getItems()}" class="card">
-                                    <p th:text="${item.title}">  </p>
+<!--                                    <p th:text="${item.title}">  </p>-->
+                                    <input type="radio" name="items" th:value="${item.title}" th:text="${item.title}">
                                 </div>
-
-
                             </div>
-
                         </div>
-
-                    </div>
-
             </th:block>
+
+<!--            END ALBUMS GRID-->
+
+
         </div>
-            <br>
-<!--                <div class="card" style="width: 15rem; height: 30rem">-->
-<!--                    <div class="card-header">Users List</div>-->
-<!--                    <th:block th:each="user : ${users}">-->
-<!--                        <p th:text="${user.firstName}"></p>-->
-<!--                    </th:block>-->
-<!--                    <div class="card-footer text-muted">-->
-<!--                        To give a User an Item,-->
-<!--                        Select one User and one Item.-->
-<!--                        Then click 'Assign Item'.-->
-<!--                    </div>-->
-<!--                </div>-->
-            <button type="submit">Assign Item</button>
+
         </section>
     </div>
 </div>
 
-<div class="card">
-    <div class="card-header">Users Who Have Indicated Interest</div>
-    <div th:each="interest : ${interests}">
-<!--        <p th:each="users : ${}"></p>-->
-        <p th:text="${interest.interestedUser.username}"></p>
-        <p th:text="${interest.item.title}"></p>
 
-
-    </div>
-</div>
 <!--    <div th:each="item : ${items}">-->
 <!--        <div class="card" style="width: 18rem;">-->
 <!--            <div th:each="image : ${item.images[0]}">-->
