@@ -16,52 +16,61 @@
 <body>
 <div th:replace="partials/navbar :: navbar">
 </div>
-<h1>Edit Item Page</h1>
-
-<form th:action="@{/items/{id}/edit(id=${item.id})}" method="post">
-    <label for="item-name">Item name</label>
-    <input type="text" id="item-name" name="item-name" th:value="${item.title}" required autofocus maxlength="60">
-
-    <label for="item-description">Item description</label>
-    <textarea type="text" id="item-description" name="item-description" th:text="${item.description}"
-              required></textarea>
-
-    <label for="item-lineage">Lineage</label>
-    <input type="text" id="item-lineage" name="item-lineage" th:value="${item.lineage}" maxlength="50">
-    <input type="hidden" id="images" value="" name="images">
-    <input type="hidden" id="file-type" value="" name="file-type">
-    <button class="btn btn-secondary">Update post</button>
-</form>
-<button class="btn btn-secondary" id="upload">Add a photo</button>
-<div th:each="photo : ${photos}">
-    <form th:action="@{/items/{itemId}/image/{imageId}(itemId=${item.id},imageId=${photo.id})}" method="post">
-        <img th:src="${photo.filename}" alt="" class="mb-3">
-        <button class="btn btn-secondary">Delete</button>
+<br><br>
+<main class="container">
+    <h1>Edit Item Page</h1>
+    <form th:action="@{/items/{id}/edit(id=${item.id})}" method="post">
+        <div class="form-group">
+            <label for="item-name">Item name</label>
+            <input type="text" class="form-control" id="item-name" name="item-name" th:value="${item.title}" required
+                   autofocus maxlength="60">
+        </div>
+        <div class="form-group">
+            <label for="item-description">Item description</label>
+            <textarea type="text" id="item-description" class="form-control" name="item-description"
+                      th:text="${item.description}"
+                      required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="item-lineage">Lineage</label>
+            <input type="text" id="item-lineage" class="form-control" name="item-lineage" th:value="${item.lineage}"
+                   maxlength="50">
+        </div>
+        <input type="hidden" id="images" value="" name="images">
+        <input type="hidden" id="file-type" value="" name="file-type">
+        <button class="btn btn-secondary" id="upload">Add a photo</button>
+        <button class="btn btn-primary">Update post</button>
     </form>
-</div>
-<div th:each="video : ${videos}">
-    <form th:action="@{/items/{itemId}/image/{imageId}(itemId=${item.id},imageId=${video.id})}" method="post">
-        <video controls>
-            <source th:src="${video.filename}">
-        </video>
-        <br>
-        <button class="btn btn-secondary">Delete</button>
-    </form>
-</div>
-<div id="files"></div>
+    <div th:each="photo : ${photos}">
+        <form th:action="@{/items/{itemId}/image/{imageId}(itemId=${item.id},imageId=${photo.id})}" method="post">
+            <img th:src="${photo.filename}" alt="" class="mb-3">
+            <button class="btn btn-secondary">Delete</button>
+        </form>
+    </div>
+    <div th:each="video : ${videos}">
+        <form th:action="@{/items/{itemId}/image/{imageId}(itemId=${item.id},imageId=${video.id})}" method="post">
+            <video controls>
+                <source th:src="${video.filename}">
+            </video>
+            <br>
+            <button class="btn btn-secondary">Delete</button>
+        </form>
+    </div>
+    <div id="files"></div>
 
 
-<!-- OPTIONAL JAVASCRIPT -->
-<!-- jQUERY FIRST, THEN POPPER.JS, THEN BOOTSTRAP JS -->
-<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"-->
-<!--        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"-->
-<!--        crossorigin="anonymous"></script>-->
-<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"-->
-<!--        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"-->
-<!--        crossorigin="anonymous"></script>-->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"-->
-<!--        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"-->
-<!--        crossorigin="anonymous"></script>-->
+    <!-- OPTIONAL JAVASCRIPT -->
+    <!-- jQUERY FIRST, THEN POPPER.JS, THEN BOOTSTRAP JS -->
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"-->
+    <!--        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"-->
+    <!--        crossorigin="anonymous"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"-->
+    <!--        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"-->
+    <!--        crossorigin="anonymous"></script>-->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"-->
+    <!--        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"-->
+    <!--        crossorigin="anonymous"></script>-->
+</main>
 <div th:replace="partials/scripts :: assets"></div>
 </body>
 </html>

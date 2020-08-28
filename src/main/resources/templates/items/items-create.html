@@ -1,26 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/head :: header-links (Create-Item)"/>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
-<h1>Create an item</h1>
-<form th:action="@{/albums/{id}/items/create(id=${album.id})}" method="post">
-    <label for="item-name">Item name</label>
-    <input type="text" id="item-name" name="item-name" required autofocus maxlength="60">
-
-    <label for="item-description">Item description</label>
-    <textarea type="text" id="item-description" name="item-description" required></textarea>
-
-    <label for="item-lineage">Lineage</label>
-    <input type="text" id="item-lineage" name="item-lineage" maxlength="50">
-
-    <div id="files"></div>
-    <input type="hidden" id="images" value="" name="images">
-    <input type="hidden" id="file-type" value="" name="file-type">
-    <button id="upload" class="btn btn-primary mb-2">Upload images/videos</button>
-    <h4>10 files max</h4>
-    <button class="btn btn-secondary">Create post!</button>
-</form>
+<br><br>
+<main class="container">
+    <h1>Create an item</h1>
+    <form th:action="@{/albums/{id}/items/create(id=${album.id})}" method="post">
+        <div class="form-group">
+            <label for="item-name">Item name</label>
+            <input type="text" class="form-control" id="item-name" name="item-name" required autofocus maxlength="60">
+        </div>
+        <div class="form-group">
+            <label for="item-description">Item description</label>
+            <textarea type="text" id="item-description" class="form-control" name="item-description"
+                      required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="item-lineage">Lineage</label>
+            <input type="text" id="item-lineage" class="form-control" name="item-lineage" maxlength="50">
+        </div>
+        <div id="files"></div>
+        <input type="hidden" id="images" value="" name="images">
+        <input type="hidden" id="file-type" value="" name="file-type">
+        <button id="upload" class="btn btn-secondary mb-2">Upload images/videos</button>
+        <h4>10 files max</h4>
+        <button class="btn btn-primary">Create post!</button>
+    </form>
+</main>
 
 
 <div th:replace="partials/scripts :: assets"></div>

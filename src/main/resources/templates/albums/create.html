@@ -9,6 +9,8 @@
 <!--    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>-->
 <!--    <title>Create Post</title>-->
 <!--</head>-->
+<body>
+<div th:replace="partials/navbar :: navbar"></div>
 <div class="container mt-5">
     <h3>Create Album</h3>
 
@@ -28,8 +30,8 @@
         <div id="files"></div>
         <input type="hidden" id="images" value="" name="images">
         <input type="hidden" id="file-type" value="" name="file-type">
-        <button id="upload" class="btn btn-primary mb-2">Upload images/videos</button>
-        <button class="btn btn-primary btn-sm btn-block">Save</button>
+        <button id="upload" class="btn btn-secondary">Upload Images</button>
+        <button class="btn btn-primary">Save Album</button>
     </form>
 </div>
 <div th:replace="partials/scripts :: assets"></div>

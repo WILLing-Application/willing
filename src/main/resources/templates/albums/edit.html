@@ -3,30 +3,31 @@
 <head th:replace="partials/head :: header-links (Edit)"/>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
+<br><br>
 <div class="container">
     <h3>Edit and save your changes</h3>
 
     <form th:action="@{/albums/{id}/edit(id=${album.id})}" th:method="post">
         <div class="form-group">
-            <label for="title">Post Title</label>
+            <label for="title">Title</label>
             <input type="text" id="title" name="title" class="form-control" th:value="${album.title}" maxlength="100"
                    required autofocus>
         </div>
         <div class="form-group">
-            <label for="lineage">Post Lineage</label>
-            <textarea type="text" id="lineage" name="lineage" class="form-control" th:text="${album.lineage}"
-                      maxlength="100" required autofocus></textarea>
+            <label for="lineage">Lineage</label>
+            <input type="text" id="lineage" name="lineage" class="form-control" th:value="${album.lineage}"
+                      maxlength="100" required autofocus>
         </div>
         <div class="form-group">
             <label for="description">Post Description</label>
-            <input type="text" id="description" name="description" class="form-control" th:value="${album.description}"
-                   required>
+            <textarea type="text" id="description" name="description" class="form-control" th:text="${album.description}"
+                      required></textarea>
         </div>
         <input type="hidden" id="images" value="" name="images">
         <input type="hidden" id="file-type" value="" name="file-type">
-        <button class="btn btn-primary btn-sm btn-block">Save</button>
+        <button class="btn btn-secondary inline" id="upload">Add a photo</button>
+        <button class="btn btn-primary inline">Update Album</button>
     </form>
-    <button class="btn btn-secondary" id="upload">Add a photo</button>
     <div th:each="photo : ${photos}">
         <form th:action="@{/albums/{albumId}/image/{imageId}(albumId=${album.id},imageId=${photo.id})}" method="post">
             <img th:src="${photo.filename}" alt="" class="mb-3">
