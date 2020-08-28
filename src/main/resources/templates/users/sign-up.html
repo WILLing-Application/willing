@@ -45,9 +45,18 @@
         <label for="phone">phone</label>
         <input id="phone" th:field="*{phone}" th:required th:maxlength="20"/>
         <br/>
+        <input type="hidden" id="images" name="images" value="" th:field="*{profilePhoto}">
+        <input type="hidden" id="file-type" name="file-type" value="">
+        <div class="form-group">
+            Upload Profile Photo
+            <!-- Upload user profile photo -->
+            <div id="files"></div>
+            <button id="upload" class="btn btn-muted btn-sm mb-2">Upload image</button>
+        </div>
         <input value="Sign me up!" type="submit"/>
     </form>
 </div>
+<div th:replace="partials/scripts :: assets"></div>
 </body>
 <footer th:replace="partials/footer :: footer"/>
 </html>

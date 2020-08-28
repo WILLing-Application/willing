@@ -2,34 +2,215 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
-<head th:replace="partials/head :: header-links (Profile)">
-<body>
-<div th:replace="partials/navbar :: navbar"></div>
-    </div>
+<head th:replace="partials/head :: header-links (pageTitle)"></head>
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>WILLing Item Assignment</title>-->
+<!--&lt;!&ndash;fragment:head&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title th:text="${pageTitle}"></title>&ndash;&gt;-->
 
-    <br><br><br>
-<div class="card border-primary">
-<div class="card-header">Owner Item Assignment</div>
-    <div class="card-body">
-    <section sec:authorize="isAuthenticated()">
-        <th:block th:each="album : ${albums}"  class="card border-primary">
-            <div class="row">
-                <h1 th:text="${album.title}"></h1>
-                <div th:each="item : ${album.getItems()}" class="card">
-                    <p th:text="${item.title}">  </p>
-                </div>
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!--    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css}">-->
+<!--    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js}"></script>-->
+<!--    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js}"></script>-->
+<!--    <script th:src="@{https://kit.fontawesome.com/8d58347b96.js}" crossorigin="anonymous"></script>-->
+<!--    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>-->
+<!--    <link th:href="@{/css/item.css}" rel="stylesheet">-->
+<!--&lt;!&ndash;end:fragment:head&ndash;&gt;-->
+
+<!--&lt;!&ndash;albums.html:head&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">&ndash;&gt;-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">-->
+<!--    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>-->
+<!--&lt;!&ndash;    <title>Albums</title>&ndash;&gt;-->
+
+<!--    &lt;!&ndash; BOOTSTRAP CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+
+<!--    &lt;!&ndash;    CSS FILES&ndash;&gt;-->
+<!--    <link th:href="@{/css/fontawesome.css}" rel="stylesheet">-->
+<!--    <link th:href="@{/css/index.css}" rel="stylesheet">-->
+<!--    <link th:href="@{/css/owl.css}" rel="stylesheet">-->
+<!--&lt;!&ndash;end:albums.html:head&ndash;&gt;-->
+<!--</head>-->
+<body>
+<!--<div th:replace="partials/navbar :: navbar"></div>-->
+
+<div id="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span>DIVIDE YOUR BELONGINGS WITH US!</span>
             </div>
-        </th:block>
-            <div class="card">
-                <div class="card-header">List</div>
-                <th:block th:each="user : ${users}">
-                    <p th:text="${user.firstName}"></p>
-                </th:block>
-            </div>
-    </section>
+        </div>
     </div>
 </div>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="assets/images/.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{albums}">Albums</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{view}">Interests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{profile}">Profile</a>
+                    </li>
+                </th:block>
+                <!--                Show these items always-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{devs}">Developers</a>
+                </li>
+                <!--                Show these items when logged out -->
+                <th:block sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
+                    </li>
+                </th:block>
+                <!--IF AUTHENTICATED SHOW THESE-->
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item text-center">
+                        <form  th:action="@{/logout}" th:method="post">
+                            <button class="nav-link btn btn-muted">Logout</button>
+                        </form>
+                    </li>
+                </th:block>
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Home</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item active">-->
+                <!--                    <a class="nav-link" href="#">Albums-->
+                <!--                        <span class="sr-only">(current)</span>-->
+                <!--                    </a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Profile</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Developers</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Login</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Logout</a>-->
+                <!--                </li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--    <br><br><br>-->
+
+<div class="card border-primary">
+<div class="card-header">Owner Item Assignment</div>
+    <div class="card-body">
+        <section sec:authorize="isAuthenticated()">
+        <div class="row">
+
+            <div class="card" style="width: 10rem; min-height: 18rem">
+                <div class="card-header">Items with Interests</div>
+<!--                <th:block th:each="item : ${item}" th:text="${item}">-->
+<!--                    <p th:each="interest : ${interest}" th:text="${interest}"></p>-->
+<!--                </th:block>-->
+                    <div class="card">
+                        <div th:each="interest : ${interests}">
+                            <!--        <p th:each="users : ${}"></p>-->
+                            <p th:text="${interest.item.title}">
+                                <th:block th:each="album : ${albums}">
+                                    <th:block th:each="item : ${album.items}">
+                                        <th:block th:each="user :${item.interests}">
+                                            <p th:text="${user.username}" class="card"></p>
+                                        </th:block>
+
+                                    </th:block>
+
+                                </th:block>
+
+                            </p>
+                        </div>
+                        <div >
+
+                        </div>
+                    </div>
+            </div>
+
+            <div class="card" style="width: 10rem; min-height: 18rem">
+                <div class="card-header">Users List</div>
+                <th:block th:each="user : ${users}">
+                    <p th:text="${user.username}" class="card"></p>
+                </th:block>
+                <p class="card-footer text-muted">
+                    HINT:
+                    To give a User an Item,
+                    Select one User and one Item.
+                    Then click 'Assign Item'.
+                </p>
+            </div>
+
+            <th:block th:each="album : ${albums}">
+
+                    <div class="col-sm-3">
+
+                        <div class="card border-primary" style="width: 15rem">
+
+                            <div class="card-body">
+
+                            <h3 th:text="${album.title}" class="card-header"></h3>
+                                <div th:each="item : ${album.getItems()}" class="card">
+                                    <p th:text="${item.title}">  </p>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+            </th:block>
+        </div>
+            <br>
+<!--                <div class="card" style="width: 15rem; height: 30rem">-->
+<!--                    <div class="card-header">Users List</div>-->
+<!--                    <th:block th:each="user : ${users}">-->
+<!--                        <p th:text="${user.firstName}"></p>-->
+<!--                    </th:block>-->
+<!--                    <div class="card-footer text-muted">-->
+<!--                        To give a User an Item,-->
+<!--                        Select one User and one Item.-->
+<!--                        Then click 'Assign Item'.-->
+<!--                    </div>-->
+<!--                </div>-->
+            <button type="submit">Assign Item</button>
+        </section>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Users Who Have Indicated Interest</div>
+    <div th:each="interest : ${interests}">
+<!--        <p th:each="users : ${}"></p>-->
+        <p th:text="${interest.interestedUser.username}"></p>
+        <p th:text="${interest.item.title}"></p>
+
+
+    </div>
+</div>
 <!--    <div th:each="item : ${items}">-->
 <!--        <div class="card" style="width: 18rem;">-->
 <!--            <div th:each="image : ${item.images[0]}">-->
@@ -46,10 +227,12 @@
 <!--    </div>-->
 
 
+    <div th:replace="partials/scripts :: assets"></div>
     <!-- OPTIONAL JAVASCRIPT -->
     <!-- jQUERY FIRST, THEN POPPER.JS, THEN BOOTSTRAP JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
 </body>
 </html>

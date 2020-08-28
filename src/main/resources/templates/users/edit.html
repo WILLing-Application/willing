@@ -14,18 +14,18 @@
     <div class="row" sec:authorize="isAuthenticated()">
         <div>
 <!-- USER PROFILE PHOTO-->
-<!--            <div>-->
-<!--                &lt;!&ndash; Display user profile photo, if it has been uploaded &ndash;&gt;-->
-<!--                <div th:if="${user.profilePhoto}">-->
-<!--                    <img th:src="${user.profilePhoto}" class="rounded-circle img-responsive m-2"-->
-<!--                         height="120" width="120" alt="profile-photo">-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Display placeholder image if user profile photo does not exist &ndash;&gt;-->
-<!--                <div th:unless="${user.profilePhoto}">-->
-<!--                    <img src="../../static/photos/placeholder.jpeg" class="rounded-circle img-responsive m-2"-->
-<!--                         width="100" th:src="@{photos/placeholder.jpeg}"/>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div>
+                <!-- Display user profile photo, if it has been uploaded -->
+                <div th:if="${hasPhoto}">
+                    <img th:src="${user.profilePhoto}" class="rounded-circle img-responsive m-2"
+                         height="120" width="120" alt="profile-photo">
+                </div>
+                <!-- Display placeholder image if user profile photo does not exist -->
+                <div th:if="${noPhoto}">
+                    <img th:src="${placeholder}" class="rounded-circle img-responsive m-2"
+                         width="100">
+                </div>
+            </div>
 
             <form th:action="@{/profile/{id}/edit}" th:method="post">
                 <div class="form-group">
@@ -69,13 +69,15 @@
                     <input type="tel" id="phone" name="phone" class="form-control" th:field="*{user.phone}"
                            th:value="*{user.phone}" th:maxlength="20" th:required>
                 </div>
-<!--                <div class="form-group">-->
-<!--                    Upload Profile Photo-->
-<!--                    &lt;!&ndash; Upload user profile photo &ndash;&gt;-->
-<!--                    <div id="files"></div>-->
-<!--                    <button id="upload" class="btn btn-muted btn-sm mb-2">Upload image</button>-->
-<!--                </div>-->
                 <input type="hidden" th:name="edit-user" th:value="${user.id}">
+                <input type="hidden" id="images" name="images" value="">
+                <input type="hidden" id="file-type" name="file-type" value="">
+                <div class="form-group">
+                    Upload Profile Photo
+                    <!-- Upload user profile photo -->
+                    <div id="files"></div>
+                    <button id="upload" class="btn btn-muted btn-sm mb-2">Upload image</button>
+                </div>
                 <button type="submit" class="btn btn-primary btn-sm btn-block">Save</button>
             </form>
 
