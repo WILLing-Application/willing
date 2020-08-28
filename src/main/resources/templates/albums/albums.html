@@ -138,15 +138,15 @@
                     </a>
                     <h6 class="card-text text-center" th:text="${album.lineage}"></h6>
                     <a th:href="@{/albums/{id}(id=${album.id})}" class="btn click btn-blood">View Album</a>
-<!--                    <th:block th:if="${isOwner}">-->
-<!--                        <div class="delete_icon">-->
-<!--                            <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i-->
-<!--                                    class="fas fa-edit"></i>Edit</a>-->
-<!--                            <form th:action="@{/albums/{id}/delete(id=${album.id})}" method="post">-->
-<!--                                <button class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</button>-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                    </th:block>-->
+                    <th:block th:if="${isOwner}">
+                        <div class="delete_icon" style="display: flex; justify-content: space-between;">
+                            <a th:href="@{/albums/{id}/edit(id=${album.id})}" class="btn btn-muted btn-sm"><i
+                                    class="fas fa-edit"></i>Edit</a>
+                            <form th:action="@{/albums/{id}/delete(id=${album.id})}" method="post">
+                                <button class="btn btn-muted btn-sm"><i class="fas fa-trash"></i>Delete</button>
+                            </form>
+                        </div>
+                    </th:block>
                 </div>
             </a>
         </div>
