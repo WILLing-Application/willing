@@ -29,9 +29,9 @@ header h1 {
     text-transform: uppercase;
 }
 
-.jumbotron {
-    background-image: url("../photos/sunset.jpg");
-}
+/*.jumbotron {*/
+/*    background-image: url("../photos/sunset.jpg");*/
+/*}*/
 
 .main-button a {
     background-color: #8b0000;
@@ -346,6 +346,7 @@ header h1 {
 .sub-footer {
     border-top: 1px solid #eee;
     text-align: center;
+    margin-top: 160px;
 }
 .sub-footer p {
     font-size: 12px;
