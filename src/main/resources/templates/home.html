@@ -1,86 +1,96 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-    <head>
-        <!-- REQUIRED META TAGS -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <!-- REQUIRED META TAGS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- BOOTSTRAP CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
-        <!--ANIMATE.CSS-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
+    <!--ANIMATE.CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 
-        <title>WILLing</title>
-        <!--CSS LINK-->
-        <link th:href="@{/css/main.css}" rel="stylesheet">
-        <link th:href="@{/css/navbar.css}" rel="stylesheet">
-        <link th:href="@{/css/index.css}" rel="stylesheet">
+    <title>WILLing</title>
+    <!--CSS LINK-->
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
     <!--    <link type="text/javascript" th:src="@{/js/main.js}">-->
-<!--        <script th:src="|${js}/main.js|"></script>-->
+    <!--        <script th:src="|${js}/main.js|"></script>-->
 
-    </head>
-    <body>
-    <div id="pre-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <span>DIVIDE YOUR BELONGINGS WITH US!</span>
-                </div>
+</head>
+<body>
+<div id="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span>DIVIDE YOUR BELONGINGS WITH US!</span>
             </div>
         </div>
     </div>
-    <div th:replace="partials/navbar :: navbar"></div>
+</div>
+<div th:replace="partials/navbar :: navbar"></div>
 
 <!--    IMAGE CAROUSEL-->
-        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active " data-interval="8000">
-                    <img class="d-block w-100 mh-100" th:src="@{${'/photos/couch.jpg'}}" alt="First slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span class="brand-blood"><em>WILLing</em></span></h1>
-                        <h2 class="animate__animated animate__fadeInTopLeft animate__delay-2s">Divide Your Belongings with us</h2>
-                        <p class="animate__animated animate__fadeInTopRight animate__delay-3s"><a href="/sign-up">Get Started</a></p>
-                        <!-- TODO: ADD TH: FOR THYMELEAF -->
-                    </div>
-                </div>
-                <div class="carousel-item" data-interval="8000">
-                    <img class="d-block w-100 mh-100" th:src="@{${'/photos/house.jpg'}}" alt="Second slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span class="brand-blood"><em>WILLing</em></span></h1>
-                        <h2 class="animate__animated animate__fadeInTopLeft animate__delay-2s">Divide Your Belongings with us</h2>
-                        <p class="animate__animated animate__fadeInTopRight animate__delay-3s"><a href="/sign-up">Get Started</a></p>
-        <!--                TODO: ADD TH: FOR THYMELEAF -->
-                    </div>
-                </div>
-                <div class="carousel-item" data-interval="8000">
-<!--                    Swap out /photos/lights.jpg (background is too dark)-->
-                    <img class="d-block w-100 mh-100" th:src="@{${'/photos/camera.jpg'}}" alt="Third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span class="brand-blood"><em>WILLing</em></span></h1>
-                        <h2 class="animate__animated animate__fadeInTopLeft animate__delay-2s">Divide Your Belongings with us</h2>
-                        <p class="animate__animated animate__fadeInTopRight animate__delay-3s"><a href="/sign-up">Get Started</a></p>
-                        <!-- TODO: ADD TH: FOR THYMELEAF -->
-                    </div>
-                </div>
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active " data-interval="8000">
+            <img class="d-block w-100 mh-100" th:src="@{${'/photos/couch.jpg'}}" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span class="brand-blood"><em>WILLing</em></span>
+                </h1>
+                <h2 class="animate__animated animate__fadeInTopLeft animate__delay-2s">Divide Your Belongings with
+                    us</h2>
+                <p class="animate__animated animate__fadeInTopRight animate__delay-3s"><a href="/sign-up">Get
+                    Started</a></p>
+                <!-- TODO: ADD TH: FOR THYMELEAF -->
             </div>
-        <!--    CAROUSEL CONTROLLERS-->
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
+        <div class="carousel-item" data-interval="8000">
+            <img class="d-block w-100 mh-100" th:src="@{${'/photos/house.jpg'}}" alt="Second slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span class="brand-blood"><em>WILLing</em></span>
+                </h1>
+                <h2 class="animate__animated animate__fadeInTopLeft animate__delay-2s">Divide Your Belongings with
+                    us</h2>
+                <p class="animate__animated animate__fadeInTopRight animate__delay-3s"><a href="/sign-up">Get
+                    Started</a></p>
+                <!--                TODO: ADD TH: FOR THYMELEAF -->
+            </div>
+        </div>
+        <div class="carousel-item" data-interval="8000">
+            <!--                    Swap out /photos/lights.jpg (background is too dark)-->
+            <img class="d-block w-100 mh-100" th:src="@{${'/photos/camera.jpg'}}" alt="Third slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span class="brand-blood"><em>WILLing</em></span>
+                </h1>
+                <h2 class="animate__animated animate__fadeInTopLeft animate__delay-2s">Divide Your Belongings with
+                    us</h2>
+                <p class="animate__animated animate__fadeInTopRight animate__delay-3s"><a href="/sign-up">Get
+                    Started</a></p>
+                <!-- TODO: ADD TH: FOR THYMELEAF -->
+            </div>
+        </div>
+    </div>
+    <!--    CAROUSEL CONTROLLERS-->
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 
-    <div th:replace="partials/scripts :: assets"></div>
-    </body>
+<div th:replace="partials/scripts :: assets"></div>
+</body>
 </html>

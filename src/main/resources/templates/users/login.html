@@ -4,6 +4,10 @@
       lang="en">
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
+
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link th:href="@{/css/fontawesome.css}" rel="stylesheet">
@@ -23,28 +27,30 @@
 <nav th:replace="partials/navbar :: navbar"/>
 
 <!------ Include the above in your HEAD tag ---------->
-<div sec:authorize="isAuthenticated()">
+<div class="message" sec:authorize="isAuthenticated()">
     <!--    If user is already logged in and visits the login page, include this-->
     <a href="/">Go Back to Home Page</a>
 </div>
 
 <!--if there is an error-->
-<div th:if="${param.error}">
+<div class="message" th:if="${param.error}">
     Invalid Username and Password.
 </div>
 <!--if you're logged out successfully-->
-<div th:if="${param.logout}">
+<div class="message" th:if="${param.logout}">
     You have been logged out.
 </div>
 
 <div class="login">
-<!--    <div class="login-triangle"></div>-->
+    <!--    <div class="login-triangle"></div>-->
 
     <h2 class="login-header">Log in</h2>
 
     <form th:action="@{/login}" class="login-container" method="post">
-        <p><input type="text" placeholder="username" id="username" name="username" th:required th:autofocus th:maxlength="60"></p>
-        <p><input type="password" placeholder="Password" id="password" name="password" th:required th:maxlength="60"></p>
+        <p><input type="text" placeholder="Username" id="username" name="username" th:required th:autofocus
+                  th:maxlength="60"></p>
+        <p><input type="password" placeholder="Password" id="password" name="password" th:required th:maxlength="60">
+        </p>
         <p><input type="submit" value="Log in"></p>
     </form>
 </div>
