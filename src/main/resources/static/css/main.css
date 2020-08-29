@@ -3,6 +3,10 @@ img {
     height: 100vh;
 }
 
+.brand-blood {
+    color: #8b0000;
+}
+
 .carousel-item{
     height: 100vh;
     min-height: 300px;
