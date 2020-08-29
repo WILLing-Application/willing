@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<!-- USAGE INFO:-->
+<!-- By adding th:remove="tag" the ending head tag will be removed allowing addition of custom-->
+<!--    links and scripts, such as custom CSS, files for a page. The ending head tag will need-->
+<!--    to be included on your page like this example:-->
+
+<!--    Example usage for this partial fragment:-->
+<!--    <head>-->
+<!--        <div th:insert="partials/header :: header-links ('replace your page title here')" th:remove="tag"></div>-->
+<!--        custom CSS files-->
+<!--        <link th:href="@{/css/fontawesome.css}" rel="stylesheet">-->
+<!--        <link th:href="@{/css/index.css}" rel="stylesheet">-->
+<!--        <link th:href="@{/css/login.css}" rel="stylesheet">-->
+<!--    </head>-->
+<!--    End example usage-->
+
+<head th:fragment="header-links (pageTitle)" th:remove="tag">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="${pageTitle}"></title>
+
+<!--    BEGIN...BootstrapCDNs v4.2 from Bootstrap documentation-->
+<!--    https://getbootstrap.com/docs/4.2/getting-started/download/#bootstrapcdn-->
+    <!--    BootstrapCDN jQuery-->
+<!--    Note that Bootstrap Carousel only works w/ jQuery slim, other things like Ajax and effects only work w/ full jQuery-->
+<!--    https://stackoverflow.com/questions/57232297/bootstrap-carousel-only-works-with-jquery-slim-but-full-jquery-needed-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <!--    BootstrapCDN Popper.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+            integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+    <!--    BootstrapCDN CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+          crossorigin="anonymous">
+    <!--    BootstrapCDN JS-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+<!--    END...BootstrapCDNs v4.2 from Bootstrap documentation-->
+
+<!--    BEGIN...Other JS Scripts-->
+    <script src="https://kit.fontawesome.com/8d58347b96.js" crossorigin="anonymous"></script>
+    <script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <!--    (to use Filestack JS, also include the scripts partial above the </body> end tag-->
+<!--    END...Other JS Scripts-->
+
+
+<!--Old head links for reference, delete after testing-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>-->
+
+</head>
+<body>
+
+</body>
+</html>
