@@ -8,6 +8,7 @@
         <!-- BOOTSTRAP CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
         <!--ANIMATE.CSS-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 
@@ -43,7 +44,7 @@
                 <div class="carousel-item active " data-interval="8000">
                     <img class="d-block w-100 mh-100" th:src="@{${'/photos/couch.jpg'}}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span><em>WILLing</em></span></h1>
+                        <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span class="brand-blood"><em>WILLing</em></span></h1>
                         <h2 class="animate__animated animate__fadeInTopLeft animate__delay-2s">Divide Your Belongings with us</h2>
                         <p class="animate__animated animate__fadeInTopRight animate__delay-3s"><a href="/sign-up">Get Started</a></p>
                         <!-- TODO: ADD TH: FOR THYMELEAF -->
@@ -52,16 +53,17 @@
                 <div class="carousel-item" data-interval="8000">
                     <img class="d-block w-100 mh-100" th:src="@{${'/photos/house.jpg'}}" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span><em>WILLing</em></span></h1>
+                        <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span class="brand-blood"><em>WILLing</em></span></h1>
                         <h2 class="animate__animated animate__fadeInTopLeft animate__delay-2s">Divide Your Belongings with us</h2>
                         <p class="animate__animated animate__fadeInTopRight animate__delay-3s"><a href="/sign-up">Get Started</a></p>
         <!--                TODO: ADD TH: FOR THYMELEAF -->
                     </div>
                 </div>
                 <div class="carousel-item" data-interval="8000">
-                    <img class="d-block w-100 mh-100" th:src="@{${'/photos/lights.jpg'}}" alt="Third slide">
+<!--                    Swap out /photos/lights.jpg (background is too dark)-->
+                    <img class="d-block w-100 mh-100" th:src="@{${'/photos/camera.jpg'}}" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span><em>WILLing</em></span></h1>
+                        <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span class="brand-blood"><em>WILLing</em></span></h1>
                         <h2 class="animate__animated animate__fadeInTopLeft animate__delay-2s">Divide Your Belongings with us</h2>
                         <p class="animate__animated animate__fadeInTopRight animate__delay-3s"><a href="/sign-up">Get Started</a></p>
                         <!-- TODO: ADD TH: FOR THYMELEAF -->
