@@ -6,6 +6,10 @@ body {
     transition: all 0.5s;
 }
 
+.message {
+    color: #696969;
+}
+
 .login {
     width: 400px;
     margin: 16px auto;
@@ -50,7 +54,7 @@ body {
     padding: 12px;
 }
 
-.login input {
+.login input, #upload, .signup-form input {
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -69,13 +73,18 @@ body {
     color: #696969;
 }
 
+#upload {
+    background-color: #696969;
+    color: #fff;
+}
+
 /* Text fields' focus effect */
 .login input[type="email"]:focus,
-.login input[type="password"]:focus {
+.login input[type="password"]:focus, #upload {
     border-color: #696969;
 }
 
-.login input[type="submit"] {
+.login input[type="submit"], .signup-submit {
     background: #8b0000;
     border-color: transparent;
     color: #fff;
@@ -89,6 +98,13 @@ body {
 /* Buttons' focus effect */
 .login input[type="submit"]:focus {
     border-color: #8b0000;
+}
+
+/*   sign-up page styling   */
+
+.signup-form {
+    background: #ebebeb;
+    padding: 12px;
 }
 
 /*===============================================*/

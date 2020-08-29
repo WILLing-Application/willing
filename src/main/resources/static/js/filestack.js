@@ -6,7 +6,7 @@
     document.getElementById("upload").addEventListener("click", (e) => {
         e.preventDefault();
         const options = {
-            imageMax: [400, 400],
+            imageMax: [300, 300],
             maxFiles: 10,
             onUploadDone: res => {
                 for (let i = 0; i < res.filesUploaded.length; i++) {
