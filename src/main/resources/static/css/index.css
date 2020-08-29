@@ -20,6 +20,12 @@ header h1 {
     width: 100%;
 }
 
+/*new code*/
+#image-ul {
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+
 .btn-blood {
     background-color: #8b0000;
     text-transform: uppercase;
