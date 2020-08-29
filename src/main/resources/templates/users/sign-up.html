@@ -1,76 +1,102 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       lang="en">
-<head th:replace="partials/head :: header-links (pageTitle = 'Sign up')">
+<!--&lt;!&ndash;<head th:replace="partials/head :: header-links (pageTitle = 'Sign up')">&ndash;&gt;</head>-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <title>Albums</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--    CSS FILES-->
+    <link th:href="@{/css/fontawesome.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <link th:href="@{/css/owl.css}" rel="stylesheet">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar"/>
-
+<!--<nav th:replace="partials/navbar :: navbar"/>-->
+<div id="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span>DIVIDE YOUR BELONGINGS WITH US!</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="partials/navbar :: navbar"></div>
+<!--<div class="container">-->
 <div class="container">
-
-    <h1>Create an account</h1>
+    <h2 class="login-header mb-3">Create an account</h2>
 
     <form th:action="@{/sign-up}" method="POST" th:object="${user}">
         <div class="form-group">
-            <label for="username">Username</label>
-            <input id="username" class="form-control" th:field="*{username}" th:required th:autofocus th:maxlength="60"/>
+<!--            <label for="username">Username</label>-->
+            <input id="username" placeholder="Username" class="form-control" th:field="*{username}" th:required th:autofocus th:maxlength="60"/>
         </div>
         <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" th:type="email" class="form-control" th:field="*{email}" th:required th:maxlength="60"/>
+<!--            <label for="email">Email</label>-->
+            <input id="email" th:type="email" placeholder="Email" class="form-control" th:field="*{email}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
-            <input id="password" th:type="password" class="form-control" th:field="*{password}" th:required th:maxlength="60"/>
+<!--            <label for="password">Password</label>-->
+            <input id="password" th:type="password" class="form-control" placeholder="Password" th:field="*{password}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input id="firstName" class="form-control" th:field="*{firstName}" th:required th:maxlength="60"/>
+<!--            <label for="firstName">First Name</label>-->
+            <input id="firstName" placeholder="First Name" class="form-control" th:field="*{firstName}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input id="lastName" class="form-control" th:field="*{lastName}" th:required th:maxlength="60"/>
+<!--            <label for="lastName">Last Name</label>-->
+            <input id="lastName" placeholder="Last Name" class="form-control" th:field="*{lastName}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
-            <label for="address1">Address</label>
-            <input id="address1" class="form-control" th:field="*{address1}" th:required th:maxlength="60"/>
+<!--            <label for="address1">Address 1</label>-->
+            <input id="address1" placeholder="Address 1" class="form-control" th:field="*{address1}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
-            <label for="address2">Address</label>
-            <input id="address2" class="form-control" th:field="*{address2}" th:maxlength="60"/>
+<!--            <label for="address2">Address 2</label>-->
+            <input id="address2" placeholder="Address 2" class="form-control" th:field="*{address2}" th:maxlength="60"/>
         </div>
         <div class="form-group">
-            <label for="city">City</label>
-            <input id="city" class="form-control" th:field="*{city}" th:required th:maxlength="60"/>
+<!--            <label for="city">City</label>-->
+            <input id="city" placeholder="City" class="form-control" th:field="*{city}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
             <!--    add a state picker widget if time allows-->
-            <label for="state">State</label>
-            <input id="state" class="form-control" th:field="*{state}" th:required th:maxlength="2"/>
+<!--            <label for="state">State</label>-->
+            <input id="state" placeholder="State" class="form-control" th:field="*{state}" th:required th:maxlength="2"/>
         </div>
         <div class="form-group">
             <!--    add a Zip code +4 formatter if time allows-->
-            <label for="zip">Zip</label>
-            <input id="zip" class="form-control" th:field="*{zip}" th:required th:maxlength="10"/>
+<!--            <label for="zip">Zip</label>-->
+            <input id="zip" placeholder="Zip" class="form-control" th:field="*{zip}" th:required th:maxlength="10"/>
         </div>
         <div class="form-group">
             <!--    add a phone# formatter if time allows-->
-            <label for="phone">phone</label>
-            <input id="phone" th:type="number" class="form-control" th:field="*{phone}" th:required th:maxlength="20"/>
+<!--            <label for="phone">Phone</label>-->
+            <input id="phone" th:type="number" class="form-control" placeholder="Phone" th:field="*{phone}" th:required th:maxlength="20"/>
         </div>
         <div class="form-group">
             <input type="hidden" id="images" name="images" value="" th:field="*{profilePhoto}">
             <input type="hidden" id="file-type" name="file-type" value="">
         </div>
         <div class="form-group">
-            Upload Profile Photo
+<!--            Upload Profile Photo-->
             <!-- Upload user profile photo -->
             <div id="files"></div>
-            <button id="upload" class="btn btn-primary btn-sm mb-2">Upload image</button>
+            <button id="upload" class="btn btn-primary btn-sm mb-2">Upload Profile Photo</button>
         </div>
         <input value="Sign me up!" type="submit"/>
     </form>
 </div>
+<br><br>
 <div th:replace="partials/scripts :: assets"></div>
 </body>
 <!--Commenting out footer for now since it's covering up the form-->
