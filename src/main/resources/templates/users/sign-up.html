@@ -33,67 +33,67 @@
 <div th:replace="partials/navbar :: navbar"></div>
 <!--<div class="container">-->
 <div class="container">
-    <h2 class="login-header mb-3">Create an account</h2>
+    <h2 class="login-header">Create an account</h2>
 
-    <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+    <form th:action="@{/sign-up}" class="signup-form" method="POST" th:object="${user}">
         <div class="form-group">
 <!--            <label for="username">Username</label>-->
-            <input id="username" placeholder="Username" class="form-control" th:field="*{username}" th:required th:autofocus th:maxlength="60"/>
+            <input id="username" placeholder="Username" th:field="*{username}" th:required th:autofocus th:maxlength="60"/>
         </div>
         <div class="form-group">
 <!--            <label for="email">Email</label>-->
-            <input id="email" th:type="email" placeholder="Email" class="form-control" th:field="*{email}" th:required th:maxlength="60"/>
+            <input id="email" th:type="email" placeholder="Email" th:field="*{email}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
 <!--            <label for="password">Password</label>-->
-            <input id="password" th:type="password" class="form-control" placeholder="Password" th:field="*{password}" th:required th:maxlength="60"/>
+            <input id="password" th:type="password" placeholder="Password" th:field="*{password}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
 <!--            <label for="firstName">First Name</label>-->
-            <input id="firstName" placeholder="First Name" class="form-control" th:field="*{firstName}" th:required th:maxlength="60"/>
+            <input id="firstName" placeholder="First Name" th:field="*{firstName}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
 <!--            <label for="lastName">Last Name</label>-->
-            <input id="lastName" placeholder="Last Name" class="form-control" th:field="*{lastName}" th:required th:maxlength="60"/>
+            <input id="lastName" placeholder="Last Name" th:field="*{lastName}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
 <!--            <label for="address1">Address 1</label>-->
-            <input id="address1" placeholder="Address 1" class="form-control" th:field="*{address1}" th:required th:maxlength="60"/>
+            <input id="address1" placeholder="Address 1" th:field="*{address1}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
 <!--            <label for="address2">Address 2</label>-->
-            <input id="address2" placeholder="Address 2" class="form-control" th:field="*{address2}" th:maxlength="60"/>
+            <input id="address2" placeholder="Address 2" th:field="*{address2}" th:maxlength="60"/>
         </div>
         <div class="form-group">
 <!--            <label for="city">City</label>-->
-            <input id="city" placeholder="City" class="form-control" th:field="*{city}" th:required th:maxlength="60"/>
+            <input id="city" placeholder="City" th:field="*{city}" th:required th:maxlength="60"/>
         </div>
         <div class="form-group">
             <!--    add a state picker widget if time allows-->
 <!--            <label for="state">State</label>-->
-            <input id="state" placeholder="State" class="form-control" th:field="*{state}" th:required th:maxlength="2"/>
+            <input id="state" placeholder="State" th:field="*{state}" th:required th:maxlength="2"/>
         </div>
         <div class="form-group">
             <!--    add a Zip code +4 formatter if time allows-->
 <!--            <label for="zip">Zip</label>-->
-            <input id="zip" placeholder="Zip" class="form-control" th:field="*{zip}" th:required th:maxlength="10"/>
+            <input id="zip" placeholder="Zip" th:field="*{zip}" th:required th:maxlength="10"/>
         </div>
         <div class="form-group">
             <!--    add a phone# formatter if time allows-->
 <!--            <label for="phone">Phone</label>-->
-            <input id="phone" th:type="number" class="form-control" placeholder="Phone" th:field="*{phone}" th:required th:maxlength="20"/>
+            <input id="phone" th:type="number" placeholder="Phone" th:field="*{phone}" th:required th:maxlength="20"/>
         </div>
         <div class="form-group">
             <input type="hidden" id="images" name="images" value="" th:field="*{profilePhoto}">
             <input type="hidden" id="file-type" name="file-type" value="">
         </div>
-        <div class="form-group">
+<!--        <div class="form-group inline">-->
 <!--            Upload Profile Photo-->
             <!-- Upload user profile photo -->
             <div id="files"></div>
-            <button id="upload" class="btn btn-primary btn-sm mb-2">Upload Profile Photo</button>
-        </div>
-        <input value="Sign me up!" type="submit"/>
+            <button id="upload" class="mb-3">Upload Profile Photo</button>
+<!--        </div>-->
+        <input value="Sign me up!" class="signup-submit" type="submit"/>
     </form>
 </div>
 <br><br>
