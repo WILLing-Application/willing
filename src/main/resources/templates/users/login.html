@@ -2,42 +2,86 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
-<head th:replace="partials/head :: header-links (pageTitle = 'Login')">
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link th:href="@{/css/fontawesome.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
 </head>
 <body>
+<div id="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span>DIVIDE YOUR BELONGINGS WITH US!</span>
+            </div>
+        </div>
+    </div>
+</div>
 <nav th:replace="partials/navbar :: navbar"/>
 
-<!--this content is only shown to Authenticated users-->
+<!------ Include the above in your HEAD tag ---------->
 <div sec:authorize="isAuthenticated()">
-<!--    If user is already logged in and visits the login page, include this-->
+    <!--    If user is already logged in and visits the login page, include this-->
     <a href="/">Go Back to Home Page</a>
 </div>
 
-<div class="container">
+<!--if there is an error-->
+<div th:if="${param.error}">
+    Invalid Username and Password.
+</div>
+<!--if you're logged out successfully-->
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
 
-    <h1>Log In</h1>
+<div class="login">
+<!--    <div class="login-triangle"></div>-->
 
-    <!--if there is an error-->
-    <div th:if="${param.error}">
-        Invalid Username and Password.
-    </div>
-    <!--if you're logged out successfully-->
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
-    <!--log in form-->
-    <form th:action="@{/login}" method="post">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input id="username" name="username" type="text" class="form-control" th:required th:autofocus th:maxlength="60"/>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" class="form-control" th:required th:maxlength="60"/>
-        </div>
-        <input type="submit" value="Log In"/>
+    <h2 class="login-header">Log in</h2>
+
+    <form th:action="@{/login}" class="login-container" method="post">
+        <p><input type="text" placeholder="username" id="username" name="username" th:required th:autofocus th:maxlength="60"></p>
+        <p><input type="password" placeholder="Password" id="password" name="password" th:required th:maxlength="60"></p>
+        <p><input type="submit" value="Log in"></p>
     </form>
 </div>
+
+
+<!--===============================================================================-->
+<!--this content is only shown to Authenticated users-->
+<!--<div sec:authorize="isAuthenticated()">-->
+<!--&lt;!&ndash;    If user is already logged in and visits the login page, include this&ndash;&gt;-->
+<!--    <a href="/">Go Back to Home Page</a>-->
+<!--</div>-->
+
+<!--<div class="container">-->
+
+<!--    <h1>Log In</h1>-->
+
+<!--    &lt;!&ndash;if there is an error&ndash;&gt;-->
+<!--    <div th:if="${param.error}">-->
+<!--        Invalid Username and Password.-->
+<!--    </div>-->
+<!--    &lt;!&ndash;if you're logged out successfully&ndash;&gt;-->
+<!--    <div th:if="${param.logout}">-->
+<!--        You have been logged out.-->
+<!--    </div>-->
+<!--    &lt;!&ndash;log in form&ndash;&gt;-->
+<!--    <form th:action="@{/login}" method="post">-->
+<!--        <div class="form-group">-->
+<!--            <label for="username">Username</label>-->
+<!--            <input id="username" name="username" type="text" class="form-control" th:required th:autofocus th:maxlength="60"/>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="password">Password</label>-->
+<!--            <input id="password" name="password" type="password" class="form-control" th:required th:maxlength="60"/>-->
+<!--        </div>-->
+<!--        <input type="submit" value="Log In"/>-->
+<!--    </form>-->
+<!--</div>-->
 </body>
 <footer th:replace="partials/footer :: footer"/>
 </html>
