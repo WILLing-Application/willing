@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
+/*Copied from login.css and edited - too many conflicts */
 body {
     color: #f5f2d0;
     font-family: 'Cormorant Garamond', serif;
@@ -10,27 +11,17 @@ body {
     color: #696969;
 }
 
-.login {
-    width: 400px;
+.login #profile {
     margin: 16px auto;
     font-size: 16px;
 }
 
 /* Reset top and bottom margins from certain elements */
+/*Changed .login p to .login div*/
 .login-header,
-.login p {
+.login div {
     margin-top: 0;
     margin-bottom: 0;
-}
-
-/* The triangle form is achieved by a CSS hack */
-.login-triangle {
-    width: 0;
-    margin-top: 50px;
-    margin-right: auto;
-    margin-left: auto;
-    border: 12px solid transparent;
-    border-bottom-color: #8b0000;
 }
 
 .login-header {
@@ -49,7 +40,7 @@ body {
     padding: 12px;
 }
 
-/* Every row inside .login-container is defined with p tags */
+/* Every row inside .login-container is defined with p tags - changed to div */
 .login p {
     padding: 12px;
 }
@@ -66,21 +57,16 @@ body {
     font-size: 0.95em;
 }
 
-.login input[type="email"],
-.login input[type="password"] {
-    background: #fff;
-    border-color: #bbb;
-    color: #696969;
-}
-
 #upload {
     background-color: #696969;
     color: #fff;
+    font-size: 0.95em;
 }
 
 /* Text fields' focus effect */
-.login input[type="email"]:focus,
-.login input[type="password"]:focus, #upload {
+/*.login input[type="email"]:focus,*/
+/*.login input[type="password"]:focus, */
+#upload {
     border-color: #696969;
 }
 
@@ -100,12 +86,29 @@ body {
     border-color: #8b0000;
 }
 
+/* The triangle form is achieved by a CSS hack */
+/*.login-triangle {*/
+/*    width: 0;*/
+/*    margin-top: 50px;*/
+/*    margin-right: auto;*/
+/*    margin-left: auto;*/
+/*    border: 12px solid transparent;*/
+/*    border-bottom-color: #8b0000;*/
+/*}*/
+
+/*.login input[type="email"],*/
+/*.login input[type="password"] {*/
+/*    background: #fff;*/
+/*    border-color: #bbb;*/
+/*    color: #696969;*/
+/*}*/
+
 /*   sign-up page styling   */
 
-.signup-form {
-    background: #ebebeb;
-    padding: 12px;
-}
+/*.signup-form {*/
+/*    background: #ebebeb;*/
+/*    padding: 12px;*/
+/*}*/
 
 
 
