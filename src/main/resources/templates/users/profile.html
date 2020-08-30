@@ -2,7 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
-<head th:replace="partials/head :: header-links (Profile)"></head>
+<head>
+    <div th:insert="partials/header :: header-links ('Profile')" th:remove="tag"></div>
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+</head>
 <body>
 <div id="pre-header">
     <div class="container">
@@ -15,19 +19,15 @@
 </div>
 <div th:replace="partials/navbar :: navbar"></div>
 
-<!--Forcing some space since text currently overlaps the navbar items-->
-<br><br><br>
-
-<div class="container">
+<div class="container message mt-5">
     <!-- This content is only shown to authenticated users.-->
     <div class="row" sec:authorize="isAuthenticated()">
         <div class="col-sm-8 col-md-8">
 
-            Placeholder
-<!--            Placeholder for owner summary (dashboard matrix, summaries - items/#interested users, users/#interested-->
-<!--            items)-->
+            Placeholder - Welcome & Get Started text
+            <!-- Placeholder: owner summary (dashboard matrix, summaries - items/#interested users, users/#interested-->
             <!-- <div th:replace="partials :: panel-profile"></div>-->
-<!--            <div th:replace="partials/matrix :: matrix"></div>-->
+            <!-- <div th:replace="partials/matrix :: matrix"></div>-->
         </div>
         <div class="col-sm-4 col-md-4">
             <!-- USER PROFILE PHOTO-->
