@@ -31,6 +31,10 @@ header h1 {
     text-transform: uppercase;
 }
 
+.create-album, .add-btn {
+    color: #fff;
+}
+
 .cap {
     text-transform: uppercase;
 }
