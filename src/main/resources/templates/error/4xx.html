@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+
+<head>
+    <div th:insert="partials/header :: header-links ('Ooops, ' + ${error})" th:remove="tag"></div>
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span>DIVIDE YOUR BELONGINGS WITH US!</span>
+            </div>
+        </div>
+    </div>
+</div>
+<nav th:replace="partials/navbar :: navbar"/>
+
+<div class="container message mt-5" style="width:100vw">
+    <th:block th:switch="${error}">
+        <div th:case="'Not Found'">
+            <h1>Page not found!!</h1>
+        </div>
+        <div th:case="'Forbidden'">
+            <h1>You don't have permission to view this page.</h1>
+        </div>
+    </th:block>
+    <p>Watch a video instead</p>
+    <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/84qJttZjp94?autoplay=1"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen="allowfullscreen">
+    </iframe>
+</div>
+
+</body>
+<footer th:replace="partials/footer :: footer"/>
+</html>
