@@ -149,12 +149,12 @@
             <h3 class="text-center">Your Albums</h3>
                 <div class="featured container">
                     <div class="row posts">
-                        <div th:each="album : ${albums}"  id="1" class="item new col-md-4 border">
+                        <div th:each="album : ${albums}"  id="1" class="item new col-md-4">
                             <a>
                                 <div  class="featured-item border">
 
                                     <a th:href="@{/albums/{id}(id=${album.id})}">
-                                        <h4 class="text-center pulsate" th:text="${album.title}"></h4>
+                                        <h5 class="text-center pulsate" th:text="${album.title}"></h5>
                                     </a>
                                     <h6 class="text-center" th:text="${album.lineage}"></h6>
                                     <div th:each="item : ${album.getItems()}">
