@@ -31,7 +31,7 @@
     <div th:each="photo : ${photos}">
         <form th:action="@{/albums/{albumId}/image/{imageId}(albumId=${album.id},imageId=${photo.id})}" method="post">
             <img th:src="${photo.filename}" alt="" class="mb-3">
-            <button class="btn btn-secondary">Delete</button>
+<!--            <button class="btn btn-secondary">Delete</button>-->
         </form>
     </div>
     <div th:each="video : ${videos}">
@@ -40,7 +40,7 @@
                 <source th:src="${video.filename}">
             </video>
             <br>
-            <button class="btn btn-secondary">Delete</button>
+<!--            <button class="btn btn-secondary">Delete</button>-->
         </form>
     </div>
     <div id="files"></div>
