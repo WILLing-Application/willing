@@ -154,7 +154,7 @@
                                 <div  class="featured-item border">
 
                                     <a th:href="@{/albums/{id}(id=${album.id})}">
-                                        <h5 class="text-center pulsate" th:text="${album.title}"></h5>
+                                        <h4 class="text-center pulsate" th:text="${album.title}"></h4>
                                     </a>
                                     <h6 class="text-center" th:text="${album.lineage}"></h6>
                                     <div th:each="item : ${album.getItems()}">
