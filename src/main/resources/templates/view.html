@@ -130,25 +130,44 @@
 
                 </div>
                 <br>
+<!--            <h3 class="text-center">Your Albums</h3>-->
+<!--                <div id="albumSection" class="row">-->
+<!--                    <th:block th:each="album : ${albums}">-->
+<!--                        <div class="card border" style="width: 12rem; min-height: 10rem">-->
+
+<!--                            <div class="card-body">-->
+
+<!--                                <div th:text="${album.title}" class="card-header"></div>-->
+<!--                                <div th:each="item : ${album.getItems()}" class="card">-->
+<!--                                    &lt;!&ndash;                                    <p th:text="${item.title}">  </p>&ndash;&gt;-->
+<!--                                    <input type="radio" name="items" th:value="${item.title}" th:text="${item.title}">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </th:block>-->
+<!--                </div>-->
             <h3 class="text-center">Your Albums</h3>
-                <div id="albumSection" class="row">
-                    <th:block th:each="album : ${albums}">
-                        <div class="card border" style="width: 12rem; min-height: 10rem">
+                <div class="featured container">
+                    <div class="row posts">
+                        <div th:each="album : ${albums}"  id="1" class="item new col-md-4 border">
+                            <a>
+                                <div  class="featured-item border">
 
-                            <div class="card-body">
-
-                                <div th:text="${album.title}" class="card-header"></div>
-                                <div th:each="item : ${album.getItems()}" class="card">
-                                    <!--                                    <p th:text="${item.title}">  </p>-->
-                                    <input type="radio" name="items" th:value="${item.title}" th:text="${item.title}">
+                                    <a th:href="@{/albums/{id}(id=${album.id})}">
+                                        <h4 class="text-center pulsate" th:text="${album.title}"></h4>
+                                    </a>
+                                    <h6 class="text-center" th:text="${album.lineage}"></h6>
+                                    <div th:each="item : ${album.getItems()}">
+                                        <!--                                    <p th:text="${item.title}">  </p>-->
+<!--                                        <label for="userItems"></label>-->
+                                        <input type="radio" id="userItems" name="items" th:value="${item.title}" th:text="${item.title}">
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                    </th:block>
 
-                    <span>
+                    </div>
 
-                    </span>
                 </div>
             </div>
         </div>
