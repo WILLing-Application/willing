@@ -6,3 +6,8 @@ $(document).ready(function () {
     });
     $('.dataTables_length').addClass('bs-select');
 });
+
+$('#awardButton').click(function() {
+    $('input[name=items]').prop('checked', false);
+    $('input[name=users]').prop('checked', false);
+});

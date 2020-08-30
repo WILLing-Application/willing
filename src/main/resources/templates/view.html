@@ -103,7 +103,7 @@
     <br><br><br>
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <div class="row">
                 <div id="awardSection">
                     <div class="text-center">
@@ -117,6 +117,8 @@
                                     <div th:each="user : ${users}" class="row">
                                         <input type="radio" name="users" th:value="${user.username}" th:text="${user.username}">
                                     </div>
+                                    <button type="button" class="btn btn-blood text-center" id="awardButton">Award to Guest</button>
+                                    <h7>* Select ONLY one item before awarding</h7>
                                 </div>
 
                             </div>
@@ -144,13 +146,12 @@
                     </th:block>
 
                     <span>
-                        <h7>* Select ONLY one item before awarding</h7>
-                        <button type="button" class="btn btn-blood text-center">Award to Guest</button>
+
                     </span>
                 </div>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div>
                 <h3>Current Interests</h3>
 
