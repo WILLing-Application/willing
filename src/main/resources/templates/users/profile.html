@@ -26,8 +26,8 @@
 
             <p class="mb-2"><em>Welcome, <span th:text="${user.firstName}"/> <span th:text="${user.lastName}"/>!</em></p>
             <p><strong>Getting Started:</strong></p>
-            <p>Owners - create an album and add your items. Share with other users by adding them as a guest to the album. View their responses on the interests page.</p>
-            <p>Guests - view others albums when the owner gives you access. Click on the Interested button when you see something you want!</p>
+            <p><em>Owners</em> - create an album and add your items. Share with other users by adding them as a guest to the album. View their responses on the interests page.</p>
+            <p><em>Guests</em> - view others albums when the owner gives you access. Click on the Interested button when you see something you want!</p>
 
             <!-- Placeholder: owner summary (dashboard matrix, summaries - items/#interested users, users/#interested-->
             <!-- <div th:replace="partials :: panel-profile"></div>-->
@@ -49,8 +49,7 @@
                 </div>
             </div>
             <!-- USER PROFILE DETAILS-->
-            <p>Welcome, <span th:text="${user.firstName}"/>
-                <span th:text="${user.lastName}"/>!</p>
+            <p class="m-2"><strong>Account Details</strong></p>
             <p>Username: <span th:text="${user.username}"/><br>
                 Email: <span th:text="${user.email}"/><br>
                 Address: <span th:text="${user.address1}"/> <span th:text="${user.address2}"/><br>
