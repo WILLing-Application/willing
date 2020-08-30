@@ -22,14 +22,19 @@
 <div class="container message mt-5">
     <!-- This content is only shown to authenticated users.-->
     <div class="row" sec:authorize="isAuthenticated()">
-        <div class="col-sm-8 col-md-8">
+        <div class="welcome-text col-sm-6 col-md-6 mt-4 mr-4">
 
-            Placeholder - Welcome & Get Started text
+            <p class="mb-2"><em>Welcome, <span th:text="${user.firstName}"/> <span th:text="${user.lastName}"/>!</em></p>
+            <p><strong>Getting Started:</strong></p>
+            <p><em>Owners</em> - create an album and add your items. Share with other users by adding them as a guest to the album. View their responses on the interests page.</p>
+            <p><em>Guests</em> - view others albums when the owner gives you access. Click on the Interested button when you see something you want!</p>
+
             <!-- Placeholder: owner summary (dashboard matrix, summaries - items/#interested users, users/#interested-->
             <!-- <div th:replace="partials :: panel-profile"></div>-->
             <!-- <div th:replace="partials/matrix :: matrix"></div>-->
         </div>
-        <div class="col-sm-4 col-md-4">
+
+        <div class="col-sm-4 col-md-4 mt-4 border">
             <!-- USER PROFILE PHOTO-->
             <div>
                 <!-- Display user profile photo, if it has been uploaded -->
@@ -44,8 +49,7 @@
                 </div>
             </div>
             <!-- USER PROFILE DETAILS-->
-            <p>Welcome, <span th:text="${user.firstName}"/>
-                <span th:text="${user.lastName}"/>!</p>
+            <p class="m-2"><strong>Account Details</strong></p>
             <p>Username: <span th:text="${user.username}"/><br>
                 Email: <span th:text="${user.email}"/><br>
                 Address: <span th:text="${user.address1}"/> <span th:text="${user.address2}"/><br>
@@ -53,8 +57,9 @@
                 Phone: <span th:text="${user.phone}"/></p>
             <a th:href="@{/profile/{id}/edit(id=${user.id})}" class="btn btn-muted btn-sm">
                 <i class="fas fa-edit mr-2"> </i>Edit My Account Info</a><br>
-            <a th:href="@{/profile/delete}" class="btn btn-muted btn-sm">
-                <i class="fas fa-trash mr-2"> </i>Delete My Account</a><br>
+<!--            Remove delete button until functionality is fixed-->
+<!--            <a th:href="@{/profile/delete}" class="btn btn-muted btn-sm">-->
+<!--                <i class="fas fa-trash mr-2"> </i>Delete My Account</a><br>-->
         </div>
     </div>
 </div>

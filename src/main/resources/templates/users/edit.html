@@ -26,17 +26,16 @@
 
         <!-- USER PROFILE PHOTO-->
         <!-- Display user profile photo, if it has been uploaded -->
-    <div th:if="${hasPhoto}">
-        <img th:src="${user.profilePhoto}" class="rounded-circle img-responsive mt-5"
-             height="120" width="120" alt="profile-photo">
-    </div>
-    <!-- Display placeholder image if user profile photo does not exist -->
-    <div th:if="${noPhoto}">
-        <img th:src="${placeholder}" class="rounded-circle img-responsive mt-5"
-             width="100">
-    </div>
+        <div th:if="${hasPhoto}">
+            <img th:src="${user.profilePhoto}" class="rounded-circle img-responsive mt-5"
+                 height="120" width="120" alt="profile-photo">
+        </div>
+        <!-- Display placeholder image if user profile photo does not exist -->
+        <div th:if="${noPhoto}">
+            <img th:src="${placeholder}" class="rounded-circle img-responsive mt-5"
+                 width="100">
+        </div>
     </p>
-
 
     <div class="login" id="profile">
 
