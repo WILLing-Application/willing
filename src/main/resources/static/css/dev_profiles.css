@@ -6,7 +6,7 @@ body {
 }
 /*TEXT ANIMATION*/
 .start {
-    color: #262626;
+    /*color: #262626;*/
     animation: type 3s steps(22);
     overflow: hidden;
     white-space: nowrap;
@@ -15,7 +15,7 @@ body {
     font-size: 16px;
     font-weight: bold;
     display: block;
-    word-wrap: break-word;
+    /*word-wrap: break-word;*/
 }
 
 @keyframes type {
@@ -48,6 +48,7 @@ quote {
     margin-top: auto;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 150px;
     color: #8b0000;
     text-align: center;
     text-transform: uppercase;
