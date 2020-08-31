@@ -104,7 +104,7 @@ public class ItemController {
         List<String> fileTypes = Arrays.asList(fileType);
         for (int i = 0; i < newImages.size(); i++) {
             Image newImage = new Image();
-            newImage.setAlbumWithImages(item.getAlbumForItems());
+//            newImage.setAlbumWithImages(item.getAlbumForItems());
             newImage.setFilename(newImages.get(i));
             newImage.setFileType(fileTypes.get(i));
             newImage.setItemImage(item);
