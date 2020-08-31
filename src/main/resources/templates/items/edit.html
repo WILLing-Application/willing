@@ -12,35 +12,65 @@
 <!--    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>-->
 <!--    <link th:href="@{/css/album.css}" rel="stylesheet">-->
 <!--</head>-->
-<head th:replace="partials/head :: header-links (Edit)"/>
+<!--<head th:replace="partials/head :: header-links (Edit)"/>-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <title>Albums</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--    CSS FILES-->
+    <link th:href="@{/css/fontawesome.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <link th:href="@{/css/owl.css}" rel="stylesheet">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+</head>
 <body>
+<div id="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span>DIVIDE YOUR BELONGINGS WITH US!</span>
+            </div>
+        </div>
+    </div>
+</div>
 <div th:replace="partials/navbar :: navbar">
 </div>
 <br><br>
 <main class="container">
-    <h1>Edit Item Page</h1>
-    <form th:action="@{/items/{id}/edit(id=${item.id})}" method="post">
+
+    <h3 class="login-header">Edit Item Page</h3>
+
+    <form th:action="@{/items/{id}/edit(id=${item.id})}" class="signup-form" method="post">
         <div class="form-group">
             <label for="item-name">Item name</label>
-            <input type="text" class="form-control" id="item-name" name="item-name" th:value="${item.title}" required
+            <input type="text" id="item-name" name="item-name" th:value="${item.title}" required
                    autofocus maxlength="60">
         </div>
         <div class="form-group">
             <label for="item-description">Item description</label>
-            <textarea type="text" id="item-description" class="form-control" name="item-description"
+            <textarea type="text" id="item-description" name="item-description"
                       th:text="${item.description}"
                       required></textarea>
         </div>
         <div class="form-group">
             <label for="item-lineage">Lineage</label>
-            <input type="text" id="item-lineage" class="form-control" name="item-lineage" th:value="${item.lineage}"
+            <input type="text" id="item-lineage" name="item-lineage" th:value="${item.lineage}"
                    maxlength="50">
         </div>
         <input type="hidden" id="images" value="" name="images">
         <input type="hidden" id="file-type" value="" name="file-type">
-        <button class="btn btn-secondary" id="upload">Add a photo</button>
-        <button class="btn btn-primary">Update post</button>
+        <button class="mb-3" id="upload">Add a photo</button>
+        <input class="signup-submit" value="Update Item">
     </form>
+    <h3 id="your-photos" class="mt-3 mb-3">Your Photos:</h3>
     <div th:each="photo : ${photos}">
         <form th:action="@{/items/{itemId}/image/{imageId}(itemId=${item.id},imageId=${photo.id})}" method="post">
             <img th:src="${photo.filename}" alt="" class="mb-3">
@@ -56,7 +86,7 @@
 <!--            <button class="btn btn-secondary">Delete</button>-->
         </form>
     </div>
-    <div id="files"></div>
+<!--    <div id="files"></div>-->
 
 
     <!-- OPTIONAL JAVASCRIPT -->
