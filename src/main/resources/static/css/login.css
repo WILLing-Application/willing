@@ -54,7 +54,7 @@ body {
     padding: 12px;
 }
 
-.login input, #upload, .signup-form input {
+.login input, #upload, .signup-form input, textarea {
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -105,6 +105,14 @@ body {
 .signup-form {
     background: #ebebeb;
     padding: 12px;
+}
+
+form label{
+    color: black;
+}
+
+#your-photos {
+    color: black;
 }
 
 

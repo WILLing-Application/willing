@@ -11,9 +11,14 @@ body {
     color: #696969;
 }
 
+.welcome-text {
+    color: #696969;
+    font-size: 20px;
+}
+
 .login #profile {
     margin: 16px auto;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 /* Reset top and bottom margins from certain elements */
@@ -45,7 +50,7 @@ body {
     padding: 12px;
 }
 
-.login input, #upload, .signup-form input {
+.login input, #upload {
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -70,7 +75,7 @@ body {
     border-color: #696969;
 }
 
-.login input[type="submit"], .signup-submit {
+.login input[type="submit"] {
     background: #8b0000;
     border-color: transparent;
     color: #fff;
