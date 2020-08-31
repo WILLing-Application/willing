@@ -27,7 +27,12 @@
     <link th:href="@{/css/fontawesome.css}" rel="stylesheet">
     <link th:href="@{/css/index.css}" rel="stylesheet">
     <link th:href="@{/css/owl.css}" rel="stylesheet">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
 <style>
+
+    body {
+        color: black !important;
+    }
     .card {
         background-color: white !important;
     }
@@ -54,53 +59,58 @@
 </div>
 <div th:replace="partials/navbar :: navbar"></div>
 
-<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">-->
-<!--    <div class="container">-->
-<!--        <a class="navbar-brand" href="#"><img src="assets/images/.png" alt=""></a>-->
-<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--            <span class="navbar-toggler-icon"></span>-->
-<!--        </button>-->
-<!--        <div class="collapse navbar-collapse" id="navbarResponsive">-->
-<!--            <ul class="navbar-nav ml-auto">-->
-<!--                <th:block sec:authorize="isAuthenticated()">-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{albums}">Albums</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{view}">Interests</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{profile}">Profile</a>-->
-<!--                    </li>-->
-<!--                </th:block>-->
-<!--                &lt;!&ndash;                Show these items always&ndash;&gt;-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" th:href="@{devs}">Developers</a>-->
-<!--                </li>-->
-<!--                &lt;!&ndash;                Show these items when logged out &ndash;&gt;-->
-<!--                <th:block sec:authorize="!isAuthenticated()">-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{/login}">Login</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>-->
-<!--                    </li>-->
-<!--                </th:block>-->
-<!--                &lt;!&ndash;IF AUTHENTICATED SHOW THESE&ndash;&gt;-->
-<!--                <th:block sec:authorize="isAuthenticated()">-->
-<!--                    <li class="nav-item text-center">-->
-<!--                        <form  th:action="@{/logout}" th:method="post">-->
-<!--                            <button class="nav-link btn btn-muted">Logout</button>-->
-<!--                        </form>-->
-<!--                    </li>-->
-<!--                </th:block>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</nav>-->
-
 <!--========================END NAV============================-->
     <br><br><br>
+<div class="container">
+    <h3 class="login-header">Item Award Panel</h3>
+    <div class="signup-form">
+        <div>
+            <div class="container">
+                Profile area
+            </div>
+            <div class="container border">
+                <h4>Choose Album    /   Choose Guest</h4>
+                <div>
+                    dropdown list \/
+                </div>
+                <div class="list-group" id="itemList" role="tablist">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home" role="tabpanel">...</div>
+                    <div class="tab-pane" id="profile" role="tabpanel">...</div>
+                    <div class="tab-pane" id="messages" role="tabpanel">...</div>
+                    <div class="tab-pane" id="settings" role="tabpanel">...</div>
+                </div>
+                <button type="button" class="btn btn-blood text-center" id="awardButton">Award to Guest</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--Item view area-->
+
+<div class="container">
+    <div>
+        Wanted Items         Popular Items
+        <div>
+            lists of items
+        </div>
+    </div>
+
+
+</div>
+
+
+<!--End Item View Area-->
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-9">
