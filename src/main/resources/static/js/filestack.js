@@ -33,7 +33,7 @@
                 let photoAndVideos = photosHtml + videosHtml;
                 $("#images").val(urlArray);
                 $("#file-type").val(fileTypeArray);
-                $("#files").html("<h3>Your uploaded files:</h3><br>" + photoAndVideos);
+                $("#files").html("<h3 id='your-photos' class='mt-3 mb-3'>Your uploaded files:</h3><br>" + photoAndVideos);
             }
         };
         client.picker(options).open();

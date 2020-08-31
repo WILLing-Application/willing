@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Album Owner Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
-    <title>Item Awarding Page</title>
+    <script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <title>Add a Guest</title>
 
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,24 +16,9 @@
     <link th:href="@{/css/fontawesome.css}" rel="stylesheet">
     <link th:href="@{/css/index.css}" rel="stylesheet">
     <link th:href="@{/css/owl.css}" rel="stylesheet">
-<!--    <style>-->
-<!--        .card {-->
-<!--            background-color: white !important;-->
-<!--        }-->
-
-<!--        #guestUser {-->
-<!--            color: black !important;-->
-<!--        }-->
-
-<!--        .btn {-->
-<!--            color: white;-->
-<!--        }-->
-<!--    </style>-->
-
-
+    <link th:href="@{/css/login.css}" rel="stylesheet">
 </head>
 <body>
-
 <div id="pre-header">
     <div class="container">
         <div class="row">
@@ -47,176 +29,51 @@
     </div>
 </div>
 <div th:replace="partials/navbar :: navbar"></div>
-
 <!--========================END NAV============================-->
-<br><br><br>
 <div class="container">
-    <div class="text-center">
-        <h2>Add a Guest to the Album</h2>
-    </div>
-    <div class="border">
-        <h4>Search Users to Add</h4>
-        <br><br>
+
+    <h3 class="login-header">Add a Guest to the Album</h3>
+
+    <div class="signup-form">
+        <!--        <h4>Search Users to Add</h4>-->
         <form th:action="@{/albums/{id}/search/guest(id=${album.id})}" th:method="get">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email">
+            <div class="form-group">
+<!--                <label for="email">Email</label>-->
+                <input type="text" id="email" name="email" placeholder="Email">
+            </div>
             <p>- Or -</p>
-            <label for="firstname">First Name</label>
-            <input type="text" id="firstname" name="firstname">
-            <label for="lastname">Last Name</label>
-            <input type="text" id="lastname" name="lastname">
-            <button>Submit</button>
+            <div class="form-group">
+<!--                <label for="firstname">First Name</label>-->
+                <input type="text" id="firstname" name="firstname" placeholder="First Name">
+            </div>
+            <div class="form-group">
+<!--                <label for="lastname">Last Name</label>-->
+                <input type="text" id="lastname" name="lastname" placeholder="Last Name">
+            </div>
+            <input type="submit" value="Search" class="signup-submit">
         </form>
         <div th:if="${isInvalid}">
-            <p>This user already exists in this album.</p>
+            <p style="color: #000;">This user already exists in this album.</p>
         </div>
         <div th:if="${isVisible}">
             <th:block th:if="${isRegistered}">
-                <form th:action="@{/albums/{albumId}/guest/{guestId}(albumId=${album.id},guestId=${user.id})}" method="post">
-                    <div th:text="${user.email}"></div>
-                    <div>First Name: <span th:text="${user.firstName}"></span></div>
-                    <div>Last Name: <span th:text="${user.lastName}"></span></div>
+                <form th:action="@{/albums/{albumId}/guest/{guestId}(albumId=${album.id},guestId=${user.id})}"
+                      method="post" class="signup-form" style="color: #000;">
+                    <div><strong>Email:</strong> <span th:text="${user.email}"></span></div>
+                    <div><strong>First Name:</strong> <span th:text="${user.firstName}"></span></div>
+                    <div><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></div>
                     <!--                            <input type="hidden" name="email" th:value="${user.email}">-->
-                    <p>If you'd like to invite this guest to the album, hit submit</p>
-                    <button class="btn btn-blood text-center">Submit</button>
+                    <p>If you'd like to invite this guest to the album, hit Invite</p>
+                    <button class="signup-submit" style="color: #fff;">Invite</button>
                 </form>
             </th:block>
             <th:block th:if="${!isRegistered}">
-                <div th:text="${userNotFound}"></div>
+                <div style="color: #000;" th:text="${userNotFound}"></div>
             </th:block>
         </div>
-        <!--                <div>-->
-        <!--                    <ul>Click to add to this Album:-->
-        <!--                        <li>-->
-        <!--                            <a href="">SEARCH RESULTS RETURN AREA</a>-->
-        <!--                        </li>-->
-        <!--                        <li>-->
-        <!--                            <a href="">FirstName LastName Email</a>-->
-        <!--                        </li>-->
-        <!--                        <li>-->
-        <!--                            <a href="">names will be linked</a>-->
-        <!--                        </li>-->
-        <!--                        <li>-->
-        <!--                            <a href="">in order to quickly add them</a>-->
-        <!--                        </li>-->
-        <!--                    </ul>-->
-
-        <!--                </div>-->
     </div>
-
 </div>
-
-
-
-
-<!--Use collapseable or accordian to save space
-https://www.w3schools.com/w3css/w3css_accordions.asp
--->
-
-<div th:fragment="panel-album">
-<!--    <div class="card border-primary mb-3">-->
-<!--        <div class="card-header">Owner Album Panel</div>-->
-<!--        <div class="card-body text-primary">-->
-<!--            &lt;!&ndash;            <h5>Album: Album Name</h5>&ndash;&gt;-->
-<!--            &lt;!&ndash;            <div class="card">&ndash;&gt;-->
-<!--            &lt;!&ndash;                <form action="">&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <h5>Invite a User</h5>&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <label for="email">Email</label>&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <input type="text" id="email">&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <label for="firstName">First Name</label>&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <input type="text" id="firstName">&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <label for="lastName">Last Name</label>&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <input type="text" id="lastName">&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <input type="submit">&ndash;&gt;-->
-<!--            &lt;!&ndash;                </form>&ndash;&gt;-->
-<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
-
-
-<!--            &lt;!&ndash;            <div class="card-group">&ndash;&gt;-->
-<!--            &lt;!&ndash;&ndash;&gt;-->
-<!--            &lt;!&ndash;                <div class="card d-inline-block">&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <ul>Current Album Users&ndash;&gt;-->
-<!--            &lt;!&ndash;these will be href links to take the owner to that album...&ndash;&gt;-->
-<!--            &lt;!&ndash;                        <li>Name / Email <button>remove</button></li>&ndash;&gt;-->
-<!--            &lt;!&ndash;                        <li>Name / Email <button>remove</button></li>&ndash;&gt;-->
-<!--            &lt;!&ndash;                        <li>Name / Email <button>remove</button></li>&ndash;&gt;-->
-<!--            &lt;!&ndash;                        <li>Name / Email <button>remove</button></li>&ndash;&gt;-->
-<!--            &lt;!&ndash;Create a view to list the email invites sent,-->
-<!--            and the name of any registered user with a matching email address.-->
-<!--            The owner can select the matching user to enable access to that album-->
-<!--            (view and URL still TBD-update: incorporated into dashboard)&ndash;&gt;-->
-<!--            &lt;!&ndash;                    </ul>&ndash;&gt;-->
-<!--            &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <div class="card d-inline-block">&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <h5>Invite History</h5>&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <ul>&ndash;&gt;-->
-<!--            &lt;!&ndash;                        <li>Name / Email</li>&ndash;&gt;-->
-<!--            &lt;!&ndash;                        <li>Name / Email</li>&ndash;&gt;-->
-<!--            &lt;!&ndash;                        <li>Name / Email</li>&ndash;&gt;-->
-<!--            &lt;!&ndash;                        <li>Name / Email</li>&ndash;&gt;-->
-<!--            &lt;!&ndash;                    </ul>&ndash;&gt;-->
-<!--            &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--            &lt;!&ndash;&ndash;&gt;-->
-<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
-
-
-<!--            <div class="border-primary">-->
-<!--                <h5>Search Users to Add</h5>-->
-<!--                <h7>*email req'd and must be exact</h7>-->
-<!--                <form th:action="@{/albums/{id}/search/guest(id=${album.id})}" th:method="get">-->
-<!--                    <label for="email">Email</label>-->
-<!--                    <input type="text" id="email" name="email">-->
-<!--                    <p>- Or -</p>-->
-<!--                    <label for="firstname">First Name</label>-->
-<!--                    <input type="text" id="firstname" name="firstname">-->
-<!--                    <label for="lastname">Last Name</label>-->
-<!--                    <input type="text" id="lastname" name="lastname">-->
-<!--                    <button>Submit</button>-->
-<!--                </form>-->
-<!--                <div th:if="${isInvalid}">-->
-<!--                    <p>This user already exists in this album.</p>-->
-<!--                </div>-->
-<!--                <div th:if="${isVisible}">-->
-<!--                    <th:block th:if="${isRegistered}">-->
-<!--                        <form th:action="@{/albums/{albumId}/guest/{guestId}(albumId=${album.id},guestId=${user.id})}" method="post">-->
-<!--                            <div th:text="${user.email}"></div>-->
-<!--                            <div>First Name: <span th:text="${user.firstName}"></span></div>-->
-<!--                            <div>Last Name: <span th:text="${user.lastName}"></span></div>-->
-<!--&lt;!&ndash;                            <input type="hidden" name="email" th:value="${user.email}">&ndash;&gt;-->
-<!--                            <p>If you'd like to invite this guest to the album, hit submit</p>-->
-<!--                            <button>Submit</button>-->
-<!--                        </form>-->
-<!--                    </th:block>-->
-<!--                    <th:block th:if="${!isRegistered}">-->
-<!--                        <div th:text="${userNotFound}"></div>-->
-<!--                    </th:block>-->
-<!--                </div>-->
-<!--                &lt;!&ndash;                <div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <ul>Click to add to this Album:&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <a href="">SEARCH RESULTS RETURN AREA</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <a href="">FirstName LastName Email</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <a href="">names will be linked</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <a href="">in order to quickly add them</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    </ul>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash;            <button th:action="">New Album</button>&ndash;&gt;-->
-<!--            &lt;!&ndash;            <button th:action="">New Item</button>&ndash;&gt;-->
-<!--            &lt;!&ndash;            <button th:action="">Edit Album</button>&ndash;&gt;-->
-<!--            &lt;!&ndash;            <button th:action="">Delete Album</button>&ndash;&gt;-->
-<!--        </div>-->
-<!--    </div>-->
-</div>
-
+<footer th:replace="partials/footer :: footer"/>
+<div th:replace="partials/scripts :: assets"></div>
 </body>
 </html>
