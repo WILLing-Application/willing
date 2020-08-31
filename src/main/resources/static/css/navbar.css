@@ -1,11 +1,12 @@
 .navbar-nav a{
-    font-family: poppins;
+    font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
 }
 /*WILLING LOGO*/
-.navbar-light .navbar-brand{
+.navbar-light .navbar-brand {
+    font-family: 'Grenze', serif;
     color: #fff;
     font-size: 25px;
     text-transform: uppercase;

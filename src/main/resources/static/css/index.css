@@ -1,5 +1,5 @@
 body {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Open Sans', sans-serif;
     transition: all 0.5s;
 }
 p {
@@ -147,7 +147,8 @@ header h1 {
     color: #FFF;
     font-size: 22px;
     line-height: 30px;
-    font-family: 'FontAwesome';
+    /*font-family: 'FontAwesome';*/
+    font-family: 'Josefin Sans', sans-serif;
 }
 /* Banner Style */
 .banner {
