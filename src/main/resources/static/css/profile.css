@@ -13,12 +13,12 @@ body {
 
 .welcome-text {
     color: #696969;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .login #profile {
     margin: 16px auto;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 /* Reset top and bottom margins from certain elements */
