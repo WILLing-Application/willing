@@ -131,7 +131,7 @@
             <a>
                 <div  class="featured-item">
                     <div th:each="image : ${album.images[0]}">
-                        <img class="w-100" th:src="${image.filename}" alt="First slide">
+                        <img class="card-img" th:src="${image.filename}" alt="First slide">
                     </div>
                     <a th:href="@{/albums/{id}(id=${album.id})}">
                         <h4 class="text-center pulsate" th:text="${album.title}"></h4>
