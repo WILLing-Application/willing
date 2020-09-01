@@ -53,10 +53,10 @@
             </div>
             <div class="col-md-6">
                 <div class="right-content">
-                    <h4>Item: <span th:text="${item.title}"></span></h4>
-                    <h6>Email: <span th:text="${item.albumForItems.owner.email}"></span></h6>
-                    <p>Description: <span th:text="${item.description}"></span></p>
-                    <p> Deadline: <span th:text="${item.albumForItems.deadline}"></span></p>
+                    <h5>Item: <span th:text="${item.title}"></span></h5>
+                    <h5>Email: <span th:text="${item.albumForItems.owner.email}"></span></h5>
+                    <h5>Description: <span th:text="${item.description}"></span></h5>
+                    <h5> Deadline: <span class="date" th:text="${item.albumForItems.deadline}"></span></h5>
                     <form class="like-btn"
                           th:action="@{/items/{itemsId}/user/{userId}/1(itemsId=${item.id}, userId=${user.id})}"
                           method="post">
@@ -168,6 +168,15 @@
 <!--        <br>-->
 <!--    </div>-->
 <!--   userId below is hardcoded   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+<script>
+    "use strict";
+    const dates = document.querySelectorAll(".date");
+    for (let date of dates) {
+        date.innerText = moment(date.innerText).format("l");
+    }
+
+</script>
 <div th:replace="partials/scripts :: assets"/>
 </body>
 </html>
