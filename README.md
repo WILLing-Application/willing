@@ -37,13 +37,13 @@ Feature: (curriculum) a component of the program that performs a specific functi
 
 1.	Visitors can view a landing page with a description of the service and register to create an account.
 2.	Visitors can respond to word-of-mouth or emailed invitations to register for an account, in order to view the Owner’s "album" and listed items (after being given access by the Owner).
-3.	Upon registering successfully by entering account details (username, password, email, name, address, phone#), the User is directed to the view page. (Optionally display a welcome message.)
-4.	Users can edit their own User details (name, address, and phone#).
+3.	Upon registering successfully by entering account details (username, password, email, name, address, phone#), the User is directed to the application home page. Subsequent logins route to their profile page and display a welcome message and getting started tips.
+4.	Users can edit their own User details (name, address, phone#, profile photo).
 5.	Users can view and search listed albums and items by keyword, from the albums they have been given access to.
-6.	Users can "bid" on item(s) by indicating their interest, by selecting a ranking from 1 (may be interested) to 3 (very interested).
+6.	Users can "bid" on item(s) by indicating their interest, by clicking an Interested button.
 7.	Owners (a user who created/owns an album), can CRUD their own album(s) with title, description, lineage, deadline for responses, upload photo(s) and video(s).
 8.	Owners (a user who created/owns an album), can CRUD their album's items, with title, description, lineage, upload photo(s) and video(s).
-9.	Owners (a user who created/owns an album), can invite people to the site by emailing them a link to the registration/sign up page.
+9.	Owners (a user who created/owns an album), will invite people to register on the site.
 10.	Owners (a user who created/owns an album), can search for registered users by name or email address. The Owner can select the matching user to enable access.
 11.	Owners (a user who created/owns an album), can view a dashboard with summary information by album: <br>
 A.	a grid/matrix of items and users, with color-coded interest ranking <br>
@@ -58,12 +58,12 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 
 *	Landing page with information describing the application, and a call to action (sign up). 1 
 *	Registration/signup page to create an account (sign up). 1 
-*	Upon successful signup and/or login, direct the user to the view page (optionally display a welcome message). 3
+*	Upon successful signup and/or login, direct the user to their profile page and display a welcome message. 3
 *	Dynamic navbar for login/logout and user roles (user vs. user/owner vs. admin) options. 3
 *	Lock down the user profile page, allow the user to CRUD their own user account details. 4
 *	Allow users to view the albums and listed items they have access to. 5 
 *	Search functionality that allows users to search in the albums and listed items they have access to, by title, description, and/or lineage. 5
-*	Indicate interest in an item by ranking it from low (1) to high (3), and save the user’s interest ranking# in the database. 6
+*	Indicate interest in an item, and save the user’s interest in the database. 6
 *	Create an Album view page with links to each individual Album page. 7 
 *	Allow the user/owner to create, update and delete albums. 7
 *	Create an Item index page with links to each individual Item page. 8
@@ -82,6 +82,7 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 ##### Users
  
 *	can comment on an item or reply to a comment.
+*   can rank their interest on an item on a scale of 1 (low) to 3 (high).
 *	can indicate if they are willing to pay shipping costs, if applicable.
 *	can opt in to enable SMS text, and opt in/out of each type of notification:
 1.	a new item added to an album.
@@ -146,20 +147,20 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 | URL        | Description      | Navbar Name                | Thymeleaf template    |
 | :---       | :---             | :---                       | :---                  |
 | /          | same as before   | Home or Brand              | same as before login  |
-| /view      | View page        | Albums/Browse              | view.html             |
-| /interests | View (filtered)  | Interests                  | view.html (filter     |
-| /create    | Create new album | Create                     | /albums/create.html   |
+| /albums     | Albums page     | Albums/Browse              | albums.html           |
+| /view      | Summary page     | Interests                  | view.html             |
+| /albums/create | Create new album | Create                 | /albums/create.html   |
 | /devs      | same as before   | Developers                 | same as before login  |
 | /profile   | User account     | User icon/photo (optional) | profile.html          |
 | /logout    | default          | Logout                     | part of navbar        |
 
-* NOTE - there will be individual album/create and item/create pages, but navbar Create link is for albums. There are album & item pages but View page combines them. The navbar "Browse" is currently replaced by "Albums" for developers benefit (will change it to "View" or "Browse" later).
+* NOTE - there will be individual albums/create and items/create pages, and same for edit and delete pages. The navbar "Browse" is currently replaced by "Albums" for developers benefit (may change it to "View" or "Browse" later?).
 
 ---
 
 ## METHODS
 
-(Under constructions... work in progress)
+(Under construction... a work in progress!)
  
 | Methods     | URL                 | Actions           | GET - template, POST - send/redirect Url | Wireframe filename |
 | :---        | :---                | :---              | :---               | :---                |
@@ -169,10 +170,10 @@ C.	a list by users associated with the owner’s album(s), with a count of items
 | GET	      | /login	            | login             | login.html         |                    |
 | POST	      | /login	            | logged in         | redirect ?         |                    |
 | GET         | /devs               | view devs         | dev-profile.html   |                    |
-| GET	      | /view	            | view listings     | view.html          | WILLing Album View.pdf, WILLing Items Views.pdf, Pending new |
+| GET	      | /view	            | view interests    | view.html          | WILLing Album View.pdf, WILLing Items Views.pdf, Pending new |
 | continued   | continued           | interest icon     | see GET method /items/interest | |
 | continued   | continued           | album, create item icon | see GET method /albums/{id}/create | |
-| POST        | /view               | Save Interests    | redirect /interests ? |               |
+| POST        | /view               | Awards?           | redirect /view ?   |               |
 | GET         | /create             | Create album form | /albums/create.html   |               |
 | POST        | /create             | Save album        | redirect:/albums{id}  |               |
 | GET         | /albums             | Albums list view w/items (nested loop) | /albums/albums.html | |
