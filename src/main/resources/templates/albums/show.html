@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/head :: header-links (Album)"/>
 <link th:href="@{/css/index.css}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 <body>
 
 <div id="pre-header">
@@ -83,14 +84,14 @@
             <div class="col-md-4 col-sm-12">
                 <div class="section-heading">
                     <div class="line-dec"></div>
-                    <h1 class="animate__animated animate__fadeInUp animate__delay-1s caps"><span class="caps" th:text="${album.title}"></span>'S ITEMS</h1>
+                    <h1 class="animate__animated animate__fadeInUp animate__delay-1s caps">ITEMS PAGE</h1>
                     <div class="add">
                         <th:block th:if="${isOwner}">
-                            <a th:href="@{/albums/{id}/items/create(id=${album.id})}"  class="btn btn-blood button_action text-center add-btn">Add an
-                                item
+                            <a th:href="@{/albums/{id}/items/create(id=${album.id})}"  class="btn btn-blood button_action text-center add-btn">Add An
+                                Item
                             </a>
-                            <a th:href="@{/albums/{id}/guest(id=${album.id})}" class="btn btn-blood button_action text-center add-btn">Add a guest to
-                                this album
+                            <a th:href="@{/albums/{id}/guest(id=${album.id})}" class="btn btn-blood button_action text-center add-btn">Add A Guest To
+                                This Album
                             </a>
                         </th:block>
                     </div>
@@ -113,14 +114,15 @@
         <div th:each="item : ${items}" id="1" class="item new col-md-4">
             <a>
                 <div class="featured-item">
-                    <div th:each="image : ${item.images[0]}">
-                        <img th:src="${image.filename}" class="card-img-top" alt="">
+                    <div  th:each="image : ${item.images[0]}">
+                        <img th:src="${image.filename}" class="card-img-top card-img" alt="">
                     </div>
                     <div class="card-body">
                         <h4 th:text="${item.title}" class="card-title text-center pulsate"></h4>
                         <h6 th:text="${item.lineage}" class=" card-text text-center"></h6>
                     </div>
                     <div>
+                      <br><br>
                     <a th:href="@{/items/{id}(id=${item.id})}" class="btn click btn-blood">View Item</a>
                     </div>
                 </div>

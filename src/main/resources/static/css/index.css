@@ -28,7 +28,7 @@ header h1 {
 
 .btn-blood {
     background-color: #8b0000;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 .create-album, .add-btn {
@@ -36,7 +36,7 @@ header h1 {
 }
 
 .cap {
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 /*.jumbotron {*/
@@ -144,7 +144,7 @@ header h1 {
 }
 .navbar-dark .navbar-toggler-icon:after {
     content: '\f0c9';
-    color: #FFF;
+    color: #696969;
     font-size: 22px;
     line-height: 30px;
     /*font-family: 'FontAwesome';*/
@@ -182,6 +182,12 @@ header h1 {
 
 
 /*ALBUM ITEM STYLE*/
+.card-img {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
 .featured-items {
     margin-bottom: 70px;
 }
@@ -190,7 +196,7 @@ header h1 {
     border: 1px solid #eee;
     padding: 20px;
     transition: all 0.5s;
-    /*min-height: 450px;*/
+    min-height: 450px;
 }
 .featured-item:hover {
     opacity: 0.9;
