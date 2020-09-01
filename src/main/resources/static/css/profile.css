@@ -1,9 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
 /*Copied from login.css and edited - too many conflicts */
 body {
     color: #f5f2d0;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Open Sans', sans-serif;
     transition: all 0.5s;
 }
 
@@ -13,12 +11,12 @@ body {
 
 .welcome-text {
     color: #696969;
-    font-size: 20px;
+    font-size: 40px;
 }
 
 .login #profile {
     margin: 16px auto;
-    font-size: 20px;
+    font-size: 40px;
 }
 
 /* Reset top and bottom margins from certain elements */
