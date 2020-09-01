@@ -26,6 +26,7 @@
     <link th:href="@{/css/fontawesome.css}" rel="stylesheet">
     <link th:href="@{/css/index.css}" rel="stylesheet">
     <link th:href="@{/css/owl.css}" rel="stylesheet">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -41,10 +42,10 @@
 <div th:replace="partials/navbar :: navbar"></div>
 
 
-<div class="container mt-5">
-    <h3>Create Album</h3>
+<div class="container">
+    <h3 class="login-header">Create Album</h3>
 
-    <form th:action="@{/albums/create}" th:method="POST">
+    <form th:action="@{/albums/create}" class="signup-form" th:method="POST">
         <div class="form-group">
             <label for="title">Album Title</label>
             <input type="text" class="form-control" id="title" name="title" maxlength="50" required autofocus>
@@ -57,12 +58,34 @@
             <label for="description">Album Description</label>
             <textarea class="form-control" id="description" name="description" required></textarea>
         </div>
-        <div id="files"></div>
-        <input type="hidden" id="images" value="" name="images">
+        <input type="hidden" id="images" value="" name="images">-->
         <input type="hidden" id="file-type" value="" name="file-type">
         <button id="upload" class="btn btn-secondary">Upload Images</button>
-        <button class="btn btn-primary">Save Album</button>
+        <br>
+        <input type="submit" value="Save Album" class="signup-submit"/>
     </form>
+
+<!--    <h3>Create Album</h3>-->
+
+<!--    <form th:action="@{/albums/create}" th:method="POST">-->
+<!--        <div class="form-group">-->
+<!--            <label for="title">Album Title</label>-->
+<!--            <input type="text" class="form-control" id="title" name="title" maxlength="50" required autofocus>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="title">Album Lineage</label>-->
+<!--            <input type="text" class="form-control" id="lineage" name="lineage" maxlength="50" required autofocus>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="description">Album Description</label>-->
+<!--            <textarea class="form-control" id="description" name="description" required></textarea>-->
+<!--        </div>-->
+<!--        <div id="files"></div>-->
+<!--        <input type="hidden" id="images" value="" name="images">-->
+<!--        <input type="hidden" id="file-type" value="" name="file-type">-->
+<!--        <button id="upload" class="btn btn-secondary">Upload Images</button>-->
+<!--        <button class="btn btn-primary">Save Album</button>-->
+<!--    </form>-->
 </div>
 <div th:replace="partials/scripts :: assets"></div>
 

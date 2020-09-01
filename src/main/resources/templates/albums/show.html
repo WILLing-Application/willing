@@ -113,8 +113,8 @@
         <div th:each="item : ${items}" id="1" class="item new col-md-4">
             <a>
                 <div class="featured-item">
-                    <div th:each="image : ${item.images[0]}">
-                        <img th:src="${image.filename}" class="card-img-top" alt="">
+                    <div  th:each="image : ${item.images[0]}">
+                        <img th:src="${image.filename}" class="card-img-top card-img" alt="">
                     </div>
                     <div class="card-body">
                         <h4 th:text="${item.title}" class="card-title text-center pulsate"></h4>
