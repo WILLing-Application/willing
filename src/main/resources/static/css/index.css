@@ -28,7 +28,7 @@ header h1 {
 
 .btn-blood {
     background-color: #8b0000;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 .create-album, .add-btn {
@@ -36,7 +36,7 @@ header h1 {
 }
 
 .cap {
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 /*.jumbotron {*/
