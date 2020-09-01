@@ -7,13 +7,11 @@ body {
 
 p {
     margin-bottom: 0px;
-    /*font-size: 14px;*/
     color: #4a4a4a;
-    line-height: 1em;
+    line-height: 1.3em;
 }
 
 .message {
-    /*color: #696969;*/
     color: #1D1D1D;
 }
 
@@ -74,17 +72,16 @@ p {
 #upload {
     background-color: #696969;
     color: #fff;
-    font-size: 0.95em;
+    /*font-size: 0.95em;*/
 }
 
 /* Text fields' focus effect */
-/*.login input[type="email"]:focus,*/
-/*.login input[type="password"]:focus, */
-#upload {
+.login input[type="email"]:focus,
+.login input[type="password"]:focus, #upload {
     border-color: #696969;
 }
 
-.login input[type="submit"] {
+.login input[type="submit"], .signup-submit {
     background: #8b0000;
     border-color: transparent;
     color: #fff;
