@@ -55,7 +55,7 @@
                     <!--IF AUTHENTICATED SHOW THESE-->
                     <th:block sec:authorize="isAuthenticated()">
                         <li class="nav-item text-center">
-                            <form  th:action="@{/logout}" th:method="post">
+                            <form  th:action="@{/logout}" th:method="post" style="display: flex; justify-content: center">
                                 <button class="nav-link btn btn-muted">Logout</button>
                             </form>
                         </li>
