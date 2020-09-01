@@ -4,7 +4,8 @@ body {
 }
 
 .message {
-    color: #696969;
+    /*color: #696969;*/
+    color: #1D1D1D;
 }
 
 .login {
