@@ -25,9 +25,15 @@
     <th:block th:switch="${error}">
         <div th:case="'Not Found'">
             <h1>Page not found!!</h1>
+            <h3>¯\_(ツ)_/¯</h3>
         </div>
         <div th:case="'Forbidden'">
             <h1>You don't have permission to view this page.</h1>
+            <h3>¯\_(ツ)_/¯</h3>
+        </div>
+        <div th:case="*">
+            <h1>'Ooops, ' + ${error}</h1>
+            <h3>¯\_(ツ)_/¯</h3>
         </div>
     </th:block>
     <p>Watch a video instead</p>
