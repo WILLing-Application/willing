@@ -111,7 +111,7 @@
     <div class="signup-form">
         <div class="row">
             <div class="col-4">
-                <h2 class="mb-2"><span th:text="${user.firstName}"/> <span th:text="${user.lastName}"/></h2>
+                <h2 class="mb-6"><span th:text="${user.firstName}"/> <span th:text="${user.lastName}"/></h2>
 
                 <p><strong>How To:</strong></p>
                 <p>1. Select Album.</p>
@@ -124,14 +124,15 @@
             <div class="col-8">
 
                 <div class="row">
-                <div class="col-4">
+                <div class="col-8">
+                    <h5 class="text-center">Album Select</h5>
                     <div>
                         <select class="browser-default custom-select">
                             <option selected>All Albums</option>
                             <option value="x2" th:each="album : ${albums}" th:text="${album.title}"></option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="1">Bob Jackson</option>
+<!--                            <option value="2">Two</option>-->
+<!--                            <option value="3">Three</option>-->
                         </select>
                     </div>
                     <div class="list-group" id="itemList" role="tablist">
@@ -140,38 +141,59 @@
 <!--&lt;!&ndash;                            <a th:href="@{/albums/{id}(id=${album.id})}">&ndash;&gt;-->
 <!--&lt;!&ndash;                            </a>&ndash;&gt;-->
 <!--                        </a>-->
-                        <th:block th:each="album : ${albums}">
+<!--                        <th:block th:each="album : ${albums}">-->
 
-                            <div th:each="item : ${album.getItems()}">
-                            </div>
-                        </th:block>
-                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Bob Jackson</a>
+<!--                            <div th:each="item : ${album.getItems()}">-->
+<!--                            </div>-->
+<!--                        </th:block>-->
+<!--                        <a th:each="album : ${albums}" class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">-->
+<!--                            <div th:each="item : ${album.getItems()}">-->
+
+<!--                            </div>-->
+<!--                        </a>-->
+                                            <a th:each="interest : ${interests}" class="list-group-item list-group-item-action" data-toggle="list" href="#home" role="tab">
+                                                <div th:text="${interest.item.title}">
+                        <!--                            <th:block th:each="album : ${albums}">-->
+                        <!--                                                                    <th:block th:each="item : ${album.items}">-->
+                        <!--                                                                        <th:block th:each="user :${item.interests}">-->
+                        <!--                                                                            <p th:text="${user.username}" class="card"></p>-->
+                        <!--                            </th:block>-->
+                                                </div>
+                                            </a>
+<!--                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Bob Jackson</a>-->
 
                     </div>
                 </div>
-                    <div class="col-8">
+                    <div class="col-4">
                         <h5 class="text-center">Select Guest Here</h5>
                         <div class="tab-content">
 <!--                            <div th:each="user : ${users}" th:text="${user.firstName}" id="userSelect" class="tab-pane" role="tabpanel"></div>-->
 <!--                            <div th:each="user : ${users}" th:text="${user.username}" class="column tab-pane" role="tabpanel">-->
 <!--                                <input type="checkbox" name="users" th:value="${user.username}" th:text="${user.username}">-->
 <!--                            </div>-->
-                            <div class="tab-pane" role="tabpanel">
-                                <span><input type="checkbox">Kevin</span>
-                                <span><input type="checkbox">Jon</span>
-                                <span><input type="checkbox">Abby</span>
-                                 </div>
+<!--                            <div class="tab-pane" role="tabpanel">-->
+<!--                                <span><input type="checkbox">Kevin</span>-->
+<!--                                <span><input type="checkbox">Jon</span>-->
+<!--                                <span><input type="checkbox">Abby</span>-->
+<!--                                 </div>-->
+
+<!--                            <select name="userInterest" id="userSelect" class="tab-pane"  id="home" role="tabpanel">-->
+<!--                                <option th:each="user : ${users}" th:text="${user.firstName}"></option>-->
+<!--                            </select>-->
+
                             <th:block th:each="user : ${users}" class="tab-pane"  id="home">
-                                <input type="checkbox" name="users" th:value="${user.firstName}" th:text="${user.username}" class="text-center">
+                                <input type="checkbox" id="userCheck" name="users" th:value="${user.firstName}">
+                                <label for="userCheck" th:text="${user.username}"></label>
                             </th:block>
-                            <div class="tab-pane" id="profile" role="tabpanel">Quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. </div>
-                            <div class="tab-pane" id="messages" role="tabpanel">Excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. </div>
-                            <div class="tab-pane" id="settings" role="tabpanel">Ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. </div>
+<!--                            <ul th:each="user : ${users}">-->
+<!--                                <li th:text="${user.firstName}"></li>-->
+<!--                            </ul>-->
+
+                        </div>
+                        <div class="align-content-center">
+                            <button type="button" class="btn btn-blood text-center" id="awardButton">Click to Award Item</button>
                         </div>
                     </div>
-                </div>
-                <div class="align-content-center">
-                    <button type="button" class="btn btn-blood text-center" id="awardButton">Award Item to Selected Guest</button>
                 </div>
             </div>
 
