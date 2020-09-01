@@ -69,13 +69,13 @@
                     <th:block th:if="${isOwner}">
                         <a th:href="@{/items/{id}/edit(id=${item.id})}" class="btn btn-secondary mb-1">Edit Item</a>
                     </th:block>
-                    <div class="down-content">
-                        <div class="share">
-                            <h6>Share: <span><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i
-                                    class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></span>
-                            </h6>
-                        </div>
-                    </div>
+<!--                    <div class="down-content">-->
+<!--                        <div class="share">-->
+<!--                            <h6>Share: <span><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i-->
+<!--                                    class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></span>-->
+<!--                            </h6>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -179,4 +179,5 @@
 </script>
 <div th:replace="partials/scripts :: assets"/>
 </body>
+<footer th:replace="partials/footer :: footer"/>
 </html>
