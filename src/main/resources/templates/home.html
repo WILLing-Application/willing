@@ -8,7 +8,7 @@
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <script src="https://kit.fontawesome.com/96751468e5.js" crossorigin="anonymous"></script>
     <!--ANIMATE.CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
@@ -68,7 +68,7 @@
         </div>
         <div class="carousel-item" data-interval="8000">
             <!--                    Swap out /photos/lights.jpg (background is too dark)-->
-            <img class="d-block w-100 mh-100" th:src="@{${'/photos/camera.jpg'}}" alt="Third slide">
+            <img class="d-block w-100 mh-100" th:src="@{${'/photos/diamond-ring.jpg'}}" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
                 <h1 class="animate__animated animate__fadeInUp animate__delay-1s">We are <span class="brand-blood"><em>WILLing</em></span>
                 </h1>
@@ -93,4 +93,5 @@
 
 <div th:replace="partials/scripts :: assets"></div>
 </body>
+<footer th:replace="partials/footer :: footer"/>
 </html>

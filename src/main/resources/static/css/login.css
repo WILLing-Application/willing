@@ -1,8 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
 body {
     color: #f5f2d0;
-    font-family: 'Cormorant Garamond', serif;
     transition: all 0.5s;
 }
 
@@ -11,7 +8,7 @@ body {
 }
 
 .login {
-    width: 400px;
+    width: 35%;
     margin: 16px auto;
     font-size: 16px;
 }

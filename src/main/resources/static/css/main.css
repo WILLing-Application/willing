@@ -24,7 +24,7 @@ img {
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 25px;
-    font-family: "Kohinoor Devanagari";
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 span{
@@ -37,7 +37,7 @@ span{
     margin: auto;
     font-size: 18px;
     line-height: 1.9;
-    font-family: Georgia;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .carousel-caption a {

@@ -5,7 +5,7 @@
 <head>
     <div th:insert="partials/header :: header-links ('Profile')" th:remove="tag"></div>
     <link th:href="@{/css/index.css}" rel="stylesheet">
-    <link th:href="@{/css/login.css}" rel="stylesheet">
+    <link th:href="@{/css/profile.css}" rel="stylesheet">
 </head>
 <body>
 <div id="pre-header">
@@ -49,6 +49,7 @@
                 </div>
             </div>
             <!-- USER PROFILE DETAILS-->
+            <div class="login">
             <p class="m-2"><strong>Account Details</strong></p>
             <p>Username: <span th:text="${user.username}"/><br>
                 Email: <span th:text="${user.email}"/><br>
@@ -57,6 +58,7 @@
                 Phone: <span th:text="${user.phone}"/></p>
             <a th:href="@{/profile/{id}/edit(id=${user.id})}" class="btn btn-muted btn-sm">
                 <i class="fas fa-edit mr-2"> </i>Edit My Account Info</a><br>
+            </div>
 <!--            Remove delete button until functionality is fixed-->
 <!--            <a th:href="@{/profile/delete}" class="btn btn-muted btn-sm">-->
 <!--                <i class="fas fa-trash mr-2"> </i>Delete My Account</a><br>-->
