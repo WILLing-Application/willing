@@ -137,6 +137,7 @@
                         <h4 class="text-center pulsate" th:text="${album.title}"></h4>
                     </a>
                     <h6 class="card-text text-center" th:text="${album.lineage}"></h6>
+                    <br><br>
                     <a th:href="@{/albums/{id}(id=${album.id})}" class="btn click btn-blood">View Album</a>
                     <th:block th:if="${isOwner}">
                         <div class="delete_icon" style="display: flex; justify-content: space-between;">
