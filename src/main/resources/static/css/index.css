@@ -147,8 +147,7 @@ header h1 {
     color: #696969;
     font-size: 22px;
     line-height: 30px;
-    /*font-family: 'FontAwesome';*/
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'FontAwesome';
 }
 /* Banner Style */
 .banner {
