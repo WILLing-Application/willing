@@ -44,6 +44,10 @@
     .btn {
         color: white;
     }
+
+    .login-header {
+        margin-top: 5px !important;
+    }
 </style>
 </head>
 <body>
@@ -60,8 +64,10 @@
 <div th:replace="partials/navbar :: navbar"></div>
 
 <!--========================END NAV============================-->
-    <br><br>
+    <br><br><br>
 <h1 class="text-center">Guest Interests</h1>
+
+<br>
 
 <div class="featured container no-gutter">
 
@@ -140,21 +146,27 @@
     <h3 class="login-header">Item Award Panel</h3>
     <div class="signup-form">
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <h2 class="mb-6"><span th:text="${user.firstName}"/> <span th:text="${user.lastName}"/></h2>
 
                 <h4><strong>How To:</strong></h4>
                 <h6>1. Select Album.</h6>
                 <h6>2. Select the Item.</h6>
                 <h6>3. Select the Guest.</h6>
-                <section><strong>Tips:</strong></section>
-                <h7><em>Owners</em> - create an album and add your items. Share with other users by adding them as a guest to the album. View their responses on the interests page.</h7>
-                <h7><em>Guests</em> - view others albums when the owner gives you access. Click on the Interested button when you see something you want!</h7>
+                <button type="button" class="btn btn-blood text-center" data-toggle="collapse" href="#tips" role="button" aria-expanded="false" aria-controls="tips">Tips</button>
+                <div class="collapse" id="tips">
+                    <h7><em>Owners</em> - create an album and add your items. Share with other users by adding them as a guest to the album. View their responses on the interests page.</h7>
+                    <h7><em>Guests</em> - view others albums when the owner gives you access. Click on the Interested button when you see something you want!</h7>
+                </div>
+
+<!--                <section><strong>Tips:</strong></section>-->
+<!--                <h7><em>Owners</em> - create an album and add your items. Share with other users by adding them as a guest to the album. View their responses on the interests page.</h7>-->
+<!--                <h7><em>Guests</em> - view others albums when the owner gives you access. Click on the Interested button when you see something you want!</h7>-->
             </div>
-            <div class="col-8">
+            <div class="col-9">
 
                 <div class="row">
-                <div class="col-8">
+                <div class="col-9">
                     <h5 class="text-center">Album Select</h5>
                     <div>
                         <select class="browser-default custom-select">
@@ -194,8 +206,8 @@
 
                     </div>
                 </div>
-                    <div class="col-4">
-                        <h5 class="text-center">Select Guest Here</h5>
+                    <div class="col-3">
+                        <h5 class="text-center">Guest Select</h5>
                         <div class="tab-content overflow-auto">
 <!--                            <div th:each="user : ${users}" th:text="${user.firstName}" id="userSelect" class="tab-pane" role="tabpanel"></div>-->
 <!--                            <div th:each="user : ${users}" th:text="${user.username}" class="column tab-pane" role="tabpanel">-->
@@ -211,18 +223,31 @@
 <!--                                <option th:each="user : ${users}" th:text="${user.firstName}"></option>-->
 <!--                            </select>-->
 
-                            <th:block th:each="user : ${users}" class="tab-pane"  id="home">
-                                <a th:text="${user.firstName}"></a>
-<!--                                <input type="checkbox" id="userCheck" name="users" th:value="${user.firstName}">-->
-<!--                                <label for="userCheck" th:text="${user.firstName}"></label>-->
-                                <hr>
-                            </th:block>
-<!--                            <ul th:each="user : ${users}">-->
-<!--                                <li th:text="${user.firstName}"></li>-->
+<!--                            <th:block th:each="user : ${users}" class="tab-pane"  id="home">-->
+<!--                                <a th:text="${user.firstName}"></a>-->
+<!--&lt;!&ndash;                                <input type="checkbox" id="userCheck" name="users" th:value="${user.firstName}">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label for="userCheck" th:text="${user.firstName}"></label>&ndash;&gt;-->
+<!--                                <hr>-->
+<!--                            </th:block>-->
+<!--                            <ul th:each="user : ${users}" class="list-unstyled">-->
+<!--                                <li th:text="${user.firstName}" class="list-group-item"></li>-->
 <!--                            </ul>-->
 
+<!--                            <div th:each="user : ${users}" class="tab-pane list-group"  id="home">-->
+<!--                                <button type="button" class="list-group-item list-group-item-action"><a th:text="${user.firstName}"></a></button>-->
+<!--                            </div>-->
+
+                            <th:block th:each="user : ${users}" class="tab-pane"  id="home">
+                                <div class="list-group">
+                                    <button type="button" class="list-group-item list-group-item-action"><span th:text="${user.firstName}"></span></button>
+                                </div>
+
+<!--                                <a th:text="${user.firstName}"></a>-->
+
+                            </th:block>
+
                         </div>
-                        <div class="align-content-center">
+                        <div class="row align-content-center justify-content-center">
                             <button type="button" class="btn btn-blood text-center justify-content-center" id="awardButton">Click to Award Item</button>
                         </div>
                     </div>
@@ -237,7 +262,7 @@
 
 <br>
 
-<h1 class="text-center">Guest Interests</h1>
+<h1 class="text-center">Popular Items</h1>
 <br>
 <div class="featured container no-gutter">
     <div class="row posts">
@@ -248,10 +273,9 @@
                 <!--            </div>-->
                 <img src="photos/placeholder.jpeg" alt="">
                 <div class="card-body"><span>
-                    <h4 th:each="interest : ${interests}">
-                        <h6 th:text="${interest.item.title}">
-                        </h6>
-                    </h4>
+<!--                    <h4 th:each="interest : ${interests}">-->
+                        <h4 th:text="${interest.item.title}" class="text-center"></h4>
+<!--                    </h4>-->
                 </span></div>
             </div>
         </div>
