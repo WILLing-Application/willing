@@ -74,7 +74,11 @@
         <div class="featured-item">
             <!--        <p th:each="users : ${}"></p>-->
             <div>
-                <img src="photos/camera.jpg" alt="">
+                <img src="photos/placeholder.jpeg" alt="">
+<!--                <div th:if="${hasPhoto}">-->
+<!--                    <img th:src="${user.profilePhoto}" class="rounded-circle img-responsive m-2"-->
+<!--                         height="120" width="120" alt="profile-photo">-->
+<!--                </div>-->
             </div>
             <div class="card-body"><span>
                     <h4 th:text="${interest.interestedUser.firstName}"> </h4><h5 th:text="${interest.interestedUser.lastName}"> - </h5>
@@ -113,13 +117,13 @@
             <div class="col-4">
                 <h2 class="mb-6"><span th:text="${user.firstName}"/> <span th:text="${user.lastName}"/></h2>
 
-                <p><strong>How To:</strong></p>
-                <p>1. Select Album.</p>
-                <p>2. Select the Item.</p>
-                <p>3. Select the Guest</p>
-                <p><strong>Tips:</strong></p>
-                <p><em>Owners</em> - create an album and add your items. Share with other users by adding them as a guest to the album. View their responses on the interests page.</p>
-                <p><em>Guests</em> - view others albums when the owner gives you access. Click on the Interested button when you see something you want!</p>
+                <h4><strong>How To:</strong></h4>
+                <h6>1. Select Album.</h6>
+                <h6>2. Select the Item.</h6>
+                <h6>3. Select the Guest.</h6>
+                <section><strong>Tips:</strong></section>
+                <h7><em>Owners</em> - create an album and add your items. Share with other users by adding them as a guest to the album. View their responses on the interests page.</h7>
+                <h7><em>Guests</em> - view others albums when the owner gives you access. Click on the Interested button when you see something you want!</h7>
             </div>
             <div class="col-8">
 
@@ -130,7 +134,7 @@
                         <select class="browser-default custom-select">
                             <option selected>All Albums</option>
                             <option value="x2" th:each="album : ${albums}" th:text="${album.title}"></option>
-                            <option value="1">Bob Jackson</option>
+<!--                            <option value="1">Bob Jackson</option>-->
 <!--                            <option value="2">Two</option>-->
 <!--                            <option value="3">Three</option>-->
                         </select>
@@ -183,7 +187,8 @@
 
                             <th:block th:each="user : ${users}" class="tab-pane"  id="home">
                                 <input type="checkbox" id="userCheck" name="users" th:value="${user.firstName}">
-                                <label for="userCheck" th:text="${user.username}"></label>
+                                <label for="userCheck" th:text="${user.firstName}"></label>
+                                <hr>
                             </th:block>
 <!--                            <ul th:each="user : ${users}">-->
 <!--                                <li th:text="${user.firstName}"></li>-->
