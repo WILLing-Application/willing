@@ -60,7 +60,7 @@
 <div th:replace="partials/navbar :: navbar"></div>
 
 <!--========================END NAV============================-->
-    <br><br><br>
+    <br><br>
 <h1 class="text-center">Guest Interests</h1>
 
 <div class="featured container no-gutter">
@@ -72,17 +72,43 @@
 
         <div th:each="interest : ${interests}" id="1" class="item new col-md-4">
         <div class="featured-item">
+<!--            <div th:each="image : ${album.images[0]}">-->
+<!--                <img class="card-img" th:src="${image.filename}" alt="First slide">-->
+<!--            </div>-->
+            <img src="photos/placeholder.jpeg" alt="">
+
+
+
+<!--            <a th:href="@{/albums/{id}(id=${album.id})}">-->
+<!--                <h4 class="text-center pulsate" th:text="${album.title}"></h4>-->
+<!--            </a>-->
+<!--            <h6 class="card-text text-center" th:text="${album.lineage}"></h6>-->
+<!--            <br><br>-->
+<!--            <a th:href="@{/albums/{id}(id=${album.id})}" class="btn click btn-blood">View Album</a>-->
+
+
+
+
+
+
+
+
+
+
             <!--        <p th:each="users : ${}"></p>-->
-            <div>
-                <img src="photos/placeholder.jpeg" alt="">
-<!--                <div th:if="${hasPhoto}">-->
-<!--                    <img th:src="${user.profilePhoto}" class="rounded-circle img-responsive m-2"-->
-<!--                         height="120" width="120" alt="profile-photo">-->
+<!--            <div>-->
+<!--                -->
+<!--&lt;!&ndash;                <div th:if="${hasPhoto}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <img th:src="${user.profilePhoto}" class="rounded-circle img-responsive m-2"&ndash;&gt;-->
+<!--&lt;!&ndash;                         height="120" width="120" alt="profile-photo">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                <div th:each="image : ${album.images[0]}">-->
+<!--                    <img class="card-img" th:src="${image.filename}" alt="First slide">-->
 <!--                </div>-->
-            </div>
+<!--            </div>-->
             <div class="card-body"><span>
-                    <h4 th:text="${interest.interestedUser.firstName}"> </h4><h5 th:text="${interest.interestedUser.lastName}"> - </h5>
-                    <h5 th:text="${interest.item.title}"></h5>
+                    <h4 th:text="${interest.interestedUser.firstName}" class="text-center pulsate"> </h4><h4 th:text="${interest.interestedUser.lastName}" class="text-center pulsate"> - </h4>
+                    <h6 th:text="${interest.item.title}" class="text-center"></h6>
             </span></div>
 
         </div>
@@ -170,7 +196,7 @@
                 </div>
                     <div class="col-4">
                         <h5 class="text-center">Select Guest Here</h5>
-                        <div class="tab-content">
+                        <div class="tab-content overflow-auto">
 <!--                            <div th:each="user : ${users}" th:text="${user.firstName}" id="userSelect" class="tab-pane" role="tabpanel"></div>-->
 <!--                            <div th:each="user : ${users}" th:text="${user.username}" class="column tab-pane" role="tabpanel">-->
 <!--                                <input type="checkbox" name="users" th:value="${user.username}" th:text="${user.username}">-->
@@ -186,8 +212,9 @@
 <!--                            </select>-->
 
                             <th:block th:each="user : ${users}" class="tab-pane"  id="home">
-                                <input type="checkbox" id="userCheck" name="users" th:value="${user.firstName}">
-                                <label for="userCheck" th:text="${user.firstName}"></label>
+                                <a th:text="${user.firstName}"></a>
+<!--                                <input type="checkbox" id="userCheck" name="users" th:value="${user.firstName}">-->
+<!--                                <label for="userCheck" th:text="${user.firstName}"></label>-->
                                 <hr>
                             </th:block>
 <!--                            <ul th:each="user : ${users}">-->
@@ -196,7 +223,7 @@
 
                         </div>
                         <div class="align-content-center">
-                            <button type="button" class="btn btn-blood text-center" id="awardButton">Click to Award Item</button>
+                            <button type="button" class="btn btn-blood text-center justify-content-center" id="awardButton">Click to Award Item</button>
                         </div>
                     </div>
                 </div>
@@ -207,6 +234,31 @@
     </div>
 
 </div>
+
+<br>
+
+<h1 class="text-center">Guest Interests</h1>
+<br>
+<div class="featured container no-gutter">
+    <div class="row posts">
+        <div th:each="interest : ${interests}" id="x" class="item new col-md-4">
+            <div class="featured-item">
+                <!--            <div th:each="image : ${album.images[0]}">-->
+                <!--                <img class="card-img" th:src="${image.filename}" alt="First slide">-->
+                <!--            </div>-->
+                <img src="photos/placeholder.jpeg" alt="">
+                <div class="card-body"><span>
+                    <h4 th:each="interest : ${interests}">
+                        <h6 th:text="${interest.item.title}">
+                        </h6>
+                    </h4>
+                </span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!--Item view area-->
 
@@ -299,7 +351,7 @@
 <!--            <div>-->
 <!--                <h3>Current Interests</h3>-->
 
-<!--&lt;!&ndash;                <div class="text-primary text-center">Current Interests</div>&ndash;&gt;-->
+<!--                <div class="text-primary text-center">Current Interests</div>-->
 <!--                <div th:each="interest : ${interests}">-->
 <!--                    &lt;!&ndash;        <p th:each="users : ${}"></p>&ndash;&gt;-->
 <!--                    <span>-->
@@ -312,17 +364,13 @@
 <!--                <h3>Interested Items</h3>-->
 <!--                    <h5 th:each="interest : ${interests}">-->
 <!--                        <h7 th:text="${interest.item.title}">-->
-<!--&lt;!&ndash;                            <th:block th:each="album : ${albums}">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                                    <th:block th:each="item : ${album.items}">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                                        <th:block th:each="user :${item.interests}">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                                            <p th:text="${user.username}" class="card"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </th:block>&ndash;&gt;-->
 <!--                        </h7>-->
 <!--                    </h5>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+<!--                            <th:block th:each="album : ${albums}">-->
+<!--                                                                    <th:block th:each="item : ${album.items}">-->
+<!--                                                                        <th:block th:each="user :${item.interests}">-->
+<!--                                                                            <p th:text="${user.username}" class="card"></p>-->
+<!--                            </th:block>-->
 
 
 
