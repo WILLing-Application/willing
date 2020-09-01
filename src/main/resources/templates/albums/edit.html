@@ -11,7 +11,8 @@
     <title>Albums</title>
 
     <!-- BOOTSTRAP CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!--    CSS FILES-->
     <link th:href="@{/css/fontawesome.css}" rel="stylesheet">
@@ -43,25 +44,25 @@
         <div class="form-group">
             <label for="lineage">Lineage</label>
             <input type="text" id="lineage" name="lineage" th:value="${album.lineage}"
-                      maxlength="100" required autofocus>
+                   maxlength="100" required autofocus>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
             <textarea type="text" id="description" name="description" th:text="${album.description}"
                       required></textarea>
         </div>
+        <div id="files"></div>
         <input type="hidden" id="images" value="" name="images">
         <input type="hidden" id="file-type" value="" name="file-type">
         <button class="mb-3" id="upload">Add a photo</button>
-        <input type="submit" value="Update Album" class="signup-submit"/>
+        <input type="submit" value="Update Album" class="signup-submit">
     </form>
-<!--    <div id="files"></div>-->
-<!--    <h3 id="your-photos" class="mt-3 mb-3">Your Photos:</h3>-->
-    <div id="files"></div>
+    <!--    <div id="files"></div>-->
+    <h3 id="your-photos" class="mt-3 mb-3">Your Photos:</h3>
     <div th:each="photo : ${photos}">
         <form th:action="@{/albums/{albumId}/image/{imageId}(albumId=${album.id},imageId=${photo.id})}" method="post">
             <img th:src="${photo.filename}" alt="" class="mb-3">
-<!--            <button class="btn btn-secondary">Delete</button>-->
+            <!--            <button class="btn btn-secondary">Delete</button>-->
         </form>
     </div>
     <div th:each="video : ${videos}">
@@ -70,10 +71,10 @@
                 <source th:src="${video.filename}">
             </video>
             <br>
-<!--            <button class="btn btn-secondary">Delete</button>-->
+            <!--            <button class="btn btn-secondary">Delete</button>-->
         </form>
     </div>
-<!--    <div id="files"></div>-->
+    <!--    <div id="files"></div>-->
 </div>
 <footer th:replace="partials/footer :: footer"/>
 <div th:replace="partials/scripts :: assets"></div>
