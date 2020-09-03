@@ -1,10 +1,12 @@
+/*ul anchor tags*/
 .navbar-nav a{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
 }
-/*WILLING LOGO*/
+/*navbar-light is commented out*/
+/*navbar-brand is the WILLING LOGO*/
 .navbar-light .navbar-brand {
     font-family: 'Grenze', serif;
     color: #fff;
