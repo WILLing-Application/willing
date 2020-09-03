@@ -15,7 +15,8 @@
     font-weight: bold;
     letter-spacing: 2px;
 }
-
+/*navbar-light is commented out*/
+/*navbar-nav is the ul, nav-link is the anchor tag in each li*/
 .navbar-light .navbar-nav .active > .nav-link .navbar-light .navbar-nav .nav-link .active,
 .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
     color: #fff;
