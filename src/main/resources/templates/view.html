@@ -146,15 +146,30 @@
     <h3 class="login-header">Item Award Panel</h3>
     <div class="signup-form">
         <div class="row">
-            <div class="col-3">
-                <h2 class="mb-6"><span th:text="${user.firstName}"/> <span th:text="${user.lastName}"/></h2>
-
-                <h4><strong>How To:</strong></h4>
+                <h3 class="mb-6 text-center"><span th:text="${user.firstName}"/> <span th:text="${user.lastName}"/></h3>
+            <button type="button" class="btn btn-blood text-center" data-toggle="collapse" href="#tips2" aria-expanded="false" aria-controls="tips2">How To</button>
+            <div class="collapse" id="tips2">
                 <h6>1. Select Album.</h6>
                 <h6>2. Select the Item.</h6>
                 <h6>3. Select the Guest.</h6>
-                <button type="button" class="btn btn-blood text-center" data-toggle="collapse" href="#tips" role="button" aria-expanded="false" aria-controls="tips">Tips</button>
+                <h4><strong>Tips:</strong></h4>
+                <h7><em>Owners</em> - create an album and add your items. Share with other users by adding them as a guest to the album. View their responses on the interests page.</h7>
+                <h7><em>Guests</em> - view others albums when the owner gives you access. Click on the Interested button when you see something you want!</h7>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="row">
+            <div class="col-3">
+
+<!--                <h4><strong>How To:</strong></h4>-->
+                <button type="button" class="btn btn-blood" data-toggle="collapse" href="#tips" aria-expanded="false" aria-controls="tips">How To</button>
                 <div class="collapse" id="tips">
+                <h6>1. Select Album.</h6>
+                <h6>2. Select the Item.</h6>
+                <h6>3. Select the Guest.</h6>
+                    <h4><strong>Tips:</strong></h4>
                     <h7><em>Owners</em> - create an album and add your items. Share with other users by adding them as a guest to the album. View their responses on the interests page.</h7>
                     <h7><em>Guests</em> - view others albums when the owner gives you access. Click on the Interested button when you see something you want!</h7>
                 </div>
@@ -208,6 +223,30 @@
                 </div>
                     <div class="col-3">
                         <h5 class="text-center">Guest Select</h5>
+                        <div>
+                            <select class="browser-default custom-select">
+<!--                                <option selected>All Albums</option>-->
+<!--                                <option value="x3" th:each="user : ${users}"><span th:text="${user}"></span></option>-->
+                                <!--                            <option value="1">Bob Jackson</option>-->
+                                <!--                            <option value="2">Two</option>-->
+                                <!--                            <option value="3">Three</option>-->
+<!--                                <div class="list-group">-->
+                            <option th:each="user : ${users}" class="tab-pane"  id="home">
+                                    <button type="button" class="list-group-item list-group-item-action">
+                                        <span th:text="${user.firstName}"></span>
+                                    </button>
+
+<!--                                <option value="">-->
+
+                                </option>
+
+<!--                                </div>-->
+
+<!--                                <a th:text="${user.firstName}"></a>-->
+
+                            </option>
+                            </select>
+                        </div>
                         <div class="tab-content overflow-auto">
 <!--                            <div th:each="user : ${users}" th:text="${user.firstName}" id="userSelect" class="tab-pane" role="tabpanel"></div>-->
 <!--                            <div th:each="user : ${users}" th:text="${user.username}" class="column tab-pane" role="tabpanel">-->
@@ -237,14 +276,6 @@
 <!--                                <button type="button" class="list-group-item list-group-item-action"><a th:text="${user.firstName}"></a></button>-->
 <!--                            </div>-->
 
-                            <th:block th:each="user : ${users}" class="tab-pane"  id="home">
-                                <div class="list-group">
-                                    <button type="button" class="list-group-item list-group-item-action"><span th:text="${user.firstName}"></span></button>
-                                </div>
-
-<!--                                <a th:text="${user.firstName}"></a>-->
-
-                            </th:block>
 
                         </div>
                         <div class="row align-content-center justify-content-center">
