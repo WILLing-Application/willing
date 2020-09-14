@@ -208,15 +208,19 @@
 
 <!--                            </div>-->
 <!--                        </a>-->
-                                            <a th:each="interest : ${interests}" class="list-group-item list-group-item-action" data-toggle="list" href="#home" role="tab">
-                                                <div th:text="${interest.item.title}">
+                        <select class="browser-default custom-select">
+                                            <option th:each="interest : ${interests}" class="list-group-item list-group-item-action" data-toggle="list" href="#home" role="tab">
+                                                <button type="button" class="list-group-item list-group-item-action">
+                                                <span th:text="${interest.item.title}">
                         <!--                            <th:block th:each="album : ${albums}">-->
                         <!--                                                                    <th:block th:each="item : ${album.items}">-->
                         <!--                                                                        <th:block th:each="user :${item.interests}">-->
                         <!--                                                                            <p th:text="${user.username}" class="card"></p>-->
                         <!--                            </th:block>-->
-                                                </div>
-                                            </a>
+                                                </span>
+                                                </button>
+                                            </option>
+                        </select>
 <!--                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Bob Jackson</a>-->
 
                     </div>
@@ -236,9 +240,8 @@
                                         <span th:text="${user.firstName}"></span>
                                     </button>
 
-<!--                                <option value="">-->
 
-                                </option>
+                            </option>
 
 <!--                                </div>-->
 
