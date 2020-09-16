@@ -1,10 +1,12 @@
+/*ul anchor tags*/
 .navbar-nav a{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
 }
-/*WILLING LOGO*/
+/*navbar-light is commented out*/
+/*navbar-brand is the WILLING LOGO*/
 .navbar-light .navbar-brand {
     font-family: 'Grenze', serif;
     color: #fff;
@@ -13,7 +15,8 @@
     font-weight: bold;
     letter-spacing: 2px;
 }
-
+/*navbar-light is commented out*/
+/*navbar-nav is the ul, nav-link is the anchor tag in each li*/
 .navbar-light .navbar-nav .active > .nav-link .navbar-light .navbar-nav .nav-link .active,
 .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
     color: #fff;

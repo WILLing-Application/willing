@@ -1,12 +1,15 @@
+/*Images in the carousel*/
 img {
     max-width: 100%;
     height: 100vh;
 }
 
+/*The word WILLing in the carousel-caption*/
 .brand-blood {
     color: #8b0000;
 }
 
+/*Each carousel div*/
 .carousel-item{
     height: 100vh;
     min-height: 300px;
@@ -15,10 +18,11 @@ img {
     background-size: cover;
 }
 
+/*All of the animated text in the carousel*/
 .carousel-caption{
     bottom: 220px;
 }
-/*MAYBE H1?*/
+/*We are WILLing*/
 .carousel-caption h1 {
     font-size: 45px;
     text-transform: uppercase;
@@ -27,11 +31,13 @@ img {
     font-family: 'Josefin Sans', sans-serif;
 }
 
+/*Carousel controls (the 3 bars at bottom)*/
 span{
     color: grey;
     font-weight: bold;
 }
 
+/*Get Started animated button*/
 .carousel-caption h1 p {
     width: 60%;
     margin: auto;
@@ -40,6 +46,7 @@ span{
     font-family: 'Open Sans', sans-serif;
 }
 
+/*Get Started button link*/
 .carousel-caption a {
     text-transform: uppercase;
     background: #262626;

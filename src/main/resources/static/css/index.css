@@ -39,6 +39,13 @@ header h1 {
     /*text-transform: uppercase;*/
 }
 
+.willing {
+    background-color: rgba(211, 211, 211, 0.4);
+    position: fixed;
+    height: 200px;
+    bottom: 10vh;
+    width: 100%;
+}
 /*.jumbotron {*/
 /*    background-image: url("../photos/sunset.jpg");*/
 /*}*/
@@ -99,7 +106,7 @@ header h1 {
     background-color: #696969!important;
 
 }
-/*NAVBAR HEIGHT AJUSTMENT*/
+/*NAVBAR HEIGHT ADJUSTMENT*/
 #navbarResponsive {
     z-index: 999;
     position: absolute;
@@ -133,15 +140,18 @@ header h1 {
     left: 0;
     bottom: -52px;
 }
+/*hamburger nav icon*/
 .navbar-dark .navbar-toggler-icon {
     background-image: none;
 }
+/*hamburger nav icon*/
 .navbar-dark .navbar-toggler {
     border-color: #8b0000;
     background-color: #8b0000;
     height: 50px;
     outline: none;
 }
+/*hamburger nav icon*/
 .navbar-dark .navbar-toggler-icon:after {
     content: '\f0c9';
     color: #696969;
